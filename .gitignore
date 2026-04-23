@@ -62,3 +62,22 @@ desktop.ini
 docs/Archive/Reference/taxes/
 # Financial data directory
 data/
+# Media — videos, photos, images (large binaries; store locally or in cloud, not in git)
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.wmv
+*.MP4
+*.MOV
+*.jpg
+*.jpeg
+*.JPG
+*.JPEG
+*.png
+*.PNG
+*.gif
+*.bmp
+*.webp
+# Web archives / xhtml artifacts
+*.xhtml
