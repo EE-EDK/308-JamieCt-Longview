@@ -1,0 +1,8 @@
+# 308-Jamie-Ct-3b d-house — Configuration
+# See config.example.yaml for documented defaults.
+
+project:
+  name: "308-Jamie-Ct-3b d-house"
+  version: "0.1.0"
+
+# Add domain-specific configuration below
