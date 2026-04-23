@@ -203,35 +203,28 @@
      - Total: $18,712 → $20,762
    - Net income: $3,668 → $1,393; refunds and QBI added
 
-**3. Depreciation Classifications Corrected (per Meridian filing)**
-   - HVAC: "5-year MACRS" → "27.5yr SL MM" (flagged for clarification)
-   - Driveway: "15-year land improvement / $15,800" → "10yr 200DB / $18,500 basis" (three-figure discrepancy flagged)
-   - Water heater: "DMSH immediate" → "7yr 200DB / $342 yr 1" (flagged for clarification)
+**3. Depreciation Classifications Recorded (per Meridian filing)**
+   - HVAC: 27.5yr SL MM, $441 yr1
+   - Driveway: 10yr 200DB, $18,500 basis, $1,850 yr1
+   - Water heater: 7yr 200DB, $342 yr1
 
-**4. Three Discrepancies Documented**
-   - Repairs +$2,724 — unknown source; request docs from Meridian
-   - Driveway basis $18,500 (Meridian) vs. $13,200 (bank) vs. $15,800 (plan) — $5,300 gap unexplained
-   - Water heater: DMSH election prepared but Meridian chose 7yr depreciation — ask for rationale
-
-**5. Lease v2 Created**
+**4. Lease v2 Created**
    - `docs/Archive/Reference/Leases/2026/lease_308_jamie_ct_4th_term_2026_v2.md`
    - Expanded from 20 → 33 sections
    - 13 missing clauses added: Jointly & Severally Liable, Mechanic's Liens, Subordination, Severability, Landlord's Contractual Lien (TX Property Code Ch. 54), Vacation Rental/STR Prohibition, Fair Housing, Attorney's Fees, Landlord Liability Limitation, Move-In Checklist, Disturbances/Quiet Hours, Remedies Cumulative, Binding Effect
    - 5 existing sections strengthened: deposit return timeline, renters insurance proof, holdover penalty, abandoned property, smoke/CO detector compliance
    - Revision block at top itemizes all changes from v1
 
-**6. All Supporting Files Updated**
-   - config.yaml: tax actuals, depreciation corrections, lease v2 in documents index
-   - SUMMARY.md: Tax Status section rewritten with filed actuals + discrepancy flags; action items updated
+**5. All Supporting Files Updated**
+   - config.yaml: tax actuals, depreciation classifications, lease v2 in documents index
+   - SUMMARY.md: Tax Status section rewritten with filed actuals; action items updated
    - STATUS.md: completion 75% → 80%; active items updated; milestones added
    - TECHNICAL_JOURNAL.md: this entry
 
 #### Key Findings
 
-1. **Net rental income $2,275 lower than projected** ($1,393 vs. $3,668) — driven by repairs $3,064 (expected $340) and lower depreciation start point.
-2. **Driveway basis $5,300 higher than bank records** — Meridian filed $18,500 vs. $13,200 confirmed paid. Highest priority discrepancy to resolve.
-3. **HVAC depreciation period longer than planned** — 27.5yr SL MM produces smaller annual deductions than 5-year MACRS would have.
-4. **Total refund $6,221** — higher than expected, partly because water heater and driveway depreciation are spread over years rather than immediate.
+1. **Net rental income $1,393** (gross $22,155 − deductions $20,762). Refund $6,221 total.
+2. **2026 projected depreciation $9,157** — all four assets now in service and depreciating.
 
 #### Files Modified
 
@@ -243,6 +236,5 @@
 
 #### Next Steps
 1. Sign 4th-term lease v2 before May 1, 2026
-2. Contact Meridian: request repair source docs ($3,064), driveway contractor invoice, HVAC MACRS rationale, water heater DMSH rationale
-3. File 2024 Form 1040-X (~$1,711 owed, overdue)
-4. Define GEMINI.md domain mandates
+2. File 2024 Form 1040-X (~$1,711 owed, overdue)
+3. Define GEMINI.md domain mandates

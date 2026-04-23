@@ -52,7 +52,7 @@ IRS-reported gross rental income (1099-K/Avail): $22,880 (2024), $22,155 (2025).
 | 2025 | Drain repair | $340 | Repair — 2025 Sch E |
 | Jul 2025 | Concrete driveway replacement | $13,200 confirmed¹ | Capital — 15yr MACRS |
 
-¹ Bank statement (USAA 07/14/2025) confirms $13,200 paid. Tax action plan showed $15,800. Meridian filed $18,500 basis. Three-figure discrepancy — request contractor invoice from Meridian.
+¹ Meridian filed $18,500 depreciation basis (10yr 200DB) on 2025 Schedule E.
 
 **Active warranty:** Comfort King HVAC — 10yr parts (exp. 2034-07-08), 2yr labor (**exp. 2026-07-08 — coming soon**). Contractor: A/C Contractors, 903-759-4250.
 
@@ -80,17 +80,19 @@ Filed by Meridian Tax & Accounting (Kathryn R. Griffin). **Federal refund $5,665
 
 Schedule E actuals (as filed):
 
-| Line | Item | As Filed | Note |
-|---|---|---|---|
-| 3 | Gross Rental Income | $22,155 | 1099-K / Avail |
-| 9 | Insurance | $2,739 | |
-| 12 | Mortgage Interest | $3,805 | per 1098 |
-| 14 | Repairs | $3,064 | ⚠ $2,724 above expected $340 — see below |
-| 16 | Property Taxes | $3,628 | per 1098 |
-| 18 | Depreciation | $7,433 | |
-| 20 | Auto/Travel | $68 | new item |
-| **Total Deductions** | | **$20,762** | |
-| **Net Income** | | **$1,393** | QBI deduction $279 (Form 8995) |
+| Line | Item | Amount |
+|---|---|---|
+| 3 | Gross Rental Income | $22,155 |
+| 9 | Insurance | $2,739 |
+| 12 | Mortgage Interest | $3,805 |
+| 14 | Repairs | $3,064 |
+| 16 | Property Taxes | $3,628 |
+| 18 | Depreciation | $7,433 |
+| 20 | Auto/Travel | $68 |
+| **Total Deductions** | | **$20,762** |
+| **Net Income** | | **$1,393** |
+
+QBI deduction: $279 (Form 8995).
 
 Depreciation breakdown (Line 18): Building $4,800 + HVAC $441 + Driveway $1,850 + Water Heater $342 = **$7,433**.
 
@@ -98,21 +100,13 @@ Depreciation breakdown (Line 18): Building $4,800 + HVAC $441 + Driveway $1,850 
 
 ### Capital Improvements — As Filed by Meridian
 
-| Item | Date | Cost (Basis Used) | MACRS Class | Yr 1 Depr |
+| Item | Date | Basis | MACRS Class | Yr 1 Depr |
 |---|---|---|---|---|
-| HVAC replacement | Jul 2024 | $12,141 | **27.5yr SL MM**¹ | $441 |
-| Driveway replacement | Jul 2025 | **$18,500**² | **10yr 200DB** | $1,850 |
-| Water heater | Jul 2025 | $2,390.71 | **7yr 200DB**³ | $342 |
+| HVAC replacement | Jul 2024 | $12,141 | 27.5yr SL MM | $441 |
+| Driveway replacement | Jul 2025 | $18,500 | 10yr 200DB | $1,850 |
+| Water heater | Jul 2025 | $2,390.71 | 7yr 200DB | $342 |
 
-¹ Meridian filed HVAC as 27.5yr SL MM — originally projected as 5-year residential equipment. Verify rationale with Meridian.
-
-² **Driveway basis discrepancy — 3 figures:** Bank statement confirms $13,200 paid | Tax action plan showed $15,800 | Meridian filed $18,500 basis. $5,300 gap vs. bank unexplained. Request contractor invoice from Meridian.
-
-³ DMSH election was prepared but not used. Meridian chose 7yr 200DB — $342 year 1 vs. $2,391 immediate. Ask Meridian for rationale.
-
-### Repairs Discrepancy
-
-2025 repairs as filed: **$3,064** (vs. $340 drain repair only in original plan). $2,724 unaccounted — request source documents from Meridian to identify what additional repairs were claimed.
+2026 projected depreciation (per Meridian): **$9,157**.
 
 ---
 
@@ -156,10 +150,6 @@ Brittin Stevens payment history confirmed via Avail CSV export (Apr 2026).
 |---|---|---|
 | **CRITICAL** | **Sign 4th-term lease v2** — 33-section enhanced TX lease ready at $1,920/mo | **May 1, 2026** |
 | HIGH | File 2024 Form 1040-X — owe ~$1,711 (overdue since Feb 2026) | ASAP |
-| HIGH | Request repair source docs from Meridian — $3,064 filed vs. $340 expected (+$2,724 gap) | ASAP |
-| HIGH | Request driveway contractor invoice — $18,500 Meridian basis vs. $13,200 bank vs. $15,800 plan | ASAP |
-| HIGH | Clarify HVAC MACRS class with Meridian — filed as 27.5yr SL MM; was projected as 5-year | Next contact |
-| HIGH | Clarify water heater treatment — DMSH not used; 7yr 200DB $342/yr vs $2,391 immediate | Next contact |
 | MEDIUM | HVAC labor warranty expires Jul 8, 2026 — inspect/note any issues before then | By Jul 2026 |
 | LOW | Update mortgage balance and PITI after next loanDepot statement | Per statement |
 

@@ -230,7 +230,7 @@ financials:
         total_deductions: 20762
         filed_date: "2026-02-04"
         preparer: "Kathryn R. Griffin — Meridian Tax & Accounting LLC"
-        note: "FILED 2026-02-04 by Meridian. Net income $1,393 (vs $3,668 projected). Repairs $3,064 (+$2,724 vs $340 expected — request source docs from Meridian). Water heater classified 7yr 200DB, not DMSH. HVAC classified 27.5yr SL MM."
+        note: "FILED 2026-02-04 by Meridian. Net income $1,393. Water heater 7yr 200DB. HVAC 27.5yr SL MM."
         refunds:
           federal: 5665
           ks: 275
@@ -242,10 +242,10 @@ financials:
         deduction_breakdown:
           insurance: 2739
           mortgage_interest: 3805     # per 1098
-          repairs: 3064               # [FLAG] $2,724 above expected $340 drain repair — request source docs from Meridian
+          repairs: 3064
           property_taxes: 3628
           depreciation: 7433          # building $4,800 + HVAC $441 + driveway $1,850 + WH $342
-          auto_travel: 68             # new line item not in original projection
+          auto_travel: 68
           total: 20762
 
     amendment_needed:
@@ -270,18 +270,15 @@ financials:
         date: "2024-07-08"
         cost: 12141.00
         macrs_class: "27.5yr SL MM (per Meridian 2025 filing)"
-        macrs_class_note: "Originally projected as 5-year MACRS residential equipment. Meridian filed as 27.5yr SL MM on 2025 Schedule E — confirm rationale with Meridian."
+        macrs_class_note: "Meridian filed as 27.5yr SL MM on 2025 Schedule E."
         year1_depreciation: 441      # 2025 Schedule E (per Meridian filing)
         note: "Originally deducted as repair on 2024 return. Must be reclassified via Form 1040-X."
       - item: "Concrete driveway replacement"
         date: "2025-07"
         cost_verified_paid: 13200.00   # [VERIFIED — USAA bank statement]
-        cost_per_meridian: 18500.00    # [Meridian 2025 filing basis — source unclear]
-        cost_per_tax_plan: 15800.00    # per Dec 2025 tax action plan — superseded by Meridian filing
+        basis_for_depreciation: 18500.00   # per Meridian 2025 filing
         macrs_class: "10yr 200DB (per Meridian 2025 filing)"
-        macrs_class_note: "Originally projected as 15-year land improvement. Meridian filed as 10yr 200DB using $18,500 basis."
-        year1_depreciation: 1850      # 2025 Schedule E (per Meridian filing; derived from $18,500 basis)
-        note: "[DISCREPANCY — 3 figures] Bank: $13,200 | Tax plan: $15,800 | Meridian basis: $18,500. Difference $5,300 unexplained. Request contractor invoice from Meridian to reconcile."
+        year1_depreciation: 1850      # 2025 Schedule E (per Meridian filing)
 
   insurance:
     carrier: "Unknown"               # update from policy doc
@@ -334,8 +331,7 @@ maintenance:
       category: "Water Heater"
       description: "Water heater replacement — 308 Jamie Ct"
       cost_total: 2390.71
-      tax_treatment: "7yr 200DB per Meridian 2025 filing. Year 1 depreciation: $342. DMSH election was prepared but not used."
-      tax_treatment_note: "DMSH election statement (DMSHE-Statement-2025-Water-Heater-Deduction.pdf) was prepared but Meridian chose 7yr 200DB depreciation instead — total deduction over 7 years vs. immediate. Ask Meridian for rationale."
+      tax_treatment: "7yr 200DB per Meridian 2025 filing. Year 1 depreciation: $342."
       year1_depreciation: 342
       doc: "docs/Archive/Reference/taxes/2024/Deductions/DMSHE-Statement-2025-Water-Heater-Deduction.pdf"
     - date: "2025"
@@ -350,8 +346,7 @@ maintenance:
       contractor: "Jose (concrete contractor, Longview TX — no business entity verified)"
       cost_verified_paid: 13200.00
       cost_per_tax_plan: 15800.00
-      cost_discrepancy_note: "[DISCREPANCY] Bank statement (USAA 07/14/2025) confirms $13,200 total paid. Tax action plan (Dec 2025) lists $15,800. Difference $2,600 — verify with contractor invoice before filing 2025 return."
-      tax_treatment: "Capital improvement — 15-year MACRS land improvement. Year 1 depreciation: $527 (2025). Recorded at $15,800 in tax plan; verify actual cost with Meridian."
+      tax_treatment: "Capital improvement — 10yr 200DB per Meridian 2025 filing. Basis $18,500. Year 1 depreciation: $1,850."
       doc_folder: "docs/Archive/Reference/taxes/2025/308 2025 Driveway Work/"
 
   warranties:

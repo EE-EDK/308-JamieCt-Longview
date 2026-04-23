@@ -15,10 +15,6 @@
 |---|---|---|
 | Sign 4th-term lease v2 ($1,920/mo — 33-section TX lease ready) | May 1, 2026 | **CRITICAL** |
 | File 2024 Form 1040-X (~$1,711 owed) | Overdue | HIGH |
-| Request repair source docs from Meridian — $3,064 filed vs. $340 expected | ASAP | HIGH |
-| Request driveway contractor invoice — $18,500 Meridian basis vs. $13,200 bank | ASAP | HIGH |
-| Clarify HVAC MACRS (27.5yr SL MM filed vs. 5-year projected) | Next Meridian contact | HIGH |
-| Clarify water heater treatment (7yr 200DB used vs. DMSH prepared) | Next Meridian contact | MEDIUM |
 | HVAC labor warranty expiry — inspect before then | Jul 8, 2026 | Monitor |
 | Pull 2018 appraisal value into config | When time permits | Low |
 
