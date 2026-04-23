@@ -3,9 +3,9 @@
 **Owner:** Ethan Kunz
 **Created:** 2026-04-23
 **Last Updated:** 2026-04-23
-**Total Sessions:** 1
-**Total Development Time:** ~0.1 hours
-**Current Phase:** Initial Setup
+**Total Sessions:** 2
+**Total Development Time:** ~1.5 hours
+**Current Phase:** Active — Records & Org Complete
 
 ---
 
@@ -146,3 +146,31 @@
 1. Sign 4th-term lease before May 1, 2026 (add missing clauses first)
 2. Contact Meridian re: 2024 1040-X and 2025 return
 3. Define GEMINI.md domain mandates
+
+---
+
+### 2026-04-23 (Thursday) — Media Gitignore & Repo Cleanup
+**Phase:** Active — Repo Hygiene
+**Duration:** ~10 minutes
+**Collaborators:** Ethan Kunz + Claude Code
+
+#### Work Completed
+
+**1. Media Files Excluded from Git**
+   - `.gitignore` extended with patterns for all video/image extensions: `mp4, mov, avi, mkv, wmv, jpg, jpeg, png, gif, bmp, webp, xhtml`
+   - 48 files untracked from git index: 16 property walkthrough videos + 32 property photos
+   - All files remain on disk — removed from repo only
+   - Committed and pushed as `15b9038`
+
+**2. Git History Note**
+   - Binary data for those 48 files still exists in earlier commits (`aed5e46 initial`)
+   - If repo size becomes a concern, `git filter-repo` can purge them from history
+
+#### Files Modified
+- `.gitignore` (media patterns added)
+
+#### Next Steps
+1. Sign 4th-term lease before May 1, 2026 (add missing clauses — see Clause Gap Analysis)
+2. Contact Meridian: 2024 Form 1040-X (~$1,711 owed, overdue) + 2025 return
+3. Define GEMINI.md domain mandates
+4. Optional: `git filter-repo` to purge media blobs from history if repo size is a concern
