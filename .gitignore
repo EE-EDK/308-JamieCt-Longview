@@ -58,3 +58,7 @@ desktop.ini
 .scaffolder_config.json
 
 # === Project-specific ===
+# Tax documents, returns, and SSNs — sensitive PII / financial data, never commit
+docs/Archive/Reference/taxes/
+# Financial data directory
+data/

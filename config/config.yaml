@@ -1,8 +1,487 @@
-# 308-Jamie-Ct-3b d-house — Configuration
-# See config.example.yaml for documented defaults.
+# 308 Jamie Court — Property Management Configuration
+# Single source of truth for all property facts, financials, and contacts.
+# Update last_updated whenever values change.
 
 project:
-  name: "308-Jamie-Ct-3b d-house"
-  version: "0.1.0"
+  name: "308 Jamie Ct — Longview TX Rental Property"
+  version: "1.1.0"
+  last_updated: "2026-04-23"
+  owner: "Ethan D. Kunz"
+  owner_email: "ethan.douglas.kunz@gmail.com"
+  lease_platform: "Avail.co"
 
-# Add domain-specific configuration below
+# ─────────────────────────────────────────────
+# PROPERTY
+# ─────────────────────────────────────────────
+property:
+  address: "308 Jamie Court"
+  city: "Longview"
+  state: "TX"
+  zip: "75605-8003"
+  county: "Gregg County"
+  legal_description: "LT 6 BLK 8 RAMBLING CREEK #1"
+  apn: "619372022"
+  school_district: "Longview ISD"
+  zoning: "None (outside city limits)"
+  flood_zone: "X (no special hazard)"
+  flood_map: "48183C0111F (9/3/2014)"
+
+  specs:
+    type: "Single Family Residential"
+    stories: 1
+    year_built: 1980          # approx; effective age ~40 per 2023 appraisal
+    sqft_above_grade: 1735
+    lot_sqft: 14584
+    lot_dimensions: "105 ft x 138.9 ft"
+    bedrooms: 3
+    bathrooms: 2.0
+    total_rooms: 6
+    garage: "Attached 2-car"
+    foundation: "Slab"
+    exterior: "Brick"
+    roof: "Composition shingle"
+    hvac: "3-ton heat pump (FWA electric)"
+    features:
+      - "Covered front porch"
+      - "Two covered patios"
+      - "Detached storage building"
+      - "Fireplace"
+
+# ─────────────────────────────────────────────
+# VALUATIONS
+# ─────────────────────────────────────────────
+valuations:
+  purchase_date: "2020-05-01"
+  purchase_price: 155337
+
+  appraisals:
+    - date: "2018-01-01"        # exact date unknown; see 2018_308_Jamie_Appraisal_Report.pdf
+      value: null               # update when doc is read
+      appraiser: "Unknown"
+    - date: "2023-03-03"
+      value: 237000
+      appraiser: "Joseph Ryan Ellis — Professional Appraisers of Texas, Inc."
+      appraiser_license: "1350424 TX"
+      file_ref: "JAMIE308-Kunz"
+      doc: "docs/Archive/Reference/General/308 Jamie Ct Longview -Appraisal-2023.pdf"
+
+  estimated_value:
+    value: 250000
+    as_of: "2025-12-30"
+    source: "Schedule of Real Estate Owned (Dec 2025)"
+
+# ─────────────────────────────────────────────
+# MORTGAGE
+# ─────────────────────────────────────────────
+mortgage:
+  lender: "loanDepot.com, LLC"
+  loan_number: "5001979151"
+  lender_phone: "888-337-6888"
+  origination_date: "2021-03-17"
+  rate_pct: 2.75
+  type: "Fixed"
+  monthly_principal_interest: 634.15    # [VERIFIED — 1098 2025: $1,328.67 total - $694.52 escrow]
+  monthly_escrow: 694.52                # [VERIFIED — 1098 2025 + USAA statement Jul 2025]
+  monthly_total_piti: 1328.67           # [VERIFIED — USAA 07/03/2025 LOANDEPOT MSP ACH $1,328.67]
+  monthly_total_piti_note: "Escrow includes shortage repayment component above base tax+ins ($530.58). Will normalize once shortage repaid."
+  monthly_total_piti_stale: 1240.45    # [STALE — from Dec 2025 Schedule of Real Estate Owned; superseded]
+  balance_as_of: "2025-12-31"
+  balance: 136310.98                   # [VERIFIED — 1098 2025 ending balance]
+  balance_stale_note: "Dec 2025 Schedule of Real Estate Owned showed $138,226 — superseded by 1098"
+
+  annual_history:
+    - tax_year: 2022
+      beginning_balance: 149472.92
+      interest_paid: 2721.53
+      property_taxes_paid: 2785.62
+      insurance_paid: null             # not reported on 2022 1098
+      monthly_payment_at_year: 965.09  # from 2022 loan statement (partial year — started May 2022)
+      doc: "docs/Archive/Reference/taxes/2023/Returns/308 Jamie_1098_2023.pdf"
+      note: "File named 1098_2023 but covers calendar year 2022 — received Jan 2023"
+    - tax_year: 2025
+      beginning_balance: 140115.32
+      principal_applied: 3804.34
+      ending_balance: 136310.98
+      interest_paid: 3805.46
+      property_taxes_paid: 3627.77
+      insurance_paid: 2739.23
+      monthly_payment_at_year: 1328.67
+      doc: "docs/Archive/Reference/taxes/2025/1098-308-Rental-Mortgage-2025.pdf"
+
+# ─────────────────────────────────────────────
+# TENANT — CURRENT
+# ─────────────────────────────────────────────
+tenant:
+  primary: "Jared Geers"
+  secondary: "Kayla Geers"
+  email_jared: "jgeers08@gmail.com"
+  email_kayla: "geerskayla0413@gmail.com"
+  phone: "573-424-7776"
+  pets: true                # pet amendment signed May 2023
+  additional_occupants: true  # daughter amendment signed May 2023
+
+# ─────────────────────────────────────────────
+# LEASE — CURRENT
+# ─────────────────────────────────────────────
+lease:
+  current:
+    year: 4                         # 4th year of tenancy
+    amendment_number: 3
+    start_date: "2025-05-01"
+    end_date: "2026-05-01"
+    rent_base: 1825
+    pet_fee_monthly: 40
+    rent_total_monthly: 1865        # base + pet fee
+    signed_date: "2025-03-29"
+    platform: "Avail.co"
+    doc: "docs/Archive/Reference/Leases/2025/Lease_308_Jamie_CT_Lease_and_Amendments_2025_signed.pdf"
+
+  history:
+    - year: 2020
+      start_date: "2020-07-01"      # first Avail payment Jul 2020; property purchased May 2020
+      end_date: "2022-05-01"        # approximate
+      tenant: "Brittin Stevens"
+      rent_monthly: 1300
+      rent_monthly_note: "Confirmed via Avail payment history CSV (Apr 2026). First payment Jul 2020 was pro-rated $1,172.12; standard rate $1,300/mo thereafter."
+      doc: "docs/Archive/Reference/Leases/2020/308-Jamie-Ct-2020-2026-LeaseAgreements.pdf"
+    - year: 2022
+      start_date: "2022-05-01"
+      end_date: "2023-05-01"        # approximate
+      tenant: "Brittin Stevens"     # same tenant, continued tenancy
+      rent_monthly: 1365
+      rent_monthly_note: "Confirmed via Avail payment history. Rent increased from $1,300 to $1,365 (+5.0%) in Jun 2022."
+      doc: "docs/Archive/Reference/Leases/2022/Stevens_2022_Lease_Agreement_308_Jamie_Ct_signed.pdf"
+    - year: 2023
+      start_date: "2023-05-01"
+      end_date: "2024-05-01"
+      tenant: "Jared & Kayla Geers"
+      rent_monthly: 1697            # derived: $1,750 / 1.031 = ~$1,697 (2024 was +3.1%)
+      rent_monthly_note: "Derived estimate; verify against original 2023 lease"
+      amendments:
+        - "Pet amendment (May 2023)"
+        - "Daughter occupant amendment (May 2023)"
+      doc: "docs/Archive/Reference/Leases/2023/308 Jamie CT Lease Signed May2023.pdf"
+    - year: 2024
+      start_date: "2024-05-02"
+      end_date: "2025-05-01"
+      tenant: "Jared & Kayla Geers"
+      rent_base: 1750
+      rent_total_monthly: 1790      # $1,750 + $40 pet fee
+      increase_pct: 3.1
+      doc: "docs/Archive/Reference/Leases/2024/Lease_308_Jamie_CT_Lease_and_Amendments_2024.pdf"
+    - year: 2025
+      start_date: "2025-05-01"
+      end_date: "2026-05-01"
+      tenant: "Jared & Kayla Geers"
+      rent_base: 1825
+      pet_fee: 40
+      rent_total_monthly: 1865
+      increase_pct: 4.3             # from $1,750 → $1,825
+      doc: "docs/Archive/Reference/Leases/2025/Lease_308_Jamie_CT_Lease_and_Amendments_2025_signed.pdf"
+    - year: 2026
+      start_date: "2026-05-01"
+      end_date: "2027-05-01"
+      tenant: "Jared & Kayla Geers"
+      rent_base: 1880
+      pet_fee: 40
+      rent_total_monthly: 1920
+      increase_pct: 3.0             # from $1,825 → $1,880 base (+3.01%)
+      status: "draft_unsigned"      # [DRAFT — not yet signed as of 2026-04-23]
+      note: "4th-term draft prepared Apr 2026. CPI-based methodology documented in §3. Must add missing clauses (Jointly & Severally, Mechanic's Liens, Subordination, Severability) and sign before May 1, 2026."
+      doc: "docs/Archive/Reference/Leases/2026/lease_308_jamie_ct_4th_term_2026_draft.md"
+
+# ─────────────────────────────────────────────
+# FINANCIALS
+# ─────────────────────────────────────────────
+financials:
+  gross_monthly_rent: 1865
+  operating_reserve_monthly: 200
+  net_operating_income_monthly: 536   # [VERIFIED] 1865 - 1328.67 PITI = ~$536 (before reserve)
+  net_to_owner_monthly: 336           # ~$536 gross operating - $200 reserve
+  note: "PITI updated Apr 2026 from 1098+bank statement. Net is ~$88 lower than prior estimate."
+
+  rental_income_reported:
+    - tax_year: 2024
+      gross_1099k: 22880.00
+      source: "Avail (MOVE SALES INC / Realtor.com)"
+      doc: "docs/Archive/Reference/taxes/2024/W2-1099/1099-K rentincome 308.pdf"
+    - tax_year: 2025
+      gross_1099k: 22155.00
+      source: "Avail (MOVE SALES INC / Realtor.com)"
+      doc: "docs/Archive/Reference/taxes/2025/2025 1099-K -Avail-Rental-308 Jamie.pdf"
+      note: "Lease transition Jan-Apr at $1,790; May-Dec at $1,865. Some double-payments in Sep/Nov."
+
+  schedule_e:
+    # Federal Schedule E rental income/expense tracking
+    # Depreciation: residential rental = 27.5-year straight-line
+    # Improvements basis = purchase_price - estimated_land_value
+    estimated_land_value: 25000      # placeholder; verify with CAD
+    depreciable_basis: 130337        # 155337 - 25000 (estimated)
+    annual_depreciation: 4739        # 130337 / 27.5 = ~4,739
+    depreciation_start: "2020-05-01"
+    reported_net:
+      - tax_year: 2024
+        net_income_loss: -686        # [DERIVED from 2024 Form 1040 Schedule 1 line 5]
+        note: "AS-FILED — HVAC incorrectly deducted as repair. Amendment needed (see amendment_needed below)."
+        doc: "docs/Archive/Reference/taxes/2024/Returns/2024 Tax Return Documents (KUNZ ETHAN D and KENIA J - Client Copy).pdf"
+      - tax_year: 2025
+        net_income_loss: 3668        # [DERIVED from tax action plan Dec 2025]
+        gross_income: 22155
+        total_deductions: 18712
+        note: "Projected — 2025 return not yet filed as of Apr 2026. Based on Dec 2025 tax action plan."
+        deduction_breakdown:
+          insurance: 2739
+          mortgage_interest: 3800     # ~$3,805.46 per 1098
+          repairs: 340                # drain repair only
+          property_taxes: 3674
+          depreciation: 5768         # building $4,800 + HVAC $441 + driveway $527
+          other_water_heater_dmsh: 2391
+          total: 18712
+
+    amendment_needed:
+      tax_year: 2024
+      reason: "HVAC incorrectly deducted as repair expense. Must reclassify as capital improvement."
+      changes:
+        - item: "Add missing insurance deduction"
+          as_filed: 0
+          corrected: 3064
+          tax_impact: -674           # saves $674
+        - item: "Reclassify HVAC from repair to capital improvement"
+          as_filed: 11281            # deducted as repair
+          corrected: 220             # year-1 depreciation only
+          tax_impact: 2385           # owes $2,385
+      net_additional_tax_owed: 1711
+      form: "Form 1040-X"
+      status: "Pending — target Feb 2026 per tax action plan"
+      doc: "docs/Archive/Reference/taxes/2024/Deductions/Corrections-Deductions-2024-2025.pdf"
+
+    capital_improvements:
+      - item: "HVAC — Comfort King 3-ton heat pump"
+        date: "2024-07-08"
+        cost: 12141.00
+        macrs_class: "5-year (or 27.5-year — confirm with Meridian)"
+        year1_depreciation: 441      # 2025 Schedule E (per tax action plan)
+        note: "Originally deducted as repair on 2024 return. Must be reclassified via Form 1040-X."
+      - item: "Concrete driveway replacement"
+        date: "2025-07"
+        cost_verified_paid: 13200.00   # [VERIFIED — USAA bank statement]
+        cost_per_tax_plan: 15800.00    # per Dec 2025 tax action plan — verify
+        macrs_class: "15-year land improvement"
+        year1_depreciation: 527      # 2025 Schedule E (per tax action plan)
+        note: "Driveway cost discrepancy: $13,200 confirmed paid vs $15,800 in tax plan. Resolve with Meridian before filing."
+
+  insurance:
+    carrier: "Unknown"               # update from policy doc
+    annual_premium: 2739.23          # [VERIFIED — 1098 2025 escrow disbursement]
+    monthly_premium: 228.27          # 2739.23 / 12
+
+  property_tax:
+    annual_paid_2025: 3627.77        # [VERIFIED — 1098 2025 escrow disbursement]
+    annual_paid_2022: 2785.62        # [VERIFIED — 1098 2022 escrow disbursement]
+    monthly_escrowed_approx: 302.31  # 3627.77 / 12
+
+# ─────────────────────────────────────────────
+# MAINTENANCE & CAPITAL IMPROVEMENTS
+# ─────────────────────────────────────────────
+maintenance:
+  history:
+    - date: "2023-06"
+      category: "Plumbing"
+      description: "Plumbing cleared/inspected"
+      cost: null
+      tax_treatment: "Repair expense (Schedule E deductible)"
+      doc: "docs/Archive/Reference/General/308_Plumbing_Clear_Summer_2023.pdf"
+    - date: "2023-06"
+      category: "Garage"
+      description: "Garage door spring and track repair/inspection"
+      cost: null
+      tax_treatment: "Repair expense (Schedule E deductible)"
+      doc: "docs/Archive/Reference/General/308_Garage_Door_Spring_Track_Summer_2023.png"
+    - date: "2024-04"
+      category: "Roof/Skylight"
+      description: "Skylight flashing leak — master bathroom. Jared self-repaired with wet patch and fabric. Owner gave $190 rent credit."
+      cost: 190.00
+      cost_note: "$190 credited off tenant's next rent payment. No contractor used."
+      tax_treatment: "Repair expense (Schedule E deductible — rent credit reduces gross income)"
+      status: "Complete — monitoring for recurrence"
+      doc: "docs/Archive/Reference/taxes/2024/Returns/308 Maintenance for Skylight.pdf"
+    - date: "2024-07-08"
+      category: "HVAC"
+      description: "Full HVAC replacement — Comfort King 3-ton heat pump system"
+      contractor: "A/C Contractors"
+      contractor_license: "TACLB4214C"
+      contractor_phone: "903-759-4250"
+      contractor_email: "support@accontractors.com"
+      cost_total: 12141.00
+      deposit_paid: 1050.00
+      balance_at_signing: 11091.00
+      tax_treatment: "Capital improvement — 5-year MACRS residential HVAC (may qualify for bonus depreciation)"
+      doc: "docs/Archive/Reference/General/HVAC_Replace_Agreement_308Jamie_Kunz.pdf"
+    - date: "2025-07-12"
+      category: "Water Heater"
+      description: "Water heater replacement — 308 Jamie Ct"
+      cost_total: 2390.71
+      tax_treatment: "De Minimis Safe Harbor Election §1.263(a)-1(f) — immediate 2025 deduction (under $2,500 threshold). Election statement prepared, attach to 2025 Form 1040."
+      doc: "docs/Archive/Reference/taxes/2024/Deductions/DMSHE-Statement-2025-Water-Heater-Deduction.pdf"
+    - date: "2025"
+      category: "Plumbing"
+      description: "Drain repair"
+      cost_total: 340.00
+      tax_treatment: "Repair expense — 2025 Schedule E Line 14"
+      doc: "Invoice needed — noted in tax action plan (Dec 2025)"
+    - date: "2025-07"
+      category: "Driveway"
+      description: "Full concrete driveway replacement. Contractor Jose (sole proprietor). Includes concrete step addition."
+      contractor: "Jose (concrete contractor, Longview TX — no business entity verified)"
+      cost_verified_paid: 13200.00
+      cost_per_tax_plan: 15800.00
+      cost_discrepancy_note: "[DISCREPANCY] Bank statement (USAA 07/14/2025) confirms $13,200 total paid. Tax action plan (Dec 2025) lists $15,800. Difference $2,600 — verify with contractor invoice before filing 2025 return."
+      tax_treatment: "Capital improvement — 15-year MACRS land improvement. Year 1 depreciation: $527 (2025). Recorded at $15,800 in tax plan; verify actual cost with Meridian."
+      doc_folder: "docs/Archive/Reference/taxes/2025/308 2025 Driveway Work/"
+
+  warranties:
+    - item: "Comfort King 3-ton heat pump (full system)"
+      install_date: "2024-07-08"
+      parts_warranty_years: 10
+      parts_warranty_expires: "2034-07-08"
+      labor_warranty_years: 2
+      labor_warranty_expires: "2026-07-08"
+      contractor: "A/C Contractors (TACLB4214C)"
+      note: "100% money-back guarantee if system doesn't perform. No-surprise price guarantee."
+
+# ─────────────────────────────────────────────
+# CONTACTS
+# ─────────────────────────────────────────────
+contacts:
+  owner:
+    name: "Ethan D. Kunz"
+    email: "ethan.douglas.kunz@gmail.com"
+    address: "808 Old Stage Rd, Pleasant Hill, MO 64080"
+
+  tenant_primary:
+    name: "Jared Geers"
+    email: "jgeers08@gmail.com"
+    phone: "573-424-7776"
+
+  tenant_secondary:
+    name: "Kayla Geers"
+    email: "geerskayla0413@gmail.com"
+
+  hvac_contractor:
+    name: "A/C Contractors"
+    license: "TACLB4214C"
+    phone: "903-759-4250"
+    email: "support@accontractors.com"
+    address: "3830 Gilmer Rd, Longview TX 75604"
+    website: "www.accontractors.com"
+
+  appraiser_2023:
+    name: "Joseph Ryan Ellis"
+    company: "Professional Appraisers of Texas, Inc."
+    phone: "903-686-0023"
+    email: "ryan@weappraisetexas.com"
+    address: "PO BOX 291, Judson, TX 75660"
+    license: "1350424 TX"
+
+  mortgage_servicer:
+    name: "loanDepot.com, LLC"
+    phone: "888-337-6888"
+    loan_number: "5001979151"
+    address: "6531 Irvine Center Dr Ste 100, Irvine CA 92618"
+
+  tax_preparer:
+    name: "Kathryn R. Griffin"
+    firm: "Meridian Tax & Accounting LLC"
+    phone: "816-987-2393"
+    address: "1010 Industrial Drive, Pleasant Hill, MO 64080"
+
+# ─────────────────────────────────────────────
+# DOCUMENTS INDEX
+# ─────────────────────────────────────────────
+documents:
+  leases:
+    - path: "docs/Archive/Reference/Leases/2026/lease_308_jamie_ct_4th_term_2026_draft.md"
+      description: "4th-term lease draft 2026 (unsigned — May 2026–May 2027, $1,920/mo)"
+    - path: "docs/Archive/Reference/Leases/2020/308-Jamie-Ct-2020-2026-LeaseAgreements.pdf"
+      description: "Original lease agreement 2020 (consolidated)"
+    - path: "docs/Archive/Reference/Leases/2022/Stevens_2022_Lease_Agreement_308_Jamie_Ct_signed.pdf"
+      description: "Stevens tenant lease 2022 (signed)"
+    - path: "docs/Archive/Reference/Leases/2023/308 Jamie CT Lease Signed May2023.pdf"
+      description: "Geers lease 2023 (signed)"
+    - path: "docs/Archive/Reference/Leases/2023/308 Jamie CT Lease Amendment for Pets May2023_signed.pdf"
+      description: "Pet amendment 2023 (signed)"
+    - path: "docs/Archive/Reference/Leases/2023/308 Jamie Ct Lease Amendment for Daughter.pdf"
+      description: "Daughter occupant amendment 2023"
+    - path: "docs/Archive/Reference/Leases/2024/Lease_308_Jamie_CT_Lease_and_Amendments_2024.pdf"
+      description: "Geers lease + amendments 2024"
+    - path: "docs/Archive/Reference/Leases/2025/Lease_308_Jamie_CT_Lease_and_Amendments_2025_signed.pdf"
+      description: "Geers lease + amendments 2025 (signed — CURRENT)"
+
+  appraisals:
+    - path: "docs/Archive/Reference/General/2018_308_Jamie_Appraisal Report.pdf"
+      description: "Appraisal report 2018"
+    - path: "docs/Archive/Reference/General/308 Jamie Ct Longview -Appraisal-2023.pdf"
+      description: "Appraisal report 2023 ($237,000)"
+
+  financial:
+    - path: "docs/Archive/Reference/General/Schedule-of-Real-Estate-Owned.pdf"
+      description: "Schedule of Real Estate Owned (Dec 2025)"
+    - path: "docs/Archive/Reference/General/Longview_Purchased_Rental_Report.pdf"
+      description: "Rental purchase report"
+    - path: "docs/Archive/Reference/General/2023-01-30-transactions-report.csv"
+      description: "Transaction report Jan 2023"
+
+  maintenance:
+    - path: "docs/Archive/Reference/General/HVAC_Replace_Agreement_308Jamie_Kunz.pdf"
+      description: "HVAC replacement agreement — July 2024"
+    - path: "docs/Archive/Reference/General/308_Plumbing_Clear_Summer_2023.pdf"
+      description: "Plumbing clearance — Summer 2023"
+    - path: "docs/Archive/Reference/General/308_Garage_Door_Spring_Track_Summer_2023.png"
+      description: "Garage door spring/track — Summer 2023"
+
+  general:
+    - path: "docs/Archive/Reference/General/2026-04-23-received-payments-report.csv"
+      description: "Full Avail payment history — all tenants 2020–2026 (exported Apr 2026)"
+      key_values: "Brittin Stevens $1,300/mo (2020–2022), $1,365/mo (2022–2023); Geers $1,737–$1,865/mo (2023–2026)"
+    - path: "docs/Archive/Reference/General/308-Jamie-Claude-Research-April2026.md"
+      description: "Public records research report — GCAD data, market comps, neighborhood, flood, schools (Apr 2026)"
+      key_values: "GCAD 2025 market value $240,990; 1,666 sqft per GCAD (vs. 1,735 appraisal — note discrepancy)"
+    - path: "docs/Archive/Reference/General/VOR Stevens_signed_EDK.pdf"
+      description: "VOR document — Stevens"
+    - path: "docs/Archive/Reference/General/Kunz, Ethan 288169 20210308_OCIE_TURNIN_ETS.pdf"
+      description: "OCIE / ETS document 2021"
+
+  tax_archive:
+    path: "docs/Archive/Reference/taxes/"
+    description: "Full tax document archive 2018–2025 (returns, 1098s, 1099-Ks, W-2s, deduction docs)"
+    years_covered: [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]
+    note: "See individual paths in tax_docs section for key referenced files."
+
+  tax_docs:
+    - path: "docs/Archive/Reference/taxes/2025/1098-308-Rental-Mortgage-2025.pdf"
+      description: "1098 mortgage interest statement — 308 Jamie Ct (2025 tax year)"
+      key_values: "Interest $3,805.46 · Taxes $3,627.77 · Insurance $2,739.23 · Ending balance $136,310.98"
+    - path: "docs/Archive/Reference/taxes/2023/Returns/308 Jamie_1098_2023.pdf"
+      description: "1098 mortgage interest statement — 308 Jamie Ct (2022 tax year, filed 2023)"
+      key_values: "Interest $2,721.53 · Taxes $2,785.62 · Beginning balance $149,472.92"
+    - path: "docs/Archive/Reference/taxes/2025/2025 1099-K -Avail-Rental-308 Jamie.pdf"
+      description: "1099-K rental income — Avail (2025 tax year)"
+      key_values: "Gross rental income $22,155"
+    - path: "docs/Archive/Reference/taxes/2024/W2-1099/1099-K rentincome 308.pdf"
+      description: "1099-K rental income — Avail (2024 tax year)"
+      key_values: "Gross rental income $22,880"
+    - path: "docs/Archive/Reference/taxes/2024/Returns/2024 Tax Return Documents (KUNZ ETHAN D and KENIA J - Client Copy).pdf"
+      description: "Full 2024 tax return (Meridian Tax)"
+      key_values: "AGI $146,606 · Schedule E net rental ~$(686)"
+    - path: "docs/Archive/Reference/taxes/2025/308 2025 Driveway Work/"
+      description: "2025 driveway replacement — contractor texts, receipt, payment transfer"
+      key_values: "Total $13,200 — capital improvement"
+    - path: "docs/Archive/Reference/taxes/2024/Returns/308 Maintenance for Skylight.pdf"
+      description: "2024 skylight leak maintenance ticket (Avail)"
+      key_values: "$190 rent credit — repair expense"
+    - path: "docs/Archive/Reference/taxes/2024/Deductions/DMSHE-Statement-2025-Water-Heater-Deduction.pdf"
+      description: "De Minimis Safe Harbor Election — water heater replacement 308 Jamie (2025 tax year)"
+      key_values: "Cost $2,390.71 · Jul 12 2025 · attach to 2025 Form 1040"
+    - path: "docs/Archive/Reference/taxes/2024/Deductions/Corrections-Deductions-2024-2025.pdf"
+      description: "Tax action plan Dec 2025 — 2024 amendment + 2025 return strategy"
+      key_values: "Amend 2024: owe $1,711 · 2025 deductions $18,712 · driveway $15,800 (verify vs $13,200 paid)"

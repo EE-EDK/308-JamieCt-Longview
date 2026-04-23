@@ -1,10 +1,749 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>308-Jamie-Ct-3b d-house</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>308 Jamie Ct — Property Dashboard</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --navy:         #0F1626;
+      --navy-light:   #1a2332;
+      --leather:      #AB987A;
+      --leather-light:#c4b49e;
+      --coral:        #FF533D;
+      --coral-light:  #ff7a69;
+      --eggshell:     #F5F5F5;
+      --white:        #FFFFFF;
+      --dark-text:    #1a1a1a;
+      --light-text:   #6b7280;
+      --success:      #10b981;
+      --warning:      #f59e0b;
+      --border:       #e5e7eb;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--eggshell);
+      color: var(--dark-text);
+      line-height: 1.5;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* ── App Shell ── */
+    .app { display: flex; height: 100vh; }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      width: 220px; min-width: 220px;
+      background: var(--navy);
+      color: var(--white);
+      display: flex; flex-direction: column;
+      overflow-y: auto;
+    }
+    .sidebar-header {
+      padding: 24px 20px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .sidebar-header h1 {
+      font-size: 11px; font-weight: 300;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--leather-light);
+    }
+    .sidebar-header p { font-size: 12px; color: rgba(255,255,255,0.85); margin-top: 5px; font-weight: 500; }
+    .sidebar-header small { font-size: 10px; color: rgba(255,255,255,0.4); display: block; margin-top: 2px; }
+    .sidebar-nav { flex: 1; padding: 12px 0; }
+    .nav-section {
+      padding: 12px 20px 4px;
+      font-size: 9px; letter-spacing: 2px;
+      text-transform: uppercase; color: rgba(255,255,255,0.3);
+    }
+    .nav-item {
+      display: block; width: 100%; padding: 8px 20px;
+      background: none; border: none;
+      color: rgba(255,255,255,0.65); font-size: 13px;
+      text-align: left; cursor: pointer; font-family: inherit;
+      transition: all 0.15s;
+    }
+    .nav-item:hover { color: var(--white); background: rgba(255,255,255,0.05); }
+    .nav-item.active {
+      color: var(--leather-light);
+      background: rgba(171,152,122,0.1);
+      border-right: 2px solid var(--leather);
+    }
+    .sidebar-footer {
+      padding: 16px 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 10px; color: rgba(255,255,255,0.3);
+    }
+
+    /* ── Main ── */
+    .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+    .topbar {
+      padding: 14px 24px;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .topbar-title { font-size: 16px; font-weight: 600; color: var(--navy); }
+    .topbar-sub { font-size: 11px; color: var(--light-text); margin-top: 1px; }
+    .topbar-right { display: flex; gap: 8px; align-items: center; }
+    .badge {
+      display: inline-block; padding: 3px 10px;
+      border-radius: 10px; font-size: 10px;
+      font-weight: 600; letter-spacing: 0.5px;
+    }
+    .badge-success { background: rgba(16,185,129,0.12); color: var(--success); }
+    .badge-warning { background: rgba(245,158,11,0.12); color: var(--warning); }
+    .badge-danger  { background: rgba(255,83,61,0.12);  color: var(--coral); }
+    .badge-navy    { background: rgba(15,22,38,0.08);   color: var(--navy); }
+
+    .content-area { flex: 1; overflow-y: auto; padding: 20px 24px; }
+
+    /* ── Tab panels ── */
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--white); border-radius: 6px;
+      border: 1px solid var(--border); margin-bottom: 16px;
+    }
+    .card-header {
+      padding: 12px 20px; border-bottom: 1px solid var(--border);
+      font-size: 11px; font-weight: 600; color: var(--navy);
+      letter-spacing: 1px; text-transform: uppercase;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .card-body { padding: 16px 20px; }
+
+    /* ── Stats ── */
+    .stats-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px,1fr)); gap: 12px; margin-bottom: 18px; }
+    .stat {
+      background: var(--white); padding: 16px; border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .stat-label { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--light-text); margin-bottom: 4px; }
+    .stat-value { font-size: 22px; font-weight: 300; color: var(--navy); }
+    .stat-value.positive { color: var(--success); }
+    .stat-value.negative { color: var(--coral); }
+    .stat-sub { font-size: 10px; color: var(--light-text); margin-top: 3px; }
+
+    /* ── Data Table ── */
+    .data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .data-table th {
+      text-align: left; padding: 8px 12px;
+      font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--light-text); border-bottom: 2px solid var(--border);
+      font-weight: 600;
+    }
+    .data-table td { padding: 9px 12px; border-bottom: 1px solid var(--eggshell); vertical-align: middle; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: rgba(245,245,245,0.6); }
+    .data-table td.label { color: var(--light-text); font-size: 12px; }
+    .data-table td.val { font-weight: 600; color: var(--navy); }
+    .data-table td.pos { font-weight: 600; color: var(--success); }
+    .data-table td.neg { color: var(--coral); }
+
+    /* ── Two-col grid ── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } }
+
+    /* ── Alert / info banners ── */
+    .alert-bar {
+      padding: 10px 16px; border-radius: 4px;
+      font-size: 12px; margin-bottom: 10px;
+      display: flex; gap: 10px; align-items: flex-start;
+      border-left: 3px solid;
+    }
+    .alert-bar.warning { background: rgba(245,158,11,0.08); border-color: var(--warning); color: #78350f; }
+    .alert-bar.danger  { background: rgba(255,83,61,0.08);  border-color: var(--coral);   color: #7f1d1d; }
+    .alert-bar.success { background: rgba(16,185,129,0.08); border-color: var(--success); color: #065f46; }
+    .alert-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+    .alert-bar strong { display: block; font-weight: 600; margin-bottom: 1px; }
+
+    /* ── Section info strip ── */
+    .section-info {
+      background: rgba(171,152,122,0.08);
+      border-left: 3px solid var(--leather);
+      padding: 9px 14px; font-size: 11px; color: var(--light-text);
+      margin-bottom: 14px; border-radius: 0 4px 4px 0;
+    }
+
+    /* ── Timeline ── */
+    .timeline { list-style: none; }
+    .tl-row { display: flex; gap: 14px; padding: 9px 0; border-bottom: 1px solid var(--eggshell); }
+    .tl-row:last-child { border-bottom: none; }
+    .tl-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+    .tl-dot.green  { background: var(--success); }
+    .tl-dot.amber  { background: var(--warning); }
+    .tl-dot.coral  { background: var(--coral); }
+    .tl-dot.navy   { background: var(--navy); }
+    .tl-dot.leather{ background: var(--leather); }
+    .tl-date { font-size: 11px; color: var(--light-text); white-space: nowrap; width: 74px; flex-shrink: 0; padding-top: 2px; }
+    .tl-body { font-size: 12px; line-height: 1.4; }
+    .tl-body strong { font-weight: 600; color: var(--navy); display: block; }
+    .tl-body span { color: var(--light-text); font-size: 11px; }
+
+    /* ── Progress bar ── */
+    .prog { margin: 10px 0 4px; }
+    .prog-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--light-text); margin-bottom: 4px; }
+    .prog-track { height: 6px; background: var(--eggshell); border-radius: 3px; overflow: hidden; border: 1px solid var(--border); }
+    .prog-fill { height: 100%; border-radius: 3px; }
+
+    /* ── Contact rows ── */
+    .contact-row { display: flex; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--eggshell); }
+    .contact-row:last-child { border-bottom: none; }
+    .avatar {
+      width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+      background: var(--navy); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 600;
+    }
+    .avatar.leather { background: var(--leather); }
+    .contact-info .name { font-size: 13px; font-weight: 600; color: var(--navy); }
+    .contact-info .detail { font-size: 11px; color: var(--light-text); }
+
+    /* ── Clause gap table ── */
+    .gap-critical td:first-child { border-left: 2px solid var(--coral); }
+    .gap-partial  td:first-child { border-left: 2px solid var(--warning); }
+    .gap-ok       td:first-child { border-left: 2px solid var(--success); }
+    .gap-na       td:first-child { border-left: 2px solid var(--border); }
+  </style>
 </head>
 <body>
-    <h1>308-Jamie-Ct-3b d-house</h1>
+<div class="app">
+
+<!-- ══════ SIDEBAR ══════ -->
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <h1>Property</h1>
+    <p>308 Jamie Court</p>
+    <small>Longview, TX 75605 · Gregg County</small>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-section">Overview</div>
+    <button class="nav-item active" onclick="show('overview',this)">Dashboard</button>
+    <button class="nav-item" onclick="show('financials',this)">Financials</button>
+    <div class="nav-section">Tenancy</div>
+    <button class="nav-item" onclick="show('lease',this)">Lease & Tenant</button>
+    <button class="nav-item" onclick="show('lease-gap',this)">Clause Gap Analysis</button>
+    <div class="nav-section">Property</div>
+    <button class="nav-item" onclick="show('maintenance',this)">Maintenance</button>
+    <button class="nav-item" onclick="show('documents',this)">Documents</button>
+  </nav>
+  <div class="sidebar-footer">Last updated: 2026-04-23</div>
+</aside>
+
+<!-- ══════ MAIN ══════ -->
+<div class="main">
+
+  <!-- Topbar (dynamic title) -->
+  <div class="topbar">
+    <div>
+      <div class="topbar-title" id="topbar-title">Dashboard</div>
+      <div class="topbar-sub">3 bed · 2 bath · 1,735 sqft · loanDepot 2.75%</div>
+    </div>
+    <div class="topbar-right">
+      <span class="badge badge-success">● OCCUPIED</span>
+      <span class="badge badge-warning">Lease exp. May 2026</span>
+    </div>
+  </div>
+
+  <div class="content-area">
+
+  <!-- ══════════════════════════════════
+       OVERVIEW TAB
+  ══════════════════════════════════ -->
+  <div id="tab-overview" class="tab-content active">
+
+    <div class="alert-bar danger">
+      <span class="alert-icon">📅</span>
+      <div><strong>4th-term lease draft ready — sign before May 1, 2026</strong> Draft at $1,920/mo ($1,880 base + $40 pet). Add missing clauses before executing (see Clause Gap Analysis). Current term expires May 1, 2026.</div>
+    </div>
+    <div class="alert-bar warning">
+      <span class="alert-icon">🔧</span>
+      <div><strong>HVAC labor warranty expires July 8, 2026</strong> Comfort King 3-ton system. 10-year parts warranty remains active through 2034.</div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-label">Monthly Rent</div>
+        <div class="stat-value positive">$1,865</div>
+        <div class="stat-sub">$1,825 base + $40 pet fee</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Monthly PITI</div>
+        <div class="stat-value negative">$1,329</div>
+        <div class="stat-sub">P&amp;I $634 · Escrow $695 (verified Jul 2025)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Net / Month</div>
+        <div class="stat-value positive">~$336</div>
+        <div class="stat-sub">After PITI + $200 reserve</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Mortgage Balance</div>
+        <div class="stat-value">$136,311</div>
+        <div class="stat-sub">End of 2025 · 2.75% fixed (per 1098)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Est. Value</div>
+        <div class="stat-value">$250,000</div>
+        <div class="stat-sub">Dec 2025 · Appraised $237K (2023)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Est. Equity</div>
+        <div class="stat-value positive">~$113,689</div>
+        <div class="stat-sub">$250K − $136,311</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header">Key Dates</div>
+        <div class="card-body" style="padding:12px 20px">
+          <ul class="timeline">
+            <li class="tl-row"><div class="tl-dot navy"></div><div class="tl-date">May 2020</div><div class="tl-body"><strong>Property purchased</strong><span>$155,337 · loanDepot 2.75%</span></div></li>
+            <li class="tl-row"><div class="tl-dot navy"></div><div class="tl-date">May 2023</div><div class="tl-body"><strong>Geers tenancy began</strong><span>Jared & Kayla Geers</span></div></li>
+            <li class="tl-row"><div class="tl-dot amber"></div><div class="tl-date">Jul 2024</div><div class="tl-body"><strong>HVAC replaced</strong><span>Comfort King 3-ton · $12,141</span></div></li>
+            <li class="tl-row"><div class="tl-dot green"></div><div class="tl-date">May 2025</div><div class="tl-body"><strong>Current lease began</strong><span>Year 4 · $1,865/mo</span></div></li>
+            <li class="tl-row"><div class="tl-dot coral"></div><div class="tl-date">May 2026</div><div class="tl-body"><strong>Lease expires</strong><span>Renewal decision required</span></div></li>
+            <li class="tl-row"><div class="tl-dot amber"></div><div class="tl-date">Jul 2026</div><div class="tl-body"><strong>HVAC labor warranty expires</strong><span>Parts covered through 2034</span></div></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">Property Specs</div>
+        <div class="card-body" style="padding:0">
+          <table class="data-table">
+            <tr><td class="label">Address</td><td class="val">308 Jamie Ct, Longview TX 75605</td></tr>
+            <tr><td class="label">Legal</td><td>LT 6 BLK 8 RAMBLING CREEK #1</td></tr>
+            <tr><td class="label">APN</td><td>619372022</td></tr>
+            <tr><td class="label">Size</td><td>1,735 sqft · 14,584 sqft lot</td></tr>
+            <tr><td class="label">Layout</td><td>3 bed / 2 bath · 1 story</td></tr>
+            <tr><td class="label">Construction</td><td>~1980 · Slab · Brick</td></tr>
+            <tr><td class="label">HVAC</td><td>3-ton heat pump (replaced 2024)</td></tr>
+            <tr><td class="label">Garage</td><td>Attached 2-car</td></tr>
+            <tr><td class="label">District</td><td>Longview ISD · Gregg County</td></tr>
+            <tr><td class="label">Flood</td><td>Zone X — no hazard</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       FINANCIALS TAB
+  ══════════════════════════════════ -->
+  <div id="tab-financials" class="tab-content">
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-label">2025 IRS Gross Rent</div>
+        <div class="stat-value positive">$22,155</div>
+        <div class="stat-sub">1099-K from Avail · 2024: $22,880</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Annual PITI</div>
+        <div class="stat-value negative">$15,944</div>
+        <div class="stat-sub">$1,328.67 × 12 (verified)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Annual Net (est.)</div>
+        <div class="stat-value positive">~$4,032</div>
+        <div class="stat-sub">After PITI + $200/mo reserve</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Equity (Est.)</div>
+        <div class="stat-value positive">~$113,689</div>
+        <div class="stat-sub">$250K − $136,311</div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header">Monthly Cash Flow</div>
+        <div class="card-body" style="padding:0">
+          <table class="data-table">
+            <tr><th>Item</th><th>Monthly</th><th>Annual</th></tr>
+            <tr><td>Base Rent</td><td class="val">$1,825</td><td>$21,900</td></tr>
+            <tr><td>Pet Fee</td><td class="val">$40</td><td>$480</td></tr>
+            <tr><td style="font-weight:600">Gross Rent</td><td class="pos">$1,865</td><td class="pos">$22,380</td></tr>
+            <tr><td style="color:var(--light-text);font-size:11px;padding-top:8px" colspan="3">— Expenses —</td></tr>
+            <tr><td>P&amp;I</td><td class="neg">−$634.15</td><td>−$7,610</td></tr>
+            <tr><td>Escrow (tax + ins + shortage)</td><td class="neg">−$694.52</td><td>−$8,334</td></tr>
+            <tr><td style="font-weight:600">Total PITI <span style="font-size:10px;color:var(--success)">[verified]</span></td><td class="neg">−$1,328.67</td><td>−$15,944</td></tr>
+            <tr><td style="font-weight:600">Gross Operating Income</td><td class="pos">+$536.33</td><td class="pos">+$6,436</td></tr>
+            <tr><td>Operating Reserve</td><td class="neg">−$200.00</td><td>−$2,400</td></tr>
+            <tr><td style="font-weight:600">Net to Owner</td><td class="pos">≈ +$336</td><td class="pos">≈ +$4,032</td></tr>
+          </table>
+          <div style="padding:8px 20px;font-size:10px;color:var(--light-text)">PITI verified via USAA statement 07/03/2025 + loanDepot 1098. Escrow includes shortage repayment above base tax+insurance.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">Mortgage & Valuation</div>
+        <div class="card-body" style="padding:0 0 12px 0">
+          <table class="data-table">
+            <tr><td class="label">Lender</td><td class="val">loanDepot.com, LLC</td></tr>
+            <tr><td class="label">Loan #</td><td>5001979151 · orig. 03/17/2021</td></tr>
+            <tr><td class="label">Rate</td><td class="val">2.75% fixed</td></tr>
+            <tr><td class="label">Monthly P&amp;I</td><td class="val">$634.15</td></tr>
+            <tr><td class="label">Monthly PITI</td><td class="val">$1,328.67 <span style="font-size:10px;color:var(--success)">[verified]</span></td></tr>
+            <tr><td class="label">Balance (Dec 2025)</td><td class="val">$136,310.98 <span style="font-size:10px;color:var(--success)">[1098]</span></td></tr>
+            <tr><td class="label">2025 Interest Paid</td><td>$3,805.46</td></tr>
+            <tr><td class="label">2025 Taxes Paid</td><td>$3,627.77</td></tr>
+            <tr><td class="label">2025 Insurance Paid</td><td>$2,739.23</td></tr>
+            <tr><td class="label">Purchase (May 2020)</td><td>$155,337</td></tr>
+            <tr><td class="label">Appraised (Mar 2023)</td><td>$237,000</td></tr>
+            <tr><td class="label">Estimated (Dec 2025)</td><td>$250,000</td></tr>
+            <tr><td class="label">Est. Equity</td><td class="pos">~$113,689</td></tr>
+          </table>
+          <div style="padding:12px 20px 0">
+            <div class="prog">
+              <div class="prog-labels"><span>Balance: $136,311</span><span>Original: $155,337</span></div>
+              <div class="prog-track"><div class="prog-fill" style="width:88%;background:var(--coral)"></div></div>
+              <div style="font-size:10px;color:var(--light-text);margin-top:3px">$19,026 paid down — 12.2% of original principal</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">Rent History</div>
+      <div class="card-body" style="padding:0">
+        <table class="data-table">
+          <tr><th>Period</th><th>Tenant</th><th>Base</th><th>Total w/ Fees</th><th>Change</th></tr>
+          <tr><td>2020–2022</td><td>Brittin Stevens</td><td>$1,300</td><td>$1,300</td><td>—</td></tr>
+          <tr><td>2022–2023</td><td>Brittin Stevens (cont.)</td><td>$1,365</td><td>$1,365</td><td class="pos">+5.0%</td></tr>
+          <tr><td>2023–2024</td><td>Jared & Kayla Geers</td><td>~$1,697</td><td>~$1,737</td><td>—</td></tr>
+          <tr><td>2024–2025</td><td>Jared & Kayla Geers</td><td>$1,750</td><td>$1,790</td><td class="pos">+3.1%</td></tr>
+          <tr><td>2025–2026</td><td>Jared & Kayla Geers</td><td>$1,825</td><td>$1,865</td><td class="pos">+4.3%</td></tr>
+          <tr style="background:rgba(245,158,11,0.05)"><td>2026–2027</td><td>Jared & Kayla Geers</td><td>$1,880</td><td><strong>$1,920</strong></td><td class="pos">+2.9% <span class="badge badge-warning">DRAFT</span></td></tr>
+        </table>
+        <div style="padding:8px 20px;font-size:10px;color:var(--light-text)">2023 base rent is derived: $1,750 ÷ 1.031 ≈ $1,697. Verify against original 2023 lease doc.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">Schedule E — Tax Summary</div>
+      <div class="card-body" style="padding:0">
+        <table class="data-table">
+          <tr><th colspan="2">Building Depreciation</th></tr>
+          <tr><td class="label">Annual (building, est.)</td><td class="val">$4,800</td></tr>
+          <tr><td class="label">Depreciable Basis (est.)</td><td>$130,337</td></tr>
+          <tr><td class="label">Method</td><td>27.5-yr straight-line residential</td></tr>
+          <tr><td class="label">Start Date</td><td>May 1, 2020</td></tr>
+          <tr><th colspan="2" style="padding-top:10px">IRS-Reported Rental Income (1099-K / Avail)</th></tr>
+          <tr><td class="label">2024 Gross</td><td class="val">$22,880</td></tr>
+          <tr><td class="label">2025 Gross</td><td class="val">$22,155</td></tr>
+          <tr><th colspan="2" style="padding-top:10px">Net Schedule E by Year</th></tr>
+          <tr><td class="label">2024 Net (as-filed)</td><td><span class="badge badge-warning">$(686) loss</span> — <span style="font-size:10px;color:var(--coral)">amendment needed</span></td></tr>
+          <tr><td class="label">2025 Net (projected)</td><td class="pos">~$3,668 <span style="font-size:10px;color:var(--light-text)">[tax action plan]</span></td></tr>
+          <tr><th colspan="2" style="padding-top:10px">2025 Deductions (planned)</th></tr>
+          <tr><td class="label">Insurance</td><td>$2,739</td></tr>
+          <tr><td class="label">Mortgage Interest</td><td>~$3,800</td></tr>
+          <tr><td class="label">Repairs (drain)</td><td>$340</td></tr>
+          <tr><td class="label">Property Taxes</td><td>$3,674</td></tr>
+          <tr><td class="label">Depreciation</td><td>$5,768 (bldg $4,800 + HVAC $441 + driveway $527)</td></tr>
+          <tr><td class="label">Water Heater (DMSH)</td><td>$2,391</td></tr>
+          <tr><td class="label" style="font-weight:600">Total</td><td class="val">$18,712</td></tr>
+          <tr><th colspan="2" style="padding-top:10px">Capital Improvements</th></tr>
+          <tr><td class="label">HVAC (Jul 2024)</td><td>$12,141 — 5-yr MACRS · <span class="badge badge-warning">amend 2024</span></td></tr>
+          <tr><td class="label">Driveway (Jul 2025)</td><td>$13,200 confirmed / $15,800 per plan — <span class="badge badge-danger">verify</span></td></tr>
+          <tr><td class="label">Water Heater (Jul 2025)</td><td>$2,391 — DMSH immediate deduction</td></tr>
+        </table>
+        <div style="padding:8px 20px;font-size:10px;color:var(--light-text)">Tax preparer: Kathryn R. Griffin, Meridian Tax &amp; Accounting, 816-987-2393. 2024 amendment (Form 1040-X) and 2025 return both outstanding as of Apr 2026.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       LEASE & TENANT TAB
+  ══════════════════════════════════ -->
+  <div id="tab-lease" class="tab-content">
+
+    <div class="alert-bar danger">
+      <span class="alert-icon">📅</span>
+      <div><strong>4th-term draft at $1,920/mo — execute before May 1, 2026.</strong> Draft prepared Apr 2026. Add missing clauses (see Clause Gap Analysis tab) before signing. Year 4 of Geers tenancy — strong renewal candidate.</div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header">Current Lease</div>
+        <div class="card-body" style="padding:0">
+          <table class="data-table">
+            <tr><td class="label">Tenancy Year</td><td class="val">Year 4 (3rd amendment)</td></tr>
+            <tr><td class="label">Term</td><td class="val">May 1, 2025 – May 1, 2026</td></tr>
+            <tr><td class="label">Base Rent</td><td class="val">$1,825/mo</td></tr>
+            <tr><td class="label">Pet Fee</td><td>$40/mo</td></tr>
+            <tr><td class="label">Total Monthly</td><td class="pos">$1,865/mo</td></tr>
+            <tr><td class="label">Signed</td><td>March 29, 2025</td></tr>
+            <tr><td class="label">Platform</td><td>Avail.co</td></tr>
+            <tr><td class="label">Pets</td><td><span class="badge badge-warning">2 German Shepherds</span></td></tr>
+            <tr><td class="label">Occupants</td><td>Jared, Kayla + Kenlea (daughter)</td></tr>
+            <tr><td class="label">Status</td><td><span class="badge badge-success">Active</span></td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">Tenant Contacts</div>
+        <div class="card-body" style="padding:12px 20px">
+          <div class="contact-row">
+            <div class="avatar">JG</div>
+            <div class="contact-info">
+              <div class="name">Jared Geers</div>
+              <div class="detail">📞 573-424-7776</div>
+              <div class="detail">✉️ jgeers08@gmail.com</div>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="avatar">KG</div>
+            <div class="contact-info">
+              <div class="name">Kayla Geers</div>
+              <div class="detail">✉️ geerskayla0413@gmail.com</div>
+            </div>
+          </div>
+          <div style="border-top:1px solid var(--border);margin:12px 0 0"></div>
+          <div class="card-header" style="border:none;padding:12px 0 8px;margin-top:4px">Owner</div>
+          <div class="contact-row">
+            <div class="avatar leather">EK</div>
+            <div class="contact-info">
+              <div class="name">Ethan D. Kunz</div>
+              <div class="detail">✉️ ethan.douglas.kunz@gmail.com</div>
+              <div class="detail">📞 417-920-6774</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">Lease History</div>
+      <div class="card-body" style="padding:0">
+        <table class="data-table">
+          <tr><th>Period</th><th>Tenant</th><th>Rent</th><th>Notes</th></tr>
+          <tr><td>Jul 2020 – May 2022</td><td>Brittin Stevens</td><td>$1,300/mo</td><td>First Avail payment Jul 2020; confirmed via payment history CSV</td></tr>
+          <tr><td>May 2022 – May 2023</td><td>Brittin Stevens (cont.)</td><td>$1,365/mo</td><td>+5.0% · continued tenancy · VOR signed</td></tr>
+          <tr><td>May 2023 – May 2024</td><td>Jared & Kayla Geers</td><td>~$1,737/mo</td><td>Pet + daughter amendments (May 2023)</td></tr>
+          <tr><td>May 2024 – May 2025</td><td>Jared & Kayla Geers</td><td>$1,790/mo</td><td>+3.1% increase</td></tr>
+          <tr><td>May 2025 – May 2026</td><td>Jared & Kayla Geers</td><td>$1,865/mo</td><td>+4.3% · Signed Mar 29, 2025 <span class="badge badge-success">CURRENT</span></td></tr>
+          <tr style="background:rgba(245,158,11,0.05)"><td>May 2026 – May 2027</td><td>Jared & Kayla Geers</td><td><strong>$1,920/mo</strong></td><td>+2.9% · CPI-based · <span class="badge badge-warning">DRAFT — UNSIGNED</span></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       LEASE GAP ANALYSIS TAB
+  ══════════════════════════════════ -->
+  <div id="tab-lease-gap" class="tab-content">
+
+    <div class="section-info">
+      Comparison of 44 Texas clauses recommended by Avail Local Assist against the current 4th-term renewal draft (<code>docs/Archive/Reference/Leases/2026/lease_308_jamie_ct_4th_term_2026_draft.md</code>). Not legal advice — verify with a Texas landlord-tenant attorney before executing.
+    </div>
+
+    <div class="stats-row">
+      <div class="stat"><div class="stat-label">Covered ✓</div><div class="stat-value positive">8</div><div class="stat-sub">Adequately addressed in draft</div></div>
+      <div class="stat"><div class="stat-label">Partial ⚠</div><div class="stat-value" style="color:var(--warning)">18</div><div class="stat-sub">Present but weaker or different</div></div>
+      <div class="stat"><div class="stat-label">Missing ✗</div><div class="stat-value negative">16</div><div class="stat-sub">Not in draft at all</div></div>
+      <div class="stat"><div class="stat-label">N/A</div><div class="stat-value" style="color:var(--light-text)">2</div><div class="stat-sub">Not applicable (SFH)</div></div>
+    </div>
+
+    <div class="alert-bar danger">
+      <span class="alert-icon">🚨</span>
+      <div><strong>High-priority gaps (add before executing 4th-term lease)</strong> Jointly & Severally Liable · Mechanic's Liens · Subordination/Estoppel · Severability · Landlord's Contractual Lien (TX Property Code Ch. 54) · Vacation Rental Prohibition</div>
+    </div>
+    <div class="alert-bar warning">
+      <span class="alert-icon">⚠️</span>
+      <div><strong>Key discrepancies to resolve</strong> Notice of Termination (draft = 30 days, Avail = 60) · Late Fee structure (draft = $175 flat, Avail = 5% of rent = ~$96) · Renters Insurance (draft = vague, Avail requires proof within 14 days) · Signs easement (draft = 30 days, Avail = 60)</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">Full Clause Mapping — All 44</div>
+      <div class="card-body" style="padding:0">
+        <table class="data-table">
+          <tr><th>#</th><th>Avail Clause</th><th>Draft Coverage</th><th>Status</th><th>Notes</th></tr>
+
+          <tr class="gap-partial"><td>1</td><td>Alterations &amp; Improvements</td><td>§6</td><td><span class="badge badge-warning">Partial</span></td><td>Draft allows minor changes (pins, towel racks) without consent. Avail requires written consent for all. Draft doesn't address fixtures or landscaping.</td></tr>
+          <tr class="gap-critical"><td>2</td><td>Mechanic's Liens</td><td>—</td><td><span class="badge badge-danger">Missing</span></td><td>No mechanic's lien clause in draft. Tenant work could encumber property title.</td></tr>
+          <tr class="gap-ok"><td>3</td><td>Modification</td><td>§19</td><td><span class="badge badge-success">Covered</span></td><td>Draft §19 requires modifications in writing. Equivalent.</td></tr>
+          <tr class="gap-partial"><td>4</td><td>Late Charges</td><td>§3</td><td><span class="badge badge-warning">Discrepancy</span></td><td>Draft: $175 flat/2 weeks (day 1 late; first occurrence = warning + 5-day grace). Avail: 5% of monthly rent (~$96) after 5th day. Structures differ; verify TX §92.019 compliance.</td></tr>
+          <tr class="gap-critical"><td>5</td><td>Attorney's Fees</td><td>—</td><td><span class="badge badge-danger">Missing</span></td><td>No prevailing-party attorney's fees clause. Texas allows this in residential leases.</td></tr>
+          <tr class="gap-critical"><td>6</td><td>Limitation of Liability</td><td>—</td><td><span class="badge badge-danger">Missing</span></td><td>Draft does not limit landlord liability for tenant property damage or acts of others.</td></tr>
+          <tr class="gap-partial"><td>7</td><td>Access to Premises</td><td>§11</td><td><span class="badge badge-warning">Partial</span></td><td>Draft has $300 concession for unauthorized entry — unusual and not standard. Also allows police escalation if 1-hr confirmation not given. Avail is cleaner.</td></tr>
+          <tr class="gap-ok"><td>8</td><td>Utilities</td><td>§8</td><td><span class="badge badge-success">Covered</span></td><td>Draft adds temp/humidity management obligation — unique and enforceable.</td></tr>
+          <tr class="gap-ok"><td>9</td><td>Governing Law</td><td>§18</td><td><span class="badge badge-success">Covered</span></td><td>Both present.</td></tr>
+          <tr class="gap-ok"><td>10</td><td>Surrender of Possession</td><td>§14</td><td><span class="badge badge-success">Covered</span></td><td>Draft adds useful examples of normal wear — good. Equivalent coverage.</td></tr>
+          <tr class="gap-critical"><td>11</td><td>Required Move-in Checklist</td><td>—</td><td><span class="badge badge-danger">Missing</span></td><td>No move-in checklist requirement. 72-hour return rule not present. Weak position on pre-existing damage disputes.</td></tr>
+          <tr class="gap-partial"><td>12</td><td>Renters Insurance Required</td><td>§10</td><td><span class="badge badge-warning">Weak</span></td><td>Draft: "keep some level" — no proof required, no deadline. Avail: proof required within 14 days. Draft version is nearly unenforceable.</td></tr>
+          <tr class="gap-partial"><td>13</td><td>Heat, Cold &amp; Hot Water</td><td>§8/§9C</td><td><span class="badge badge-warning">Partial</span></td><td>Draft §8 addresses temperature management (tenant obligation). Landlord's obligation to provide working fixtures not explicitly stated.</td></tr>
+          <tr class="gap-ok"><td>14</td><td>Fire or Casualty</td><td>§7</td><td><span class="badge badge-success">Covered</span></td><td>Draft §7 is equivalent, slightly simpler.</td></tr>
+          <tr class="gap-partial"><td>15</td><td>Easement (For Rent signs)</td><td>§12</td><td><span class="badge badge-warning">Discrepancy</span></td><td>Draft: 30-day window. Avail: 60 days. Recommend aligning to 60 days for landlord flexibility.</td></tr>
+          <tr class="gap-critical"><td>16</td><td>Disturbances</td><td>—</td><td><span class="badge badge-danger">Missing</span></td><td>No noise/disturbance clause. Relevant even for SFH (neighbors, shared fence lines).</td></tr>
+          <tr class="gap-critical"><td>17</td><td>Security Gates or Bars</td><td>—</td><td><span class="badge badge-danger">Missing</span></td><td>Not in draft. Prevents tenant from adding bars to doors/windows without consent.</td></tr>
+          <tr class="gap-critical"><td>18</td><td>Rules and Regulations</td><td>—</td><td><span class="badge badge-danger">Missing</span></td><td>No formal rules section. Draft embeds some rules but lacks a defined incorporation framework.</td></tr>
+          <tr class="gap-partial"><td>19</td><td>Continuous Occupancy &amp; Extended Absence</td><td>§16 partial</td><td><span class="badge badge-warning">Partial</span></td><td>Draft uses 2-week vacancy = abandonment presumption. Avail sets 21-day limit with 7-day advance notice requirement.</td></tr>
+          <tr class="gap-critical"><td>20</td><td>Binding Effect</td><td>—</td><td><span class="badge badge-danger">Missing</span></td><td>No clause binding assignees. If Geers assign without permission, covenants may not carry.</td></tr>
+          <tr class="gap-critical"><td>21</td><td>Liability for Rent</td><td>—</td><td><span class="badge badge-danger">Missing</span></td><td>No explicit clause on continued rent liability after abandonment or wrongful termination.</td></tr>
+          <tr class="gap-critical"><td>22</td><td>Remedies Cumulative</td><td>—</td><td><span class="badge badge-danger">Missing</span></td><td>Standard clause. Without it, a court may limit landlord to single remedy.</td></tr>
+          <tr class="gap-critical"><td>23</td><td>Possession (delivery at start)</td><td>—</td><td><span class="badge badge-danger">Missing</span></td><td>No formal delivery of possession clause. Draft assumes possession, but doesn't address what happens if Landlord can't deliver.</td></tr>
+          <tr class="gap-partial"><td>24</td><td>Condition of Premises</td><td>§14 partial</td><td><span class="badge badge-warning">Partial</span></td><td>§14 addresses end-of-tenancy condition. Avail covers move-in acknowledgment of good condition. No move-in acceptance clause in draft.</td></tr>
+          <tr class="gap-partial"><td>25</td><td>Appliances</td><td>§9A partial</td><td><span class="badge badge-warning">Partial</span></td><td>§9A covers tenant maintenance but doesn't restrict installation of new appliances or require removal at expiry.</td></tr>
+          <tr class="gap-partial"><td>26</td><td>Sublet or Assignment</td><td>§5</td><td><span class="badge badge-warning">Partial</span></td><td>Draft covers subletting but <strong>does not prohibit Airbnb/VRBO/vacation rental platforms</strong>. This is a critical omission.</td></tr>
+          <tr class="gap-critical"><td>27</td><td>Subordination of Lease; Estoppel</td><td>—</td><td><span class="badge badge-danger">Missing</span></td><td>Property has active loanDepot mortgage. If refinanced or sold, lease must be subordinate. Lender may require estoppel certificate. This is absent.</td></tr>
+          <tr class="gap-partial"><td>28</td><td>Holdover</td><td>§13</td><td><span class="badge badge-warning">Partial</span></td><td>Draft allows holdover month-to-month by default. Avail specifies 2× monthly rent if without consent. Draft says "maximum penalty by Texas law" — equivalent but less precise.</td></tr>
+          <tr class="gap-partial"><td>29</td><td>Safety Devices</td><td>§17</td><td><span class="badge badge-warning">Partial</span></td><td>§17 covers security but NOT Texas Property Code §92.2611 (smoke/CO detectors). Statutory compliance gap.</td></tr>
+          <tr class="gap-critical"><td>30</td><td>Jointly and Severally Liable</td><td>—</td><td><span class="badge badge-danger">Missing</span></td><td>Both Jared and Kayla are listed. Without this clause, each may argue partial liability. Critical for a multi-party tenancy.</td></tr>
+          <tr class="gap-partial"><td>31</td><td>Security Deposit</td><td>§4 + §15</td><td><span class="badge badge-warning">Partial</span></td><td>Draft covers basics. Avail adds: itemized statement requirement, forwarding address obligation, transfer on sale. Draft §4 missing these.</td></tr>
+          <tr class="gap-critical"><td>32</td><td>Anti-Discrimination</td><td>—</td><td><span class="badge badge-danger">Missing</span></td><td>No fair housing / anti-discrimination clause. Standard compliance protection.</td></tr>
+          <tr class="gap-na"><td>33</td><td>Electric Service Interruption</td><td>N/A</td><td><span class="badge" style="background:var(--eggshell);color:var(--light-text)">N/A</span></td><td>Utilities are tenant-paid directly. Not applicable.</td></tr>
+          <tr class="gap-ok"><td>34</td><td>Tenant to Maintain</td><td>§9</td><td><span class="badge badge-success">Covered</span></td><td>§9 is thorough. Matches Avail.</td></tr>
+          <tr class="gap-partial"><td>35</td><td>Obligations of Landlord</td><td>§9C</td><td><span class="badge badge-warning">Partial</span></td><td>§9C covers repair obligations but doesn't reference Texas Property Code §92.056/92.0561 or tenant remedies for landlord failure.</td></tr>
+          <tr class="gap-partial"><td>36</td><td>Notice of Termination</td><td>§2</td><td><span class="badge badge-warning">Discrepancy</span></td><td>Draft: 30-day notice to vacate. Avail: 60 days. Recommend 60 days — more landlord-protective for finding replacement tenant.</td></tr>
+          <tr class="gap-partial"><td>37</td><td>Event of Default</td><td>§15</td><td><span class="badge badge-warning">Partial</span></td><td>§15 covers deposit forfeiture and 15-day cure. Avail's clause is broader (any covenant breach).</td></tr>
+          <tr class="gap-critical"><td>38</td><td>Severability</td><td>—</td><td><span class="badge badge-danger">Missing</span></td><td>No severability clause. If any provision is voided, the entire lease may be at risk.</td></tr>
+          <tr class="gap-ok"><td>39</td><td>Rent</td><td>§3</td><td><span class="badge badge-success">Covered</span></td><td>Draft §3 is more detailed than Avail — includes CPI methodology, 5% cap, and full transparency accounting.</td></tr>
+          <tr class="gap-na"><td>40</td><td>Landlord's Towing / Parking Rules</td><td>N/A</td><td><span class="badge" style="background:var(--eggshell);color:var(--light-text)">N/A</span></td><td>Single-family home. Not applicable.</td></tr>
+          <tr class="gap-partial"><td>41</td><td>Use of Premises</td><td>§1A</td><td><span class="badge badge-warning">Partial</span></td><td>§1A covers residential use and occupants. Doesn't address activity that increases insurance rates or formal use restrictions.</td></tr>
+          <tr class="gap-critical"><td>42</td><td>Landlord's Contractual Lien (TX Ch. 54)</td><td>—</td><td><span class="badge badge-danger">Missing</span></td><td>Texas Property Code Chapter 54 lien rights completely absent. Required for delinquent rent recovery via lien on tenant's personal property.</td></tr>
+          <tr class="gap-partial"><td>43</td><td>Removal of Property After Eviction</td><td>§16</td><td><span class="badge badge-warning">Partial</span></td><td>§16 covers abandonment scenario. Avail formally addresses post-judicial-eviction and surrender separately.</td></tr>
+          <tr class="gap-partial"><td>44</td><td>Disposition of Removed Property</td><td>§16</td><td><span class="badge badge-warning">Partial</span></td><td>§16 mentions disposal rights. Avail requires 30-day notice before sale. Draft has no timeline.</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">Draft-Unique Provisions — Keep These</div>
+      <div class="card-body" style="padding:0">
+        <table class="data-table">
+          <tr><th>Provision</th><th>Location</th><th>Assessment</th></tr>
+          <tr><td>Kenlea K. Geers named as authorized minor occupant</td><td>§1B</td><td>Good — specific and enforceable</td></tr>
+          <tr><td>2 German Shepherds authorized ($20/dog/mo pet fee)</td><td>§1D</td><td>Good — specific breed/count, pet damage threshold ($1,000)</td></tr>
+          <tr><td>CPI-based rent increase methodology, 5% annual cap</td><td>§3</td><td>Excellent — transparent, documented, capped. Keep.</td></tr>
+          <tr><td>Temperature/humidity management (82°F, 60% RH, mold liability)</td><td>§8</td><td>Strong and specific. Keep — protects against mold claims.</td></tr>
+          <tr><td>Reasonable wear examples (carpet fading, minor paint, blinds)</td><td>§14</td><td>Useful for dispute prevention. Keep.</td></tr>
+          <tr><td>Smoking prohibition + odor remediation cost obligation</td><td>§1E</td><td>Good. Keep.</td></tr>
+          <tr><td>Avail platform as official communication system</td><td>§3, §6C</td><td>Good for record-keeping. Keep.</td></tr>
+          <tr><td>$300 concession for unauthorized entry</td><td>§11</td><td><span class="badge badge-warning">Reconsider</span> — unusual, not standard, may create perverse incentive. Recommend removing or limiting to documented events.</td></tr>
+          <tr><td>Family member guest: 2 members up to 1 month without consent</td><td>§5C</td><td>Reasonable. Conflicts with Avail #19 (7-day guest limit). Clarify.</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       MAINTENANCE TAB
+  ══════════════════════════════════ -->
+  <div id="tab-maintenance" class="tab-content">
+
+    <div class="alert-bar warning">
+      <span class="alert-icon">📋</span>
+      <div><strong>2024 return amendment pending.</strong> HVAC was incorrectly deducted as repair (~$11,281). Must file Form 1040-X to reclassify as capital improvement. Additional tax owed: ~$1,711. Target: filed Feb 2026 per tax action plan.</div>
+    </div>
+    <div class="alert-bar warning">
+      <span class="alert-icon">⚠️</span>
+      <div><strong>Driveway cost discrepancy to resolve before 2025 filing.</strong> Bank statement confirms $13,200 paid. Tax action plan shows $15,800. Verify with contractor invoice before filing with Meridian.</div>
+    </div>
+    <div class="alert-bar success">
+      <span class="alert-icon">✅</span>
+      <div>HVAC replaced July 2024. 10-year parts warranty active through 2034. <strong>Labor warranty expires July 8, 2026.</strong></div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header">Maintenance Log</div>
+        <div class="card-body" style="padding:0">
+          <table class="data-table">
+            <tr><th>Date</th><th>Item</th><th>Cost</th><th>Tax Treatment</th><th>Status</th></tr>
+            <tr><td>Summer 2023</td><td>Plumbing clearance/inspection</td><td>Unknown</td><td style="font-size:11px">Repair — Sch E</td><td><span class="badge badge-success">Done</span></td></tr>
+            <tr><td>Summer 2023</td><td>Garage door spring &amp; track</td><td>Unknown</td><td style="font-size:11px">Repair — Sch E</td><td><span class="badge badge-success">Done</span></td></tr>
+            <tr><td>~Apr 2024</td><td>Skylight flashing leak (master bath) — Jared self-repaired; $190 rent credit given</td><td>$190 credit</td><td style="font-size:11px">Repair — Sch E</td><td><span class="badge badge-success">Done</span></td></tr>
+            <tr><td>Jul 8, 2024</td><td>HVAC — Comfort King 3-ton heat pump (full replacement)</td><td>$12,141</td><td style="font-size:11px"><span class="badge badge-warning">Capital — amend 2024</span></td><td><span class="badge badge-success">Done</span></td></tr>
+            <tr><td>Jul 12, 2025</td><td>Water heater replacement</td><td>$2,390.71</td><td style="font-size:11px">DMSH election — full 2025 deduction</td><td><span class="badge badge-success">Done</span></td></tr>
+            <tr><td>2025</td><td>Drain repair</td><td>$340</td><td style="font-size:11px">Repair — 2025 Sch E Line 14</td><td><span class="badge badge-success">Done</span></td></tr>
+            <tr><td>Jul 2025</td><td>Concrete driveway replacement. Contractor Jose. Includes step addition.</td><td><strong>$13,200</strong> <span style="color:var(--warning);font-size:10px">⚠ plan says $15,800</span></td><td style="font-size:11px">Capital — 15yr MACRS</td><td><span class="badge badge-success">Done</span></td></tr>
+          </table>
+          <div style="padding:8px 20px;font-size:10px;color:var(--light-text)">HVAC: originally filed as repair on 2024 return — 1040-X amendment needed (~$1,711 owed). Driveway cost discrepancy: $13,200 verified paid (USAA) vs $15,800 in tax plan — resolve with Meridian before 2025 filing.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">HVAC Detail — Comfort King 3-Ton</div>
+        <div class="card-body" style="padding:0">
+          <table class="data-table">
+            <tr><td class="label">Install Date</td><td class="val">July 8, 2024</td></tr>
+            <tr><td class="label">System</td><td>Comfort King HP 3T · FWA Electric</td></tr>
+            <tr><td class="label">Total Cost</td><td class="val">$12,141.00</td></tr>
+            <tr><td class="label">Parts Warranty</td><td><span class="badge badge-success">10 yr → expires 2034-07-08</span></td></tr>
+            <tr><td class="label">Labor Warranty</td><td><span class="badge badge-warning">2 yr → expires 2026-07-08</span></td></tr>
+            <tr><td class="label">Contractor</td><td>A/C Contractors · TACLB4214C</td></tr>
+            <tr><td class="label">Phone</td><td>903-759-4250</td></tr>
+            <tr><td class="label">Address</td><td>3830 Gilmer Rd, Longview TX 75604</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       DOCUMENTS TAB
+  ══════════════════════════════════ -->
+  <div id="tab-documents" class="tab-content">
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header">Leases</div>
+        <div class="card-body" style="padding:12px 20px">
+          <ul class="timeline">
+            <li class="tl-row"><div class="tl-dot green"></div><div class="tl-date">2025 ✓</div><div class="tl-body"><strong>Lease + Amendments 2025 (signed) — CURRENT</strong><span>Geers · $1,865/mo · docs/Archive/Reference/Leases/2025/</span></div></li>
+            <li class="tl-row"><div class="tl-dot navy"></div><div class="tl-date">2024</div><div class="tl-body"><strong>Lease + Amendments 2024</strong><span>Geers · $1,790/mo</span></div></li>
+            <li class="tl-row"><div class="tl-dot navy"></div><div class="tl-date">2023</div><div class="tl-body"><strong>Lease + Pet + Daughter Amendments</strong><span>Geers · first year</span></div></li>
+            <li class="tl-row"><div class="tl-dot navy"></div><div class="tl-date">2022</div><div class="tl-body"><strong>Stevens Lease (signed)</strong><span>docs/Archive/Reference/Leases/2022/</span></div></li>
+            <li class="tl-row"><div class="tl-dot navy"></div><div class="tl-date">2020</div><div class="tl-body"><strong>Original Lease (consolidated 2020–2026)</strong><span>docs/Archive/Reference/Leases/2020/</span></div></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">Financial &amp; Maintenance</div>
+        <div class="card-body" style="padding:12px 20px">
+          <ul class="timeline">
+            <li class="tl-row"><div class="tl-dot leather"></div><div class="tl-date">Dec 2025</div><div class="tl-body"><strong>Schedule of Real Estate Owned</strong><span>$250K est. · $138,226 balance</span></div></li>
+            <li class="tl-row"><div class="tl-dot leather"></div><div class="tl-date">Mar 2023</div><div class="tl-body"><strong>Appraisal — $237,000</strong><span>Professional Appraisers of Texas (Ryan Ellis)</span></div></li>
+            <li class="tl-row"><div class="tl-dot leather"></div><div class="tl-date">2018</div><div class="tl-body"><strong>Appraisal (pre-purchase)</strong><span>docs/Archive/Reference/General/</span></div></li>
+            <li class="tl-row"><div class="tl-dot amber"></div><div class="tl-date">Jul 2024</div><div class="tl-body"><strong>HVAC Replacement Agreement</strong><span>A/C Contractors · $12,141 · docs/Archive/Reference/General/</span></div></li>
+            <li class="tl-row"><div class="tl-dot navy"></div><div class="tl-date">2023</div><div class="tl-body"><strong>Plumbing Clearance + Garage Door</strong><span>Summer 2023 · docs/Archive/Reference/General/</span></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div><!-- /content-area -->
+</div><!-- /main -->
+</div><!-- /app -->
+
+<script>
+  const titles = {
+    overview: 'Dashboard',
+    financials: 'Financials',
+    lease: 'Lease & Tenant',
+    'lease-gap': 'Clause Gap Analysis',
+    maintenance: 'Maintenance',
+    documents: 'Documents'
+  };
+  function show(name, btn) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    btn.classList.add('active');
+    document.getElementById('topbar-title').textContent = titles[name] || name;
+  }
+</script>
 </body>
 </html>
