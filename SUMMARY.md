@@ -48,11 +48,11 @@ IRS-reported gross rental income (1099-K/Avail): $22,880 (2024), $22,155 (2025).
 | Summer 2023 | Garage door spring/track | Unknown | Repair — Sch E |
 | ~Apr 2024 | Skylight flashing leak (tenant self-repaired; $190 rent credit) | $190 | Repair — Sch E |
 | Jul 8, 2024 | HVAC — Comfort King 3-ton heat pump (full replacement) | $12,141 | Capital — 5yr MACRS *(see amendment)* |
-| Jul 12, 2025 | Water heater replacement | $2,390.71 | DMSH election — 2025 immediate deduction |
+| Jul 12, 2025 | Water heater replacement | $2,390.71 | 7yr 200DB — $342 yr 1 (DMSH not used) |
 | 2025 | Drain repair | $340 | Repair — 2025 Sch E |
 | Jul 2025 | Concrete driveway replacement | $13,200 confirmed¹ | Capital — 15yr MACRS |
 
-¹ Bank statement (USAA 07/14/2025) confirms $13,200 paid. Tax action plan shows $15,800. Discrepancy of $2,600 must be resolved with contractor invoice before filing 2025 return.
+¹ Bank statement (USAA 07/14/2025) confirms $13,200 paid. Tax action plan showed $15,800. Meridian filed $18,500 basis. Three-figure discrepancy — request contractor invoice from Meridian.
 
 **Active warranty:** Comfort King HVAC — 10yr parts (exp. 2034-07-08), 2yr labor (**exp. 2026-07-08 — coming soon**). Contractor: A/C Contractors, 903-759-4250.
 
@@ -64,7 +64,7 @@ IRS-reported gross rental income (1099-K/Avail): $22,880 (2024), $22,155 (2025).
 
 ### 2024 Return — Amendment Required
 
-The 2024 return (as filed) incorrectly deducted the HVAC replacement (~$11,281) as a repair expense. It must be reclassified as a capital improvement via Form 1040-X. A missing insurance deduction ($3,064) also needs to be added. Net result: approximately **$1,711 in additional tax owed**. Target filing: February 2026.
+The 2024 return (as filed) incorrectly deducted the HVAC replacement (~$11,281) as a repair expense. It must be reclassified as a capital improvement via Form 1040-X. A missing insurance deduction ($3,064) also needs to be added. Net result: approximately **$1,711 in additional tax owed**. Status: overdue (target was February 2026).
 
 | Change | As Filed | Corrected | Tax Impact |
 |---|---|---|---|
@@ -74,36 +74,45 @@ The 2024 return (as filed) incorrectly deducted the HVAC replacement (~$11,281) 
 
 2024 Schedule E net (as-filed): $(686) loss.
 
-### 2025 Return — Not Yet Filed
+### 2025 Return — FILED 2026-02-04
 
-Planned Schedule E deductions: $18,712 total.
+Filed by Meridian Tax & Accounting (Kathryn R. Griffin). **Federal refund $5,665 | KS refund $275 | MO refund $281 | Total: $6,221.**
 
-| Line | Item | Amount |
-|---|---|---|
-| 9 | Insurance | $2,739 |
-| 12 | Mortgage Interest | ~$3,800 |
-| 14 | Repairs (drain) | $340 |
-| 16 | Property Taxes | $3,674 |
-| 18 | Depreciation | $5,768 |
-| 19 | Water Heater (DMSH) | $2,391 |
-| **Total** | | **$18,712** |
+Schedule E actuals (as filed):
 
-Depreciation breakdown (Line 18): Building $4,800 + HVAC $441 + Driveway $527 = $5,768.
-
-Projected 2025 net rental income: ~$3,668. Estimated tax on rental: ~$807.
-
-**De Minimis Safe Harbor Election** (§1.263(a)-1(f)) prepared for water heater — attach to 2025 Form 1040.
-
-### Capital Improvements Summary
-
-| Item | Date | Cost | MACRS Class |
+| Line | Item | As Filed | Note |
 |---|---|---|---|
-| HVAC replacement | Jul 2024 | $12,141 | 5-year (confirm with Meridian) |
-| Driveway replacement | Jul 2025 | $13,200–$15,800² | 15-year land improvement |
-| Water heater | Jul 2025 | $2,391 | DMSH — immediate deduction |
-| **Total** | | **$27,732–$30,332** | Reduces capital gains at sale |
+| 3 | Gross Rental Income | $22,155 | 1099-K / Avail |
+| 9 | Insurance | $2,739 | |
+| 12 | Mortgage Interest | $3,805 | per 1098 |
+| 14 | Repairs | $3,064 | ⚠ $2,724 above expected $340 — see below |
+| 16 | Property Taxes | $3,628 | per 1098 |
+| 18 | Depreciation | $7,433 | |
+| 20 | Auto/Travel | $68 | new item |
+| **Total Deductions** | | **$20,762** | |
+| **Net Income** | | **$1,393** | QBI deduction $279 (Form 8995) |
 
-²Driveway cost discrepancy — resolve before 2025 filing.
+Depreciation breakdown (Line 18): Building $4,800 + HVAC $441 + Driveway $1,850 + Water Heater $342 = **$7,433**.
+
+2026 projected depreciation (per Meridian): **$9,157**.
+
+### Capital Improvements — As Filed by Meridian
+
+| Item | Date | Cost (Basis Used) | MACRS Class | Yr 1 Depr |
+|---|---|---|---|---|
+| HVAC replacement | Jul 2024 | $12,141 | **27.5yr SL MM**¹ | $441 |
+| Driveway replacement | Jul 2025 | **$18,500**² | **10yr 200DB** | $1,850 |
+| Water heater | Jul 2025 | $2,390.71 | **7yr 200DB**³ | $342 |
+
+¹ Meridian filed HVAC as 27.5yr SL MM — originally projected as 5-year residential equipment. Verify rationale with Meridian.
+
+² **Driveway basis discrepancy — 3 figures:** Bank statement confirms $13,200 paid | Tax action plan showed $15,800 | Meridian filed $18,500 basis. $5,300 gap vs. bank unexplained. Request contractor invoice from Meridian.
+
+³ DMSH election was prepared but not used. Meridian chose 7yr 200DB — $342 year 1 vs. $2,391 immediate. Ask Meridian for rationale.
+
+### Repairs Discrepancy
+
+2025 repairs as filed: **$3,064** (vs. $340 drain repair only in original plan). $2,724 unaccounted — request source documents from Meridian to identify what additional repairs were claimed.
 
 ---
 
@@ -145,11 +154,12 @@ Brittin Stevens payment history confirmed via Avail CSV export (Apr 2026).
 
 | Priority | Item | Target |
 |---|---|---|
-| **CRITICAL** | **Sign 4th-term lease** — draft at $1,920/mo, add missing clauses before executing | **May 1, 2026 (8 days)** |
-| HIGH | File 2024 Form 1040-X — owe ~$1,711 | Feb 2026 (overdue) |
-| HIGH | Resolve driveway cost: $13,200 paid vs. $15,800 in tax plan | Before 2025 filing |
-| HIGH | File 2025 tax return with Meridian | Apr 2026 |
-| MEDIUM | Add missing lease clauses before signing: Jointly & Severally, Mechanic's Lien, Subordination, Severability, Vacation Rental prohibition | Before signing |
+| **CRITICAL** | **Sign 4th-term lease v2** — 33-section enhanced TX lease ready at $1,920/mo | **May 1, 2026** |
+| HIGH | File 2024 Form 1040-X — owe ~$1,711 (overdue since Feb 2026) | ASAP |
+| HIGH | Request repair source docs from Meridian — $3,064 filed vs. $340 expected (+$2,724 gap) | ASAP |
+| HIGH | Request driveway contractor invoice — $18,500 Meridian basis vs. $13,200 bank vs. $15,800 plan | ASAP |
+| HIGH | Clarify HVAC MACRS class with Meridian — filed as 27.5yr SL MM; was projected as 5-year | Next contact |
+| HIGH | Clarify water heater treatment — DMSH not used; 7yr 200DB $342/yr vs $2,391 immediate | Next contact |
 | MEDIUM | HVAC labor warranty expires Jul 8, 2026 — inspect/note any issues before then | By Jul 2026 |
 | LOW | Update mortgage balance and PITI after next loanDepot statement | Per statement |
 
