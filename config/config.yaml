@@ -5,7 +5,7 @@
 project:
   name: "308 Jamie Ct — Longview TX Rental Property"
   version: "1.2.0"
-  last_updated: "2026-04-23"
+  last_updated: "2026-04-24"
   owner: "Ethan D. Kunz"
   co_owner: "Kenia J. Kunz"
   owner_email: "ethan.douglas.kunz@gmail.com"
@@ -117,7 +117,8 @@ tenant:
   secondary: "Kayla Geers"
   email_jared: "jgeers08@gmail.com"
   email_kayla: "geerskayla0413@gmail.com"
-  phone: "573-424-7776"
+  phone_jared: "573-424-7776"
+  phone_kayla: "903-746-9903"        # updated 2026-04-24
   pets: true                # pet amendment signed May 2023
   additional_occupants: true  # daughter amendment signed May 2023
 
