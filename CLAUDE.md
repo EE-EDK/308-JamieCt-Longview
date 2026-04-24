@@ -44,7 +44,8 @@ Property management documentation for 308 Jamie Court, Longview TX 75605 — a s
 | Tenants | Jared Geers & Kayla Geers |
 | Jared email | jgeers08@gmail.com |
 | Kayla email | geerskayla0413@gmail.com |
-| Tenant phone | 573-424-7776 |
+| Jared phone | 573-424-7776 |
+| Kayla phone | 903-746-9903 |
 | In since | May 2023 (Year 4 tenancy) |
 | Pets | Yes (pet amendment May 2023) |
 | Additional occupant | Daughter (amendment May 2023) |
@@ -140,7 +141,7 @@ PITI breakdown: P&I $634.15 + Escrow $694.52 (includes shortage repayment; will 
 3. **Mortgage total:** PITI is $1,328.67/mo (verified). Do NOT use P&I alone ($634.15) as the monthly expense figure. Escrow is $694.52 (includes shortage repayment).
 4. **Lease renewal:** Current lease expires May 1, 2026. Flag this date when discussing forward planning.
 5. **HVAC labor warranty expires July 8, 2026.** If any HVAC issue arises before then, flag warranty coverage.
-6. **Tenant contacts:** Jared 573-424-7776 / jgeers08@gmail.com. Kayla: geerskayla0413@gmail.com.
+6. **Tenant contacts:** Jared 573-424-7776 / jgeers08@gmail.com. Kayla: 903-746-9903 / geerskayla0413@gmail.com.
 7. **Document references:** Cite path under `docs/Archive/Reference/` when referencing source docs.
 8. **Config updates:** Update `last_updated` in config.yaml after any value change. Do not store non-numeric metadata in numeric sections.
 9. **Net operating income:** Gross ($1,865) − PITI ($1,328.67) = ~$536 gross operating income before reserve. Less $200 reserve = ~$336/mo net to owner.
