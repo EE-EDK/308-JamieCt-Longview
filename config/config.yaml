@@ -4,9 +4,10 @@
 
 project:
   name: "308 Jamie Ct — Longview TX Rental Property"
-  version: "1.1.0"
+  version: "1.2.0"
   last_updated: "2026-04-23"
   owner: "Ethan D. Kunz"
+  co_owner: "Kenia J. Kunz"
   owner_email: "ethan.douglas.kunz@gmail.com"
   lease_platform: "Avail.co"
 
@@ -147,16 +148,22 @@ lease:
     - year: 2022
       start_date: "2022-05-01"
       end_date: "2023-05-01"        # approximate
-      tenant: "Brittin Stevens"     # same tenant, continued tenancy
+      tenant: "Brittin & Brittany Stevens"
       rent_monthly: 1365
-      rent_monthly_note: "Confirmed via Avail payment history. Rent increased from $1,300 to $1,365 (+5.0%) in Jun 2022."
+      security_deposit: 1000
+      late_fee: 156
+      rent_monthly_note: "Confirmed via Avail payment history. Rent increased from $1,300 to $1,365 (+5.0%) in Jun 2022. Brittany Stevens added as co-tenant on 2022 lease."
       doc: "docs/Archive/Reference/Leases/2022/Stevens_2022_Lease_Agreement_308_Jamie_Ct_signed.pdf"
     - year: 2023
       start_date: "2023-05-01"
       end_date: "2024-05-01"
       tenant: "Jared & Kayla Geers"
-      rent_monthly: 1697            # derived: $1,750 / 1.031 = ~$1,697 (2024 was +3.1%)
-      rent_monthly_note: "Derived estimate; verify against original 2023 lease"
+      rent_monthly: 1700            # [VERIFIED — from lease document]
+      pet_fee_monthly: 40           # $20/dog × 2 German Shepherds; amendment signed May 2023
+      rent_total_monthly: 1740      # $1,700 base + $40 pet fee
+      security_deposit: 1500
+      late_fee: 175
+      rent_monthly_note: "Verified from lease document. Pet amendment signed May 2023 ($20/dog × 2 = $40/mo). Note: $1,700 × 1.031 = $1,752.70, not $1,750 — 3.1% stated in 2024 lease applied to internal figure."
       amendments:
         - "Pet amendment (May 2023)"
         - "Daughter occupant amendment (May 2023)"
@@ -166,26 +173,34 @@ lease:
       end_date: "2025-05-01"
       tenant: "Jared & Kayla Geers"
       rent_base: 1750
+      pet_fee_monthly: 40
       rent_total_monthly: 1790      # $1,750 + $40 pet fee
       increase_pct: 3.1
+      security_deposit: 1500        # carried over from 2023
+      late_fee: 175
       doc: "docs/Archive/Reference/Leases/2024/Lease_308_Jamie_CT_Lease_and_Amendments_2024.pdf"
     - year: 2025
       start_date: "2025-05-01"
       end_date: "2026-05-01"
       tenant: "Jared & Kayla Geers"
       rent_base: 1825
-      pet_fee: 40
+      pet_fee_monthly: 40
       rent_total_monthly: 1865
-      increase_pct: 4.3             # from $1,750 → $1,825
+      increase_pct: 4.2             # per lease document (from $1,750 base)
+      security_deposit: 1500        # carried over
+      late_fee: 175
+      increase_note: "Lease cites 18% spike in property taxes/insurance costs as primary driver of rent increase."
       doc: "docs/Archive/Reference/Leases/2025/Lease_308_Jamie_CT_Lease_and_Amendments_2025_signed.pdf"
     - year: 2026
       start_date: "2026-05-01"
       end_date: "2027-05-01"
       tenant: "Jared & Kayla Geers"
       rent_base: 1880
-      pet_fee: 40
+      pet_fee_monthly: 40
       rent_total_monthly: 1920
       increase_pct: 3.0             # from $1,825 → $1,880 base (+3.01%)
+      security_deposit: 1500        # carried over
+      late_fee: 175
       status: "draft_unsigned"      # [DRAFT — not yet signed as of 2026-04-23]
       note: "4th-term draft prepared Apr 2026. CPI-based methodology documented in §3. Must add missing clauses (Jointly & Severally, Mechanic's Liens, Subordination, Severability) and sign before May 1, 2026."
       doc: "docs/Archive/Reference/Leases/2026/lease_308_jamie_ct_4th_term_2026_draft.md"
@@ -294,30 +309,132 @@ financials:
 # MAINTENANCE & CAPITAL IMPROVEMENTS
 # ─────────────────────────────────────────────
 maintenance:
+  # Complete history from Avail.co maintenance records (Apr 2026 export) — 21 items
+  # Items with cost: null or 0 were no-charge; status OPEN = unresolved as of Apr 2026
   history:
-    - date: "2023-06"
+    - avail_ticket: 20
+      date: "2020-06-30"
+      category: "Landscaping"
+      avail_title: "Fence Repair and Install"
+      description: "Fence repair and new section installation"
+      cost_total: 127.88
+      tax_treatment: "Repair expense — 2020 Schedule E"
+      status: "Closed"
+    - avail_ticket: 21
+      date: "2020-06-05"
+      category: "Other"
+      avail_title: "Pool Request"
+      description: "Tenant pool request — no action taken"
+      cost_total: 0
+      status: "Closed"
+    - avail_ticket: 19
+      date: "2021-05-20"
+      category: "Drainage"
+      avail_title: "Clogged Drain by Driveway"
+      description: "Clogged drain adjacent to driveway — cleared"
+      cost_total: 135.00
+      tax_treatment: "Repair expense — 2021 Schedule E"
+      status: "Closed"
+    - avail_ticket: 14
+      date: "2022-07-23"
+      category: "Landscaping"
+      avail_title: "DEMO Old Shed"
+      description: "Demolition of old storage shed on property — tenant turnover work"
+      cost_total: 0
+      status: "Closed"
+    - avail_ticket: 15
+      date: "2022-07-23"
+      category: "Landscaping"
+      avail_title: "Replace Back Fence"
+      description: "Back fence replacement — tenant turnover work"
+      cost_total: 0
+      status: "Closed"
+    - avail_ticket: 16
+      date: "2022-07-23"
+      category: "Flooring"
+      avail_title: "Replace Living Room Carpet"
+      description: "Living room carpet replacement — tenant turnover (Stevens → Geers)"
+      cost_total: 883.73
+      tax_treatment: "Repair expense — 2022 Schedule E (tenant turnover)"
+      status: "Closed"
+    - avail_ticket: 17
+      date: "2022-07-23"
+      category: "Landscaping"
+      avail_title: "Plant Removal"
+      description: "Plant/vegetation removal on property — tenant turnover work"
+      cost_total: 0
+      status: "Closed"
+    - avail_ticket: 18
+      date: "2022-07-23"
       category: "Plumbing"
-      description: "Plumbing cleared/inspected"
-      cost: null
-      tax_treatment: "Repair expense (Schedule E deductible)"
-      doc: "docs/Archive/Reference/General/308_Plumbing_Clear_Summer_2023.pdf"
-    - date: "2023-06"
+      avail_title: "Washer Drain Flow Issue"
+      description: "Washer drain flow issue — cleared"
+      cost_total: 167.50
+      tax_treatment: "Repair expense — 2022 Schedule E"
+      status: "Closed"
+    - avail_ticket: 13
+      date: "2022-08-27"
+      category: "Interior"
+      avail_title: "Living Room Paint"
+      description: "Living room paint — tenant turnover (Stevens → Geers)"
+      cost_total: 1646.04
+      tax_treatment: "Repair expense — 2022 Schedule E (tenant turnover)"
+      status: "Closed"
+    - avail_ticket: 12
+      date: "2023-05-12"
+      category: "Electrical"
+      avail_title: "Install Garage Panel"
+      description: "Garage electrical panel installation"
+      cost_total: 0
+      status: "Closed"
+    - avail_ticket: 11
+      date: "2023-08-04"
       category: "Garage"
-      description: "Garage door spring and track repair/inspection"
-      cost: null
-      tax_treatment: "Repair expense (Schedule E deductible)"
+      avail_title: "Broken Spring and Track"
+      description: "Garage door spring and track repair"
+      cost_total: 335.00
+      tax_treatment: "Repair expense — 2023 Schedule E"
+      status: "Closed"
       doc: "docs/Archive/Reference/General/308_Garage_Door_Spring_Track_Summer_2023.png"
-    - date: "2024-04"
+    - avail_ticket: 10
+      date: "2023-09-23"
+      category: "Plumbing"
+      avail_title: "Water Backing Up"
+      description: "Sewer/drain backup — first occurrence. Plumbing cleared."
+      cost_total: 275.60
+      tax_treatment: "Repair expense — 2023 Schedule E"
+      status: "Closed"
+    - avail_ticket: 9
+      date: "2023-09-23"
+      category: "Plumbing"
+      avail_title: "Future Proofing Plumbing Issues"
+      description: "Preventive plumbing work following drain backup"
+      cost_total: 0
+      status: "Closed"
+      doc: "docs/Archive/Reference/General/308_Plumbing_Clear_Summer_2023.pdf"
+    - avail_ticket: 8
+      date: "2023-11-22"
+      category: "Plumbing"
+      avail_title: "Water Backing Up Second Time"
+      description: "Sewer/drain backup — second occurrence"
+      cost_total: 275.60
+      tax_treatment: "Repair expense — 2023 Schedule E"
+      status: "Closed"
+    - avail_ticket: 7
+      date: "2024-04-14"
       category: "Roof/Skylight"
+      avail_title: "Skylight Leak"
       description: "Skylight flashing leak — master bathroom. Jared self-repaired with wet patch and fabric. Owner gave $190 rent credit."
-      cost: 190.00
+      cost_total: 190.00
       cost_note: "$190 credited off tenant's next rent payment. No contractor used."
-      tax_treatment: "Repair expense (Schedule E deductible — rent credit reduces gross income)"
-      status: "Complete — monitoring for recurrence"
+      tax_treatment: "Repair expense — 2024 Schedule E (rent credit reduces gross income)"
+      status: "Closed"
       doc: "docs/Archive/Reference/taxes/2024/Returns/308 Maintenance for Skylight.pdf"
-    - date: "2024-07-08"
+    - avail_ticket: 6
+      date: "2024-09-02"    # Avail ticket date; HVAC agreement dated 2024-07-08
       category: "HVAC"
-      description: "Full HVAC replacement — Comfort King 3-ton heat pump system"
+      avail_title: "AC System Froze"
+      description: "AC system froze — full HVAC replacement. Comfort King 3-ton heat pump + FWA electric. Agreement dated Jul 8, 2024; Avail ticket date Sep 2, 2024."
       contractor: "A/C Contractors"
       contractor_license: "TACLB4214C"
       contractor_phone: "903-759-4250"
@@ -325,29 +442,56 @@ maintenance:
       cost_total: 12141.00
       deposit_paid: 1050.00
       balance_at_signing: 11091.00
-      tax_treatment: "Capital improvement — 5-year MACRS residential HVAC (may qualify for bonus depreciation)"
+      tax_treatment: "Capital improvement — 27.5yr SL MM (per Meridian 2025 filing). Year 1 dep $441."
+      status: "Closed"
+      note: "Replacement agreement dated Jul 8, 2024; Avail ticket date Sep 2, 2024 — ticket date may reflect close/payment date."
       doc: "docs/Archive/Reference/General/HVAC_Replace_Agreement_308Jamie_Kunz.pdf"
-    - date: "2025-07-12"
-      category: "Water Heater"
-      description: "Water heater replacement — 308 Jamie Ct"
+    - avail_ticket: 5
+      date: "2025-07-12"
+      category: "Driveway"
+      avail_title: "Driveway Washout/Collapse"
+      description: "Full concrete driveway replacement. Contractor Jose (sole proprietor). Includes step addition."
+      contractor: "Jose (concrete contractor, Longview TX — no business entity verified)"
+      cost_avail: 15800.00              # [VERIFIED — Avail maintenance record]
+      cost_usaa_paid: 13200.00          # [VERIFIED — USAA bank statement; may be partial payment]
+      basis_for_depreciation: 18500.00  # per Meridian 2025 filing
+      tax_treatment: "Capital improvement — 10yr 200DB (per Meridian 2025 filing). Basis $18,500. Year 1 dep $1,850."
+      status: "Closed"
+      note: "Three-way cost discrepancy: Avail $15,800 / USAA payment $13,200 / Meridian basis $18,500. Resolve with Meridian."
+      doc_folder: "docs/Archive/Reference/taxes/2025/308 2025 Driveway Work/"
+    - avail_ticket: 4
+      date: "2025-07-12"
+      category: "Driveway"
+      avail_title: "FedEx Damaged New Sidewalk"
+      description: "FedEx delivery vehicle damaged newly installed sidewalk — resolved at no cost (FedEx responsible)"
+      cost_total: 0
+      status: "Closed"
+    - avail_ticket: 3
+      date: "2025-07-12"
+      category: "Plumbing"
+      avail_title: "Water Heater Leak"
+      description: "Water heater leak — full replacement"
       cost_total: 2390.71
       tax_treatment: "7yr 200DB per Meridian 2025 filing. Year 1 depreciation: $342."
       year1_depreciation: 342
+      status: "Closed"
       doc: "docs/Archive/Reference/taxes/2024/Deductions/DMSHE-Statement-2025-Water-Heater-Deduction.pdf"
-    - date: "2025"
+    - avail_ticket: 2
+      date: "2025-07-12"
       category: "Plumbing"
-      description: "Drain repair"
-      cost_total: 340.00
-      tax_treatment: "Repair expense — 2025 Schedule E Line 14"
-      doc: "Invoice needed — noted in tax action plan (Dec 2025)"
-    - date: "2025-07"
-      category: "Driveway"
-      description: "Full concrete driveway replacement. Contractor Jose (sole proprietor). Includes concrete step addition."
-      contractor: "Jose (concrete contractor, Longview TX — no business entity verified)"
-      cost_verified_paid: 13200.00
-      cost_per_tax_plan: 15800.00
-      tax_treatment: "Capital improvement — 10yr 200DB per Meridian 2025 filing. Basis $18,500. Year 1 depreciation: $1,850."
-      doc_folder: "docs/Archive/Reference/taxes/2025/308 2025 Driveway Work/"
+      avail_title: "Ongoing Drain Backups"
+      description: "Ongoing drain/plumbing backup — drain cleared"
+      cost_total: 339.99
+      tax_treatment: "Repair expense — 2025 Schedule E"
+      status: "Closed"
+    - avail_ticket: 1
+      date: "2025-07-12"
+      category: "Roof/Skylight"
+      avail_title: "SkyLight Leaking Still"
+      description: "Skylight continues to leak — OPEN ISSUE. Recurrence of Apr 2024 problem. Tenant self-repair with wet patch insufficient."
+      cost_total: null
+      status: "OPEN"
+      note: "Active issue as of Jul 12, 2025. Requires contractor repair — budget and schedule TBD."
 
   warranties:
     - item: "Comfort King 3-ton heat pump (full system)"
@@ -366,6 +510,11 @@ contacts:
   owner:
     name: "Ethan D. Kunz"
     email: "ethan.douglas.kunz@gmail.com"
+    phone: "417-920-6774"
+    address: "808 Old Stage Rd, Pleasant Hill, MO 64080"
+
+  co_owner:
+    name: "Kenia J. Kunz"
     address: "808 Old Stage Rd, Pleasant Hill, MO 64080"
 
   tenant_primary:
