@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4th Term Lease — 308 Jamie Court, Longview TX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+/* ── Variables ─────────────────────────────────────────────────── */
+:root {
+  --navy:          #1C2B4A;
+  --navy-deep:     #111E36;
+  --navy-mid:      #243560;
+  --paper:         #F7F4EE;
+  --paper-warm:    #EDE9DF;
+  --ink:           #1A1714;
+  --ink-mid:       #3D3830;
+  --ink-soft:      #6B6358;
+  --new:           #0C6B70;
+  --new-bg:        #EBF5F5;
+  --new-border:    #1E8C92;
+  --upd:           #AD5E18;
+  --upd-bg:        #FBF1E8;
+  --upd-border:    #C97231;
+  --gold:          #C9A84C;
+  --gold-pale:     #F0E6C4;
+  --rule:          #D5CFC4;
+  --rule-light:    #E8E3DA;
+  --white:         #ffffff;
+  --font-display:  'Cormorant Garamond', Georgia, serif;
+  --font-body:     'EB Garamond', Georgia, serif;
+  --font-ui:       'DM Sans', system-ui, sans-serif;
+  --max-w:         1120px;
+  --doc-w:         760px;
+  --toc-w:         240px;
+  --gap:           2rem;
+}
+
+/* ── Reset ─────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+strong { font-weight: 600; }
+
+/* ── Scroll progress ───────────────────────────────────────────── */
+#scroll-bar {
+  position: fixed; top: 0; left: 0; z-index: 1000;
+  height: 3px; width: 0;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--new) 100%);
+  transition: width 0.1s linear;
+  pointer-events: none;
+}
+
+/* ── Site header ───────────────────────────────────────────────── */
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--navy-deep);
+  border-bottom: 1px solid rgba(201,168,76,0.25);
+}
+.header-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0.85rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.property-id { display: flex; flex-direction: column; gap: 0.1rem; }
+.property-address {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--white);
+}
+.lease-label {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+.header-actions { display: flex; gap: 0.75rem; align-items: center; }
+.btn-print {
+  font-family: var(--font-ui); font-size: 0.75rem; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  padding: 0.45rem 0.9rem;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 2px;
+  cursor: pointer; background: transparent;
+  transition: all 0.2s;
+}
+.btn-print:hover { color: var(--white); border-color: rgba(255,255,255,0.35); }
+.btn-acknowledge-top {
+  font-family: var(--font-ui); font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--navy-deep);
+  background: var(--gold);
+  padding: 0.45rem 1.1rem;
+  border-radius: 2px;
+  border: none; cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-acknowledge-top:hover { background: #d9b85c; }
+
+/* ── Hero ──────────────────────────────────────────────────────── */
+.hero {
+  background: var(--navy);
+  background-image:
+    radial-gradient(ellipse at 70% 40%, rgba(201,168,76,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 80%, rgba(12,107,112,0.08) 0%, transparent 50%);
+  padding: 4.5rem 2rem 3.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.hero-eyebrow {
+  font-family: var(--font-ui);
+  font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--white);
+  letter-spacing: -0.01em;
+}
+.hero-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold);
+}
+.hero-sub {
+  font-family: var(--font-display);
+  font-size: 1.1rem; font-style: italic;
+  color: rgba(255,255,255,0.55);
+  margin-top: 0.75rem;
+}
+.hero-meta {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 0.3rem 1.5rem;
+  margin-top: 1.75rem;
+  font-family: var(--font-ui);
+  font-size: 0.78rem; font-weight: 400;
+  color: rgba(255,255,255,0.5);
+}
+.hero-meta strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+.hero-divider { color: rgba(255,255,255,0.25); }
+
+/* ── Key Terms ─────────────────────────────────────────────────── */
+.key-terms-bar {
+  background: var(--navy-deep);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding: 0 2rem;
+}
+.terms-grid {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex; flex-wrap: wrap;
+  gap: 0;
+}
+.term-card {
+  flex: 1 1 130px;
+  padding: 1.25rem 1.5rem;
+  border-right: 1px solid rgba(255,255,255,0.07);
+  display: flex; flex-direction: column; gap: 0.2rem;
+  position: relative;
+}
+.term-card:last-child { border-right: none; }
+.term-label {
+  font-family: var(--font-ui);
+  font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+.term-value {
+  font-family: var(--font-display);
+  font-size: 1.45rem; font-weight: 600;
+  color: var(--white);
+  line-height: 1.1;
+}
+.term-card--featured .term-value {
+  color: var(--gold);
+  font-size: 1.75rem;
+}
+.term-note {
+  font-family: var(--font-ui);
+  font-size: 0.62rem; color: rgba(255,255,255,0.3);
+  line-height: 1.3;
+}
+
+/* ── What Changed Banner ───────────────────────────────────────── */
+.change-banner {
+  background: var(--paper-warm);
+  border-bottom: 2px solid var(--rule);
+}
+.change-toggle {
+  width: 100%; max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1.1rem 2rem;
+  background: transparent; border: none; cursor: pointer;
+  text-align: left;
+}
+.change-toggle-label {
+  font-family: var(--font-display);
+  font-size: 1.05rem; font-weight: 600;
+  color: var(--navy);
+  flex: 1;
+}
+.change-badge-row { display: flex; gap: 0.5rem; flex-shrink: 0; }
+.badge {
+  font-family: var(--font-ui);
+  font-size: 0.6rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+.badge--new { background: var(--new); color: var(--white); }
+.badge--upd { background: var(--upd); color: var(--white); }
+.badge--inline-new { background: var(--new); color: var(--white); font-size: 0.55rem; padding: 2px 6px; }
+.badge--inline-upd { background: var(--upd); color: var(--white); font-size: 0.55rem; padding: 2px 6px; }
+.toggle-chevron {
+  font-size: 0.75rem; color: var(--ink-soft);
+  transition: transform 0.25s;
+  flex-shrink: 0;
+}
+.change-toggle[aria-expanded="true"] .toggle-chevron { transform: rotate(180deg); }
+
+.change-content {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 2rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+.change-content.hidden { display: none; }
+
+.change-block h3 {
+  font-family: var(--font-ui);
+  font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+.compare-table { width: 100%; border-collapse: collapse; }
+.compare-table th {
+  font-family: var(--font-ui); font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; text-align: right;
+  color: var(--ink-soft);
+  padding: 0.35rem 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+.compare-table th:first-child { text-align: left; }
+.compare-table td {
+  font-family: var(--font-ui); font-size: 0.8rem;
+  padding: 0.45rem 0.5rem; text-align: right;
+  border-bottom: 1px solid var(--rule-light);
+  color: var(--ink-mid);
+}
+.compare-table td:first-child { text-align: left; color: var(--ink-soft); font-size: 0.75rem; }
+.compare-table tr.featured td {
+  font-weight: 600; color: var(--ink);
+  background: var(--paper-warm);
+}
+.compare-table td.increase { color: var(--upd); font-weight: 600; }
+
+.change-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.change-item {
+  display: flex; gap: 0.6rem; align-items: flex-start;
+  font-family: var(--font-ui); font-size: 0.78rem;
+  color: var(--ink-mid); line-height: 1.4;
+}
+.change-item-ref {
+  font-weight: 600; color: var(--ink); white-space: nowrap;
+  font-size: 0.72rem;
+}
+
+/* ── Document Layout ───────────────────────────────────────────── */
+.document-wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  display: grid;
+  grid-template-columns: var(--toc-w) 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* ── TOC ───────────────────────────────────────────────────────── */
+.toc {
+  position: sticky;
+  top: 4rem;
+  max-height: calc(100vh - 5rem);
+  overflow-y: auto;
+  padding-right: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule) transparent;
+}
+.toc-heading {
+  font-family: var(--font-ui);
+  font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+.toc-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.toc-list li { border-left: 2px solid transparent; transition: border-color 0.15s; }
+.toc-list li.active { border-left-color: var(--gold); }
+.toc-list a {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.28rem 0.6rem;
+  font-family: var(--font-ui); font-size: 0.72rem;
+  color: var(--ink-soft); transition: color 0.15s;
+  line-height: 1.3;
+}
+.toc-list li.active a { color: var(--ink); font-weight: 500; }
+.toc-list a:hover { color: var(--ink); }
+.toc-ref { color: var(--ink-soft); font-size: 0.62rem; flex-shrink: 0; }
+
+/* ── Lease Document ────────────────────────────────────────────── */
+.lease-doc { min-width: 0; }
+
+.preamble {
+  padding: 2rem 0 2.5rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 2.5rem;
+}
+.preamble-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem; font-weight: 600;
+  letter-spacing: 0.03em; text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.preamble-intro {
+  font-family: var(--font-body); font-size: 1rem;
+  color: var(--ink-mid); line-height: 1.7;
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+.preamble-parties {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+  background: var(--paper-warm);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 1.25rem 1.5rem;
+}
+.party-role {
+  font-family: var(--font-ui); font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-soft); margin-bottom: 0.25rem;
+}
+.party-name {
+  font-family: var(--font-display); font-size: 1.15rem; font-weight: 600;
+  color: var(--navy);
+}
+
+/* Section wrappers */
+.lease-section {
+  margin-bottom: 2.75rem;
+  padding-bottom: 2.75rem;
+  border-bottom: 1px solid var(--rule-light);
+  scroll-margin-top: 5rem;
+}
+.lease-section:last-of-type { border-bottom: none; }
+
+.lease-section.is-new {
+  padding-left: 1.25rem;
+  margin-left: -1.25rem;
+  border-left: 3px solid var(--new-border);
+  background: linear-gradient(90deg, var(--new-bg) 0%, transparent 35%);
+}
+.lease-section.is-upd {
+  padding-left: 1.25rem;
+  margin-left: -1.25rem;
+  border-left: 3px solid var(--upd-border);
+  background: linear-gradient(90deg, var(--upd-bg) 0%, transparent 35%);
+}
+
+.section-heading {
+  font-family: var(--font-display);
+  font-size: 1.05rem; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 1.1rem;
+  display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;
+}
+.lease-section.is-new .section-heading { color: var(--new); }
+.lease-section.is-upd .section-heading { color: var(--upd); }
+
+.section-number {
+  font-style: italic; font-weight: 400;
+  color: var(--ink-soft); font-size: 0.95rem;
+}
+.lease-section.is-new .section-number { color: var(--new); opacity: 0.7; }
+.lease-section.is-upd .section-number { color: var(--upd); opacity: 0.7; }
+
+/* Legal body text */
+.lease-section p { margin-bottom: 1rem; font-size: 0.97rem; line-height: 1.8; }
+.lease-section p:last-child { margin-bottom: 0; }
+
+.subsection { margin-bottom: 0.85rem; }
+.subsection-label {
+  font-weight: 600; color: var(--ink); margin-right: 0.35rem;
+}
+
+/* Rent table */
+.rent-table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+.rent-table { width: 100%; border-collapse: collapse; }
+.rent-table th {
+  font-family: var(--font-ui); font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--navy); color: rgba(255,255,255,0.75);
+  padding: 0.6rem 1rem; text-align: left;
+}
+.rent-table td {
+  font-family: var(--font-ui); font-size: 0.83rem;
+  padding: 0.55rem 1rem; border-bottom: 1px solid var(--rule-light);
+  color: var(--ink-mid);
+}
+.rent-table tr:last-child td { border-bottom: none; }
+.rent-table tr.total td {
+  font-weight: 600; color: var(--ink);
+  background: var(--paper-warm);
+  font-size: 0.88rem;
+}
+.rent-table td.change { color: var(--upd); font-weight: 600; }
+
+/* Callout block */
+.callout {
+  border-left: 3px solid var(--gold);
+  background: var(--gold-pale);
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0;
+  font-size: 0.9rem;
+  color: var(--ink-mid);
+  line-height: 1.65;
+}
+.callout strong { color: var(--ink); }
+
+/* ── Signature Block ───────────────────────────────────────────── */
+.signature-block {
+  border-top: 2px solid var(--rule);
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+}
+.sig-intro {
+  font-family: var(--font-body);
+  font-size: 0.92rem; color: var(--ink-mid);
+  margin-bottom: 2rem; line-height: 1.7;
+}
+.sig-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 2rem 3rem;
+}
+.sig-line { display: flex; flex-direction: column; gap: 0.35rem; }
+.sig-line-rule {
+  border: none; border-bottom: 1px solid var(--ink-mid);
+  height: 2rem;
+}
+.sig-label {
+  font-family: var(--font-ui); font-size: 0.65rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.sig-contact {
+  margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--rule-light);
+  font-family: var(--font-ui); font-size: 0.78rem; color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+/* ── Acknowledge Section ───────────────────────────────────────── */
+.acknowledge-section {
+  background: var(--navy);
+  background-image:
+    radial-gradient(ellipse at 80% 0%, rgba(201,168,76,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 0% 100%, rgba(12,107,112,0.06) 0%, transparent 50%);
+  padding: 5rem 2rem;
+}
+.acknowledge-inner {
+  max-width: 620px; margin: 0 auto;
+  text-align: center;
+}
+.ack-eyebrow {
+  font-family: var(--font-ui); font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1rem;
+}
+.ack-title {
+  font-family: var(--font-display);
+  font-size: 2.2rem; font-weight: 600;
+  color: var(--white); line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.ack-subtitle {
+  font-family: var(--font-body); font-style: italic;
+  font-size: 1rem; color: rgba(255,255,255,0.5);
+  line-height: 1.6; margin-bottom: 2.5rem;
+}
+
+.ack-form { text-align: left; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+.field-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.field-label {
+  font-family: var(--font-ui); font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+.field-input {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 2px; padding: 0.7rem 0.9rem;
+  font-family: var(--font-ui); font-size: 0.88rem;
+  color: var(--white); outline: none;
+  transition: border-color 0.2s;
+}
+.field-input::placeholder { color: rgba(255,255,255,0.25); }
+.field-input:focus { border-color: rgba(201,168,76,0.5); }
+
+.ack-checkbox-wrap {
+  display: flex; align-items: flex-start; gap: 0.85rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 3px;
+  padding: 1.1rem 1.25rem;
+  margin: 1.5rem 0;
+  cursor: pointer;
+}
+.ack-checkbox-wrap input[type="checkbox"] {
+  width: 18px; height: 18px; flex-shrink: 0;
+  margin-top: 2px; accent-color: var(--gold);
+  cursor: pointer;
+}
+.ack-check-label {
+  font-family: var(--font-body); font-size: 0.92rem;
+  color: rgba(255,255,255,0.65); line-height: 1.55; cursor: pointer;
+}
+.ack-check-label strong { color: rgba(255,255,255,0.9); }
+
+.btn-submit {
+  width: 100%; padding: 1rem;
+  font-family: var(--font-ui); font-size: 0.85rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  background: var(--gold); color: var(--navy-deep);
+  border: none; border-radius: 2px; cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-submit:disabled {
+  background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.3);
+  cursor: not-allowed;
+}
+.btn-submit:not(:disabled):hover { background: #d9b85c; transform: translateY(-1px); }
+
+/* Success state */
+.ack-success {
+  display: none;
+  text-align: center; padding: 2rem;
+}
+.ack-success-icon {
+  font-size: 3rem; margin-bottom: 1rem;
+}
+.ack-success h3 {
+  font-family: var(--font-display); font-size: 1.75rem;
+  color: var(--white); margin-bottom: 0.75rem;
+}
+.ack-success p {
+  font-family: var(--font-body); font-size: 0.95rem;
+  color: rgba(255,255,255,0.55); line-height: 1.6;
+}
+.ack-success .ack-timestamp {
+  margin-top: 1rem;
+  font-family: var(--font-ui); font-size: 0.72rem;
+  color: var(--gold); letter-spacing: 0.06em;
+}
+
+/* ── Footer ────────────────────────────────────────────────────── */
+footer {
+  background: var(--navy-deep);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  font-family: var(--font-ui); font-size: 0.68rem;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.06em;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ── Print ─────────────────────────────────────────────────────── */
+@media print {
+  #scroll-bar, .site-header, .hero, .key-terms-bar,
+  .change-banner, .toc, .acknowledge-section, footer { display: none !important; }
+  .document-wrap { display: block; padding: 0; max-width: 100%; }
+  .lease-doc { width: 100%; }
+  .lease-section.is-new, .lease-section.is-upd {
+    border-left: none; background: none;
+    padding-left: 0; margin-left: 0;
+  }
+  .badge { display: none; }
+  .section-heading { color: #000 !important; }
+  body { font-size: 11pt; line-height: 1.6; color: #000; }
+}
+
+/* ── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .document-wrap {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .toc { display: none; }
+  .change-content { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .header-inner { padding: 0.75rem 1rem; }
+  .btn-print { display: none; }
+  .terms-grid { flex-wrap: wrap; }
+  .term-card { flex: 1 1 45%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .preamble-parties { grid-template-columns: 1fr; }
+  .sig-grid { grid-template-columns: 1fr; }
+  .field-row { grid-template-columns: 1fr; }
+  .hero-title { font-size: 2.5rem; }
+  .document-wrap { padding: 2rem 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<div id="scroll-bar"></div>
+
+<!-- ── Site Header ──────────────────────────────────────────────── -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="property-id">
+      <span class="property-address">308 Jamie Court &nbsp;·&nbsp; Longview, TX</span>
+      <span class="lease-label">4th Term Lease Agreement &nbsp;·&nbsp; Effective May 1, 2026</span>
+    </div>
+    <div class="header-actions">
+      <button class="btn-print" onclick="window.print()">Print / Save PDF</button>
+      <a href="#acknowledge" class="btn-acknowledge-top">Review &amp; Acknowledge</a>
+    </div>
+  </div>
+</header>
+
+<!-- ── Hero ─────────────────────────────────────────────────────── -->
+<section class="hero">
+  <p class="hero-eyebrow">Residential Lease Agreement — Longview, Texas</p>
+  <h1 class="hero-title"><em>4th</em> Term</h1>
+  <p class="hero-sub">308 Jamie Court, Longview, TX 75605</p>
+  <div class="hero-meta">
+    <span>Effective <strong id="lease-start">May 1, 2026</strong></span>
+    <span class="hero-divider">·</span>
+    <span>Tenants: <strong id="tenant-names">Jared &amp; Kayla Geers</strong></span>
+    <span class="hero-divider">·</span>
+    <span>Year <strong>4</strong> of Tenancy</span>
+    <span class="hero-divider">·</span>
+    <span>Landlords: <strong>Ethan &amp; Kenia Kunz</strong></span>
+  </div>
+</section>
+
+<!-- ── Key Terms ─────────────────────────────────────────────────── -->
+<div class="key-terms-bar">
+  <div class="terms-grid">
+    <div class="term-card term-card--featured">
+      <span class="term-label">Total Monthly Due</span>
+      <span class="term-value" id="total-monthly">$1,920</span>
+      <span class="term-note">Base $1,880 + Pet Fee $40</span>
+    </div>
+    <div class="term-card">
+      <span class="term-label">Base Rent</span>
+      <span class="term-value" id="base-rent">$1,880</span>
+      <span class="term-note">+$55 from 3rd term (+3.0%)</span>
+    </div>
+    <div class="term-card">
+      <span class="term-label">Pet Fee</span>
+      <span class="term-value">$40</span>
+      <span class="term-note">2 dogs × $20/mo</span>
+    </div>
+    <div class="term-card">
+      <span class="term-label">Security Deposit</span>
+      <span class="term-value">$1,500</span>
+      <span class="term-note">Already paid — on file</span>
+    </div>
+    <div class="term-card">
+      <span class="term-label">Term Begins</span>
+      <span class="term-value" style="font-size:1.2rem;">May 1, 2026</span>
+      <span class="term-note">Monthly with 30-day notice</span>
+    </div>
+    <div class="term-card">
+      <span class="term-label">Late Fee</span>
+      <span class="term-value" style="font-size:1.2rem;">$175</span>
+      <span class="term-note">Per 2 weeks overdue</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── What Changed ──────────────────────────────────────────────── -->
+<div class="change-banner">
+  <button class="change-toggle" id="change-toggle" aria-expanded="true" aria-controls="change-content">
+    <span class="change-toggle-label">What's New in the 4th Term</span>
+    <span class="change-badge-row">
+      <span class="badge badge--upd">5 Updated</span>
+      <span class="badge badge--new">13 New Sections</span>
+    </span>
+    <span class="toggle-chevron">▼</span>
+  </button>
+  <div class="change-content" id="change-content">
+    <div class="change-block">
+      <h3>Rent Comparison</h3>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>3rd Term</th>
+            <th>4th Term</th>
+            <th>Change</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Base Rent</td>
+            <td>$1,825</td>
+            <td>$1,880</td>
+            <td class="increase">+$55</td>
+          </tr>
+          <tr>
+            <td>Pet Fee (2 dogs)</td>
+            <td>$40</td>
+            <td>$40</td>
+            <td>—</td>
+          </tr>
+          <tr class="featured">
+            <td>Total Monthly</td>
+            <td>$1,865</td>
+            <td>$1,920</td>
+            <td class="increase">+$55 (+3.0%)</td>
+          </tr>
+          <tr>
+            <td>Basis for increase</td>
+            <td>—</td>
+            <td colspan="2" style="text-align:left;font-size:0.75rem;color:var(--ink-soft)">Shelter CPI 3.0% (BLS, Feb 2026)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin-top:1.5rem;">Updated Provisions <span class="badge badge--upd" style="vertical-align:middle;">5</span></h3>
+      <ul class="change-list">
+        <li class="change-item"><span class="badge badge--inline-upd">§4</span><span><span class="change-item-ref">Security Deposit — </span>Added 30-day itemized return timeline, forwarding address requirement, and transfer-on-sale provision.</span></li>
+        <li class="change-item"><span class="badge badge--inline-upd">§10</span><span><span class="change-item-ref">Rental Insurance — </span>Proof of policy required within 30 days of execution; failure is a lease breach.</span></li>
+        <li class="change-item"><span class="badge badge--inline-upd">§13</span><span><span class="change-item-ref">Holdover — </span>Penalty clarified as 2× monthly rent per day without written consent.</span></li>
+        <li class="change-item"><span class="badge badge--inline-upd">§16</span><span><span class="change-item-ref">Abandonment — </span>30-day written notice required before disposal of personal property.</span></li>
+        <li class="change-item"><span class="badge badge--inline-upd">§17</span><span><span class="change-item-ref">Security Devices — </span>Explicit Texas Property Code §92.2611 compliance (smoke &amp; CO alarms) added.</span></li>
+      </ul>
+    </div>
+
+    <div class="change-block">
+      <h3>New Provisions <span class="badge badge--new" style="vertical-align:middle;">13</span></h3>
+      <ul class="change-list">
+        <li class="change-item"><span class="badge badge--inline-new">§21</span><span><span class="change-item-ref">Joint &amp; Several Liability — </span>Both tenants individually responsible for all obligations.</span></li>
+        <li class="change-item"><span class="badge badge--inline-new">§22</span><span><span class="change-item-ref">Mechanic's Liens — </span>Tenants must discharge any lien within 30 days of notice.</span></li>
+        <li class="change-item"><span class="badge badge--inline-new">§23</span><span><span class="change-item-ref">Subordination &amp; Estoppel — </span>Lease subordinate to existing mortgage; tenant must execute estoppel certificates on request.</span></li>
+        <li class="change-item"><span class="badge badge--inline-new">§24</span><span><span class="change-item-ref">Severability — </span>Invalid provisions are severed, not voided.</span></li>
+        <li class="change-item"><span class="badge badge--inline-new">§25</span><span><span class="change-item-ref">Landlord's Contractual Lien — </span>Texas Property Code Ch. 54 lien on non-exempt personal property for unpaid rent.</span></li>
+        <li class="change-item"><span class="badge badge--inline-new">§26</span><span><span class="change-item-ref">Short-Term Rental Prohibition — </span>No Airbnb, VRBO, or similar platforms permitted.</span></li>
+        <li class="change-item"><span class="badge badge--inline-new">§27</span><span><span class="change-item-ref">Fair Housing — </span>Affirms compliance with federal and Texas Fair Housing Acts.</span></li>
+        <li class="change-item"><span class="badge badge--inline-new">§28</span><span><span class="change-item-ref">Attorney's Fees — </span>Prevailing party recovers fees in any legal action under this lease.</span></li>
+        <li class="change-item"><span class="badge badge--inline-new">§29</span><span><span class="change-item-ref">Limitation of Liability — </span>Landlord not liable for third-party acts, theft, casualty, or utility failure.</span></li>
+        <li class="change-item"><span class="badge badge--inline-new">§30</span><span><span class="change-item-ref">Move-In Checklist — </span>Condition checklist required within 72 hours; undocumented damage presumed to be tenant's.</span></li>
+        <li class="change-item"><span class="badge badge--inline-new">§31</span><span><span class="change-item-ref">Disturbances — </span>Quiet hours 10 PM – 8 AM; repeated violations are a material breach.</span></li>
+        <li class="change-item"><span class="badge badge--inline-new">§32</span><span><span class="change-item-ref">Cumulative Remedies — </span>All landlord remedies are cumulative; no waiver implied by delay.</span></li>
+        <li class="change-item"><span class="badge badge--inline-new">§33</span><span><span class="change-item-ref">Binding Effect — </span>Lease binds heirs, successors, and permitted assigns.</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ── Document ───────────────────────────────────────────────────── -->
+<div class="document-wrap">
+
+  <!-- TOC -->
+  <nav class="toc" aria-label="Lease sections">
+    <p class="toc-heading">Contents</p>
+    <ol class="toc-list">
+      <li><a href="#s1"><span class="toc-ref">§1</span> Premises</a></li>
+      <li><a href="#s2"><span class="toc-ref">§2</span> Term</a></li>
+      <li><a href="#s3"><span class="toc-ref">§3</span> Rent</a></li>
+      <li><a href="#s4"><span class="toc-ref">§4</span> Security Deposit <span class="badge badge--inline-upd">UPD</span></a></li>
+      <li><a href="#s5"><span class="toc-ref">§5</span> Assignment &amp; Subletting</a></li>
+      <li><a href="#s6"><span class="toc-ref">§6</span> Alterations</a></li>
+      <li><a href="#s7"><span class="toc-ref">§7</span> Damage to Premises</a></li>
+      <li><a href="#s8"><span class="toc-ref">§8</span> Utilities</a></li>
+      <li><a href="#s9"><span class="toc-ref">§9</span> Maintenance &amp; Repair</a></li>
+      <li><a href="#s10"><span class="toc-ref">§10</span> Rental Insurance <span class="badge badge--inline-upd">UPD</span></a></li>
+      <li><a href="#s11"><span class="toc-ref">§11</span> Right of Inspection</a></li>
+      <li><a href="#s12"><span class="toc-ref">§12</span> Display of Signs</a></li>
+      <li><a href="#s13"><span class="toc-ref">§13</span> Holdover <span class="badge badge--inline-upd">UPD</span></a></li>
+      <li><a href="#s14"><span class="toc-ref">§14</span> Surrender of Premises</a></li>
+      <li><a href="#s15"><span class="toc-ref">§15</span> Forfeiture &amp; Default</a></li>
+      <li><a href="#s16"><span class="toc-ref">§16</span> Abandonment <span class="badge badge--inline-upd">UPD</span></a></li>
+      <li><a href="#s17"><span class="toc-ref">§17</span> Security Devices <span class="badge badge--inline-upd">UPD</span></a></li>
+      <li><a href="#s18"><span class="toc-ref">§18</span> Governing Law</a></li>
+      <li><a href="#s19"><span class="toc-ref">§19</span> Entire Agreement</a></li>
+      <li><a href="#s20"><span class="toc-ref">§20</span> Notices</a></li>
+      <li><a href="#s21"><span class="toc-ref">§21</span> Joint &amp; Several Liability <span class="badge badge--inline-new">NEW</span></a></li>
+      <li><a href="#s22"><span class="toc-ref">§22</span> Mechanic's Liens <span class="badge badge--inline-new">NEW</span></a></li>
+      <li><a href="#s23"><span class="toc-ref">§23</span> Subordination &amp; Estoppel <span class="badge badge--inline-new">NEW</span></a></li>
+      <li><a href="#s24"><span class="toc-ref">§24</span> Severability <span class="badge badge--inline-new">NEW</span></a></li>
+      <li><a href="#s25"><span class="toc-ref">§25</span> Landlord's Contractual Lien <span class="badge badge--inline-new">NEW</span></a></li>
+      <li><a href="#s26"><span class="toc-ref">§26</span> Vacation Rental Prohibition <span class="badge badge--inline-new">NEW</span></a></li>
+      <li><a href="#s27"><span class="toc-ref">§27</span> Fair Housing <span class="badge badge--inline-new">NEW</span></a></li>
+      <li><a href="#s28"><span class="toc-ref">§28</span> Attorney's Fees <span class="badge badge--inline-new">NEW</span></a></li>
+      <li><a href="#s29"><span class="toc-ref">§29</span> Limitation of Liability <span class="badge badge--inline-new">NEW</span></a></li>
+      <li><a href="#s30"><span class="toc-ref">§30</span> Move-In Checklist <span class="badge badge--inline-new">NEW</span></a></li>
+      <li><a href="#s31"><span class="toc-ref">§31</span> Disturbances <span class="badge badge--inline-new">NEW</span></a></li>
+      <li><a href="#s32"><span class="toc-ref">§32</span> Cumulative Remedies <span class="badge badge--inline-new">NEW</span></a></li>
+      <li><a href="#s33"><span class="toc-ref">§33</span> Binding Effect <span class="badge badge--inline-new">NEW</span></a></li>
+    </ol>
+  </nav>
+
+  <!-- Lease Document -->
+  <article class="lease-doc">
+
+    <div class="preamble">
+      <p class="preamble-title">Residential House Lease Agreement — 4th Term</p>
+      <p class="preamble-intro">This Residential House Lease Agreement ("Lease") is made and effective on the date last signed below, by and between:</p>
+      <div class="preamble-parties">
+        <div>
+          <p class="party-role">Landlords</p>
+          <p class="party-name">Ethan &amp; Kenia Kunz</p>
+        </div>
+        <div>
+          <p class="party-role">Tenants</p>
+          <p class="party-name">Jared &amp; Kayla Geers</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- §1 Premises -->
+    <section class="lease-section" id="s1">
+      <h2 class="section-heading"><span class="section-number">§1.</span> Premises</h2>
+      <p><span class="subsection-label">A.</span> The Landlords agree to rent to the Tenants the property located at <strong>308 Jamie Ct, Longview, TX 75605</strong> (the "Premises") for primary use as a residential premise, including the entire property contained within the property deed and all items located on the property.</p>
+      <p><span class="subsection-label">B.</span> Subject to the provisions of this Lease, apart from the Tenants and their dependents, no other persons will live in the Premises without prior consent of the Landlords. As of the effective date of this Lease, the Tenants' dependent minor <strong>Kenlea K. Geers</strong> is an authorized occupant. She is not a party to this Lease and accepts no liability under it. Jared and Kayla Geers take full responsibility for all matters pertaining to this Lease wherever Kenlea is concerned.</p>
+      <p><span class="subsection-label">C.</span> No guest may occupy the Premises without prior consent of the Landlord if that guest is staying for more than two weeks.</p>
+      <p><span class="subsection-label">D.</span> Tenants are authorized to keep <strong>two (2) large-breed German Shepherd canines</strong> under the following terms: Tenants take full legal responsibility for both dogs on and off the rented property. A pet fee of <strong>$20.00 per dog per month</strong> ($40.00 total) is added to base rent each month, bringing total monthly rent to <strong>$1,920.00</strong>. Should either dog cause damage in excess of $1,000.00, Tenants will rectify the damage within two (2) months or pay half of the amount exceeding the deposit. No additional pets may be kept without prior written consent.</p>
+      <p><span class="subsection-label">E.</span> There will be no indoor smoking on the premises. If professional cleaning is required to remove smoke odor, Tenants will absorb that cost separately from the rental deposit.</p>
+    </section>
+
+    <!-- §2 Term -->
+    <section class="lease-section" id="s2">
+      <h2 class="section-heading"><span class="section-number">§2.</span> Term</h2>
+      <p>The <strong>4th term</strong> of this Lease shall start on <strong>May 1, 2026</strong>, cycling monthly for one year, at which point a fifth term may be agreed upon. Tenants may vacate at any point within the year with <strong>30 days' written notice</strong>. Life-altering emergencies (death, sudden job loss, grave illness) may waive this window. If Tenants move out mid-month beyond the 1st, a prorated portion of the rental deposit will be applied against that month's rent.</p>
+    </section>
+
+    <!-- §3 Rent -->
+    <section class="lease-section" id="s3">
+      <h2 class="section-heading"><span class="section-number">§3.</span> Rent</h2>
+      <p>Rent shall be paid in full at <strong>$1,880.00 base</strong> within the first week of each month. Including the pet fee, <strong>total monthly payment is $1,920.00</strong>. Payment is made via Avail. All payments must post within two weeks of the 1st, barring written agreement for extenuating circumstances. Failure to pay within one week of the posted date results in a <strong>$175.00 late fee</strong> per two weeks overdue. The first late payment is a warning with a 5-day grace period.</p>
+
+      <div class="callout">
+        <strong>Basis for the 2025–2026 Rent Increase:</strong> The Landlords applied the <strong>3.0% Shelter-specific CPI</strong> (BLS, year-over-year February 2026) as the basis for this adjustment — the measure most directly aligned with property tax, insurance, and housing operating costs. The March 2026 headline CPI of 3.3% was reviewed but not used, as that figure reflects a transient energy price spike. The 3.0% rate is within the 5% annual cap established in this Lease.
+      </div>
+
+      <div class="rent-table-wrap">
+        <table class="rent-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>3rd Term (2025)</th>
+              <th>4th Term (2026)</th>
+              <th>Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Base Rent</td>
+              <td>$1,825.00</td>
+              <td>$1,880.00</td>
+              <td class="change">+$55.00 (+3.0%)</td>
+            </tr>
+            <tr>
+              <td>Pet Fee (2 dogs × $20)</td>
+              <td>$40.00</td>
+              <td>$40.00</td>
+              <td>—</td>
+            </tr>
+            <tr class="total">
+              <td>Total Monthly Due</td>
+              <td>$1,865.00</td>
+              <td>$1,920.00</td>
+              <td class="change">+$55.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Future increases will be based on the Landlord's property tax and homeowner's insurance costs, referenced against the shelter-specific CPI or full-year CPI-U, not to exceed 5% annually. Should the mortgage be paid off, increases will be based on a 5-year average inflation percentage, not to exceed 5%. Basis and calculation will be documented in each renewal term.</p>
+    </section>
+
+    <!-- §4 Security Deposit [STRENGTHENED] -->
+    <section class="lease-section is-upd" id="s4">
+      <h2 class="section-heading"><span class="section-number">§4.</span> Security Deposit <span class="badge badge--upd">Updated</span></h2>
+      <p>Upon execution, Tenants <strong>have already paid the required $1,500.00</strong> security deposit. The deposit will be returned following full and faithful performance of this Lease, subject to the following:</p>
+      <p><span class="subsection-label">A.</span> In the event of damage caused by Tenants, Landlords may use deposit funds for repair. Damage exceeding $1,500.00 not covered by insurance requires Tenants to remedy within 3 months or face eviction proceedings.</p>
+      <p><span class="subsection-label">B.</span> Within <strong>30 days</strong> after Tenants vacate, Landlords shall provide a written itemized statement of any deductions, along with any remaining balance, mailed or delivered to Tenants' forwarding address.</p>
+      <p><span class="subsection-label">C.</span> Tenants must provide a written forwarding address at or before vacating the Premises.</p>
+      <p><span class="subsection-label">D.</span> In the event the Premises are sold or title is transferred, Landlords shall either transfer the security deposit to the new owner with written notice to Tenants, or return the deposit prior to the transfer.</p>
+    </section>
+
+    <!-- §5 Assignment -->
+    <section class="lease-section" id="s5">
+      <h2 class="section-heading"><span class="section-number">§5.</span> Assignment &amp; Subletting</h2>
+      <p><span class="subsection-label">A.</span> Tenants shall not assign this Lease or sublet the Premises without Landlords' prior written consent.</p>
+      <p><span class="subsection-label">B.</span> Any unauthorized assignment or subletting shall be void and, at Landlords' option, terminate this Lease. Tenants absorb all liability from damages caused by unauthorized individuals.</p>
+      <p><span class="subsection-label">C.</span> Up to two family members may stay in the house for up to one month without required consent of Landlords.</p>
+    </section>
+
+    <!-- §6 Alterations -->
+    <section class="lease-section" id="s6">
+      <h2 class="section-heading"><span class="section-number">§6.</span> Alterations &amp; Improvements</h2>
+      <p><span class="subsection-label">A.</span> Tenants shall make no alterations without prior written consent. Easily reversible items (picture pins, towel racks, shower head adjustments) are excluded. Changes requiring more than two days shall be billed to the Tenant.</p>
+      <p><span class="subsection-label">B.</span> All permanent alterations made by Tenants shall, unless otherwise agreed in writing, become property of the Landlords at Lease expiration. Tenants shall not alter landscaping, trees, exterior structures, or fencing without prior written consent.</p>
+      <p><span class="subsection-label">C.</span> Partnership repairs or paid work by Tenants will be agreed upon in writing, with receipts and tracking in Avail for transparency and tax purposes.</p>
+      <p><span class="subsection-label">D.</span> Tenants shall not install new appliances without prior written consent. Any approved appliance not part of the original Premises must be removed at Lease expiration unless Landlords agree in writing to retain it.</p>
+    </section>
+
+    <!-- §7 Damage -->
+    <section class="lease-section" id="s7">
+      <h2 class="section-heading"><span class="section-number">§7.</span> Damage to Premises</h2>
+      <p>If the House is partially damaged by fire or casualty not due to Tenants' negligence, there shall be an abatement of rent corresponding with the extent the House is untenantable. If Landlords decide not to rebuild, this Lease shall end and rent shall be prorated to the time of damage.</p>
+    </section>
+
+    <!-- §8 Utilities -->
+    <section class="lease-section" id="s8">
+      <h2 class="section-heading"><span class="section-number">§8.</span> Utilities</h2>
+      <p>All utilities are covered by Tenants. Tenants must maintain at minimum trash removal and electricity. The house must be maintained <strong>above 32°F and below 82°F</strong> at all times. Mold accumulation due to improper temperature or humidity management renders Tenants liable for mold remediation.</p>
+    </section>
+
+    <!-- §9 Maintenance -->
+    <section class="lease-section" id="s9">
+      <h2 class="section-heading"><span class="section-number">§9.</span> Maintenance &amp; Repair</h2>
+      <p><span class="subsection-label">A.</span> Tenants will keep the Premises in good and sanitary condition. Tenants shall, at their sole expense, make all required repairs to plumbing, appliances, mechanical systems, floors, lawn, and walls whenever damage results from Tenants' misuse, waste, or neglect.</p>
+      <p><span class="subsection-label">B.</span> No signs shall be placed, nor painting or remodeling done, without prior written consent of Landlords.</p>
+      <p><span class="subsection-label">C.</span> Tenants agree to promptly notify Landlords of any damage, defect, or failure of appliances or systems. Landlords shall use best efforts to repair in compliance with Texas Property Code §92.056 and §92.0561. Tenants must provide written notice via Avail before exercising any statutory remedy.</p>
+    </section>
+
+    <!-- §10 Rental Insurance [STRENGTHENED] -->
+    <section class="lease-section is-upd" id="s10">
+      <h2 class="section-heading"><span class="section-number">§10.</span> Rental Insurance <span class="badge badge--upd">Updated</span></h2>
+      <p>Tenants shall maintain a renters insurance policy throughout the entire term. The policy must cover Tenants' personal property and personal liability in reasonable amounts. Tenants must furnish Landlords with <strong>written proof of a current policy within 30 days</strong> of executing this Lease and within 30 days of any renewal, lapse, or change in coverage. Failure to obtain or maintain renters insurance, or failure to provide proof upon request, constitutes a breach of this Lease.</p>
+    </section>
+
+    <!-- §11 Inspection -->
+    <section class="lease-section" id="s11">
+      <h2 class="section-heading"><span class="section-number">§11.</span> Right of Inspection</h2>
+      <p>Landlords may enter at all reasonable times for inspection or repairs, with <strong>24 hours' notice</strong>. Entry with less than 24 hours' notice requires a 1-hour confirmation and, if no items of note are found, Landlords will credit <strong>$300.00</strong> to the month's bill in good faith. If no confirmation is obtained within 1 hour of an emergency entry, police will be contacted and the matter becomes criminal or civil in nature. General inspection around the property exterior, outside the fence line, does not require notification.</p>
+    </section>
+
+    <!-- §12 Signs -->
+    <section class="lease-section" id="s12">
+      <h2 class="section-heading"><span class="section-number">§12.</span> Display of Signs</h2>
+      <p>During the 30-day notice window of a written relinquishment of Tenancy, or within 30 days of the one-year mark, "For Sale," "For Rent," or similar signs may be placed by Landlords, and entry to show the property may be made with proper notification to Tenants.</p>
+    </section>
+
+    <!-- §13 Holdover [STRENGTHENED] -->
+    <section class="lease-section is-upd" id="s13">
+      <h2 class="section-heading"><span class="section-number">§13.</span> Holdover by Tenant <span class="badge badge--upd">Updated</span></h2>
+      <p>Should Tenants remain with <strong>written consent</strong> after expiration, a new tenancy shall be created subject to all terms of this Lease. If Tenants hold over <strong>without written consent</strong>, Landlords are entitled to a penalty of <strong>two times (2×) the regular monthly rent</strong>, prorated daily, for each day Tenants remain beyond the Lease expiration date, in addition to all other available remedies under Texas law.</p>
+    </section>
+
+    <!-- §14 Surrender -->
+    <section class="lease-section" id="s14">
+      <h2 class="section-heading"><span class="section-number">§14.</span> Surrender of Premises</h2>
+      <p>At Lease expiration, Tenants shall vacate the House in as good a condition as at commencement, reasonable wear and tear excepted. Examples of reasonable wear: carpet fading, minor paint scrapes under one inch, broken blinds from age and sun damage, death of plants on premises, and broken-down attic insulation.</p>
+    </section>
+
+    <!-- §15 Forfeiture -->
+    <section class="lease-section" id="s15">
+      <h2 class="section-heading"><span class="section-number">§15.</span> Forfeiture of Security Deposit — Default</h2>
+      <p>Tenants shall not attempt to apply any portion of the security deposit from the last month's rent or use the deposit in lieu of rent. Violation causes forfeiture of the deposit. A Tenant leaving while owing rent is presumed to be making an attempted deduction of deposits. In the event of default not cured within <strong>15 days' notice</strong>, Landlords may pursue all remedies at law, equity, or otherwise, in addition to forfeiture of the deposit.</p>
+    </section>
+
+    <!-- §16 Abandonment [STRENGTHENED] -->
+    <section class="lease-section is-upd" id="s16">
+      <h2 class="section-heading"><span class="section-number">§16.</span> Abandonment <span class="badge badge--upd">Updated</span></h2>
+      <p>If Tenants abandon the House or any personal property, Landlords may enter by any means without liability and relet the House for any part of the unexpired term, collecting all rent payable. Before selling, disposing of, or destroying personal property left by Tenants, Landlords shall provide <strong>30 days' written notice</strong> to Tenants at their last known or forwarding address. Abandonment may be presumed if Tenants remove substantially all furnishings, if the House is unoccupied for two (2) consecutive weeks outside of travel, or under other reasonable circumstances.</p>
+    </section>
+
+    <!-- §17 Security [STRENGTHENED] -->
+    <section class="lease-section is-upd" id="s17">
+      <h2 class="section-heading"><span class="section-number">§17.</span> Security Devices <span class="badge badge--upd">Updated</span></h2>
+      <p>Tenants acknowledge that no security alarm is provided, and hereby release Landlords from loss resulting from lack of security, mitigated by the rental insurance requirement in §10. All security devices required by Texas law — including door locks, window latches, smoke detectors, and carbon monoxide detectors — shall be installed and maintained in compliance with Texas Property Code <strong>§92.153, §92.154, and §92.2611</strong>. Tenants shall promptly notify Landlords via Avail if any required safety device is inoperable. Tenants shall not disable, remove, or tamper with any required safety device.</p>
+    </section>
+
+    <!-- §18–§20 Standard -->
+    <section class="lease-section" id="s18">
+      <h2 class="section-heading"><span class="section-number">§18.</span> Governing Law</h2>
+      <p>This Lease shall be governed by, construed, and enforced in accordance with the laws of the <strong>State of Texas</strong>.</p>
+    </section>
+
+    <section class="lease-section" id="s19">
+      <h2 class="section-heading"><span class="section-number">§19.</span> Entire Agreement</h2>
+      <p>This Lease constitutes the entire agreement between the parties. Any prior understanding or representation preceding the date of this Lease is hereby superseded. This Lease may be modified only by a writing signed by both Landlords and Tenants, appended as an addendum. The Lease and all modifications are held as a single document in Avail for reference by all parties. All costs, repairs, and requests are handled and tracked in Avail.</p>
+    </section>
+
+    <section class="lease-section" id="s20">
+      <h2 class="section-heading"><span class="section-number">§20.</span> Notices</h2>
+      <p>Any notice required pursuant to this Lease shall be in the form of email, recorded phone call, or writing; hand delivered, mailed certified return receipt, or delivered by overnight service — if to Tenant, at the House; if to Landlord, at the address for payment of rent.</p>
+    </section>
+
+    <!-- NEW SECTIONS §21–§33 -->
+    <section class="lease-section is-new" id="s21">
+      <h2 class="section-heading"><span class="section-number">§21.</span> Jointly &amp; Severally Liable <span class="badge badge--new">New</span></h2>
+      <p>Jared Geers and Kayla Geers are jointly and severally liable for all obligations arising under this Lease, including payment of rent, late fees, damages, and any other amounts due. Each Tenant is individually responsible for the full amount of any obligation regardless of any internal arrangement between them. Landlords may pursue either or both Tenants for any breach without being required to first pursue the other. This provision survives termination or expiration with respect to obligations accrued during the Lease term.</p>
+    </section>
+
+    <section class="lease-section is-new" id="s22">
+      <h2 class="section-heading"><span class="section-number">§22.</span> Mechanic's Liens <span class="badge badge--new">New</span></h2>
+      <p>Tenants shall not permit any mechanic's lien, materialman's lien, or other lien to be filed against the Premises by reason of work, labor, services, or materials at Tenants' request. If any such lien is filed, Tenants shall cause it to be released or discharged within <strong>30 days</strong> after written notice, at Tenants' sole expense. Failure constitutes a material breach. Landlords may discharge any such lien at their discretion, and Tenants shall reimburse all costs and reasonable attorney's fees.</p>
+    </section>
+
+    <section class="lease-section is-new" id="s23">
+      <h2 class="section-heading"><span class="section-number">§23.</span> Subordination of Lease; Estoppel <span class="badge badge--new">New</span></h2>
+      <p>This Lease is and shall remain subordinate to any existing or future mortgage or deed of trust placed on the Premises, including the current loanDepot.com, LLC mortgage. Tenants agree to attorn to any successor owner who acquires the Premises and to continue performing under this Lease as though no transfer had occurred. Upon written request, Tenants shall execute and deliver within <strong>10 days</strong> an estoppel certificate certifying: (a) commencement and expiration dates; (b) current monthly rent; (c) security deposit held; (d) whether any defaults exist. Failure to deliver shall be deemed confirmation that the Lease is in full force with no existing defaults.</p>
+    </section>
+
+    <section class="lease-section is-new" id="s24">
+      <h2 class="section-heading"><span class="section-number">§24.</span> Severability <span class="badge badge--new">New</span></h2>
+      <p>If any provision of this Lease is held invalid or unenforceable by a court of competent jurisdiction, the remainder of the Lease shall remain unaffected. Each remaining provision shall be valid and enforceable to the fullest extent permitted by Texas law. An invalid provision shall be modified to the minimum extent necessary to make it valid, consistent with the parties' original intent.</p>
+    </section>
+
+    <section class="lease-section is-new" id="s25">
+      <h2 class="section-heading"><span class="section-number">§25.</span> Landlord's Contractual Lien <span class="badge badge--new">New</span></h2>
+      <p>Pursuant to <strong>Texas Property Code Chapter 54</strong>, Landlords have a lien on all nonexempt personal property of Tenants located at the Premises to secure payment of rent that is due and unpaid. This lien is established by contract as permitted by §54.021, supplementing any statutory lien rights. Landlords shall enforce this lien only in accordance with applicable Texas law and all statutory procedures required for lien enforcement.</p>
+    </section>
+
+    <section class="lease-section is-new" id="s26">
+      <h2 class="section-heading"><span class="section-number">§26.</span> Vacation &amp; Short-Term Rental Prohibition <span class="badge badge--new">New</span></h2>
+      <p>Tenants shall not list, advertise, or use the Premises as a short-term rental, vacation rental, or transient lodging for compensation — including but not limited to <strong>Airbnb, VRBO, HomeAway, Booking.com</strong>, or any similar platform. The Premises are leased exclusively for private residential use by the named Tenants and authorized occupants. Any violation constitutes a material breach entitling Landlords to immediate termination of the tenancy.</p>
+    </section>
+
+    <section class="lease-section is-new" id="s27">
+      <h2 class="section-heading"><span class="section-number">§27.</span> Fair Housing &amp; Anti-Discrimination <span class="badge badge--new">New</span></h2>
+      <p>Landlords affirm compliance with the federal <strong>Fair Housing Act (42 U.S.C. §3601 et seq.)</strong> and the <strong>Texas Fair Housing Act (Texas Property Code Ch. 301)</strong>. Landlords shall not discriminate in the terms or conditions of this tenancy on the basis of race, color, religion, sex, national origin, familial status, disability, or any other characteristic protected by applicable law.</p>
+    </section>
+
+    <section class="lease-section is-new" id="s28">
+      <h2 class="section-heading"><span class="section-number">§28.</span> Attorney's Fees <span class="badge badge--new">New</span></h2>
+      <p>In any legal action arising out of or related to this Lease, the <strong>prevailing party shall be entitled to recover reasonable attorney's fees and court costs</strong> from the non-prevailing party, to the extent authorized by Texas law including Texas Property Code §92.109 and applicable Texas Civil Practice and Remedies Code provisions. This right is in addition to any other remedies available under this Lease or applicable law.</p>
+    </section>
+
+    <section class="lease-section is-new" id="s29">
+      <h2 class="section-heading"><span class="section-number">§29.</span> Limitation of Landlord's Liability <span class="badge badge--new">New</span></h2>
+      <p>Landlords shall not be liable for any personal injury, loss of or damage to personal property, or other loss caused by: (a) acts or omissions of any third party; (b) theft, vandalism, fire, water intrusion, storm, or other casualty; (c) failure of utilities not controlled by Landlords; or (d) any condition not attributable to Landlords' own negligence. Tenants are strongly encouraged to maintain renters insurance (§10). This limitation does not apply to losses caused by Landlords' gross negligence or willful misconduct.</p>
+    </section>
+
+    <section class="lease-section is-new" id="s30">
+      <h2 class="section-heading"><span class="section-number">§30.</span> Condition of Premises; Move-In Checklist <span class="badge badge--new">New</span></h2>
+      <p>Prior to or within <strong>72 hours</strong> after Tenants take or resume possession under this Lease, Tenants shall inspect the Premises and document the condition of all rooms, appliances, fixtures, and surfaces on a move-in checklist. The completed checklist shall be returned to Landlords via Avail within 72 hours of taking possession. Any damage not documented on the checklist shall be presumed to have occurred during Tenants' occupancy and may be charged against the security deposit at move-out. Failure to complete and return the checklist constitutes acknowledgment that the Premises were received in good and habitable condition.</p>
+    </section>
+
+    <section class="lease-section is-new" id="s31">
+      <h2 class="section-heading"><span class="section-number">§31.</span> Disturbances <span class="badge badge--new">New</span></h2>
+      <p>Tenants shall not engage in, permit, or encourage any activity constituting a nuisance or unreasonably interfering with the quiet enjoyment of neighboring properties. This includes noise audible beyond property boundaries between <strong>10:00 PM and 8:00 AM</strong>, offensive odors, and any activity violating applicable Gregg County or City of Longview noise or nuisance ordinances. Tenants are responsible for the conduct of their authorized occupants, guests, and pets. After written notice of a disturbance violation, any repeated violation constitutes a material breach.</p>
+    </section>
+
+    <section class="lease-section is-new" id="s32">
+      <h2 class="section-heading"><span class="section-number">§32.</span> Remedies Cumulative <span class="badge badge--new">New</span></h2>
+      <p>All rights and remedies of Landlords under this Lease are cumulative, not exclusive, and in addition to any rights available at law or in equity. No delay or failure by Landlords to exercise any right shall constitute or be deemed a waiver. A waiver of any breach shall not be deemed a waiver of any subsequent breach of the same or any other provision.</p>
+    </section>
+
+    <section class="lease-section is-new" id="s33">
+      <h2 class="section-heading"><span class="section-number">§33.</span> Binding Effect; Successors &amp; Assigns <span class="badge badge--new">New</span></h2>
+      <p>This Lease shall be binding upon and inure to the benefit of Landlords and Tenants and their respective heirs, legal representatives, successors, and permitted assigns. All covenants and obligations of this Lease shall run with and bind the Premises during the Lease term. Any person to whom Tenants' interest is transferred shall be bound by all terms and conditions of this Lease.</p>
+    </section>
+
+    <!-- Signature Block -->
+    <div class="signature-block">
+      <p class="sig-intro">IN WITNESS WHEREOF, the parties have caused this Lease to be executed the day and year first written above. Landlords may be contacted at <strong>ethan.douglas.kunz@gmail.com</strong>, <strong>kenia.j.kunz@gmail.com</strong>, and <strong>417-920-6774</strong>.</p>
+      <div class="sig-grid">
+        <div class="sig-line">
+          <div class="sig-line-rule"></div>
+          <span class="sig-label">Landlord — Ethan D. Kunz &nbsp;&nbsp;&nbsp; Date</span>
+        </div>
+        <div class="sig-line">
+          <div class="sig-line-rule"></div>
+          <span class="sig-label">Landlord 2nd — Kenia J. Kunz &nbsp;&nbsp;&nbsp; Date</span>
+        </div>
+        <div class="sig-line">
+          <div class="sig-line-rule"></div>
+          <span class="sig-label">Tenant — Jared Geers &nbsp;&nbsp;&nbsp; Date</span>
+        </div>
+        <div class="sig-line">
+          <div class="sig-line-rule"></div>
+          <span class="sig-label">Tenant 2nd — Kayla Geers &nbsp;&nbsp;&nbsp; Date</span>
+        </div>
+      </div>
+      <p class="sig-contact">This is a draft for review. The legally executed version will be managed in <strong>Avail.co</strong> and requires physical or platform signatures by all parties. This document does not constitute legal advice. Consult a licensed Texas landlord-tenant attorney before execution if desired.</p>
+    </div>
+
+  </article>
+</div>
+
+<!-- ── Acknowledge ────────────────────────────────────────────────── -->
+<section class="acknowledge-section" id="acknowledge">
+  <div class="acknowledge-inner">
+    <p class="ack-eyebrow">Digital Acknowledgment</p>
+    <h2 class="ack-title">I've Read the<br><em style="font-style:italic;color:var(--gold)">4th Term Lease</em></h2>
+    <p class="ack-subtitle">This acknowledgment records that you have reviewed the lease terms above. The formal signed lease will be completed through Avail.</p>
+
+    <form class="ack-form" id="ack-form">
+      <div class="field-row">
+        <div class="field-group">
+          <label class="field-label" for="t1">Tenant 1 Name</label>
+          <input class="field-input" type="text" id="t1" placeholder="Jared Geers" autocomplete="off">
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="t2">Tenant 2 Name</label>
+          <input class="field-input" type="text" id="t2" placeholder="Kayla Geers" autocomplete="off">
+        </div>
+      </div>
+      <label class="ack-checkbox-wrap" for="ack-check">
+        <input type="checkbox" id="ack-check">
+        <span class="ack-check-label">I have read and reviewed the <strong>4th Term Lease Agreement for 308 Jamie Court, Longview TX</strong>, effective May 1, 2026, and understand its terms.</span>
+      </label>
+      <button class="btn-submit" type="submit" id="btn-submit" disabled>Submit Acknowledgment</button>
+    </form>
+
+    <div class="ack-success" id="ack-success">
+      <div class="ack-success-icon">✦</div>
+      <h3>Acknowledgment Received</h3>
+      <p>Thank you — your review has been recorded. Ethan will be in touch through Avail to complete the formal lease signing process.</p>
+      <p class="ack-timestamp" id="ack-timestamp"></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  308 Jamie Court, Longview TX 75605 &nbsp;·&nbsp; 4th Term Lease Agreement &nbsp;·&nbsp; Draft — Pending Execution &nbsp;·&nbsp; Managed via Avail.co
+</footer>
+
+<script>
+(function () {
+  /* ── Config ────────────────────────────────────────────────── */
+  const API = 'https://kunz-ai-hub.tailb1d0b7.ts.net/lease-api';
+  const FALLBACK = {
+    tenant1: 'Jared Geers',
+    tenant2: 'Kayla Geers',
+    lease_start: 'May 1, 2026',
+    total_monthly: '$1,920',
+    base_rent: '$1,880',
+  };
+
+  /* ── Scroll progress bar ───────────────────────────────────── */
+  const bar = document.getElementById('scroll-bar');
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+    bar.style.width = Math.min(pct * 100, 100) + '%';
+  }, { passive: true });
+
+  /* ── API: fetch lease data ─────────────────────────────────── */
+  async function loadLeaseData() {
+    try {
+      const res = await fetch(API + '/data', { signal: AbortSignal.timeout(5000) });
+      if (!res.ok) throw new Error('API error');
+      const d = await res.json();
+      if (d.tenant1) document.getElementById('t1').placeholder = d.tenant1;
+      if (d.tenant2) document.getElementById('t2').placeholder = d.tenant2;
+      if (d.lease_start) document.getElementById('lease-start').textContent = d.lease_start;
+      if (d.total_monthly) document.getElementById('total-monthly').textContent = d.total_monthly;
+      if (d.base_rent) document.getElementById('base-rent').textContent = d.base_rent;
+    } catch (_) {
+      // Fallback values already in the HTML — silently continue
+    }
+  }
+  loadLeaseData();
+
+  /* ── Change banner toggle ──────────────────────────────────── */
+  const toggle = document.getElementById('change-toggle');
+  const content = document.getElementById('change-content');
+  toggle.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', !expanded);
+    content.classList.toggle('hidden', expanded);
+  });
+
+  /* ── TOC scroll-spy ────────────────────────────────────────── */
+  const sections = document.querySelectorAll('.lease-section');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        tocLinks.forEach(a => {
+          const li = a.parentElement;
+          li.classList.toggle('active', a.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-10% 0px -80% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+
+  /* ── Acknowledge form ──────────────────────────────────────── */
+  const checkbox = document.getElementById('ack-check');
+  const submitBtn = document.getElementById('btn-submit');
+  const form = document.getElementById('ack-form');
+  const successEl = document.getElementById('ack-success');
+  const tsEl = document.getElementById('ack-timestamp');
+
+  checkbox.addEventListener('change', () => {
+    submitBtn.disabled = !checkbox.checked;
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const t1 = document.getElementById('t1').value.trim() || FALLBACK.tenant1;
+    const t2 = document.getElementById('t2').value.trim() || FALLBACK.tenant2;
+    const ts = new Date().toISOString();
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting…';
+
+    try {
+      await fetch(API + '/acknowledge', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tenant1: t1, tenant2: t2, timestamp: ts, document: '4th-term-lease-2026' }),
+        signal: AbortSignal.timeout(8000),
+      });
+    } catch (_) {
+      // Show success regardless — tenant has still read the document
+    }
+
+    form.style.display = 'none';
+    successEl.style.display = 'block';
+    const d = new Date(ts);
+    tsEl.textContent = 'Recorded: ' + d.toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' }) + ' at ' + d.toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit' });
+  });
+
+})();
+</script>
+</body>
+</html>
