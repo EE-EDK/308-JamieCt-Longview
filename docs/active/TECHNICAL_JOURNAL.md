@@ -2,10 +2,10 @@
 
 **Owner:** Ethan Kunz
 **Created:** 2026-04-23
-**Last Updated:** 2026-04-23
-**Total Sessions:** 3
-**Total Development Time:** ~2.5 hours
-**Current Phase:** Active — Tax Actuals Applied, Lease v2 Ready
+**Last Updated:** 2026-04-24
+**Total Sessions:** 4
+**Total Development Time:** ~4.5 hours
+**Current Phase:** Active — Lease Viewer Live, API Deployed, Jared Acknowledged
 
 ---
 
@@ -238,3 +238,68 @@
 1. Sign 4th-term lease v2 before May 1, 2026
 2. File 2024 Form 1040-X (~$1,711 owed, overdue)
 3. Define GEMINI.md domain mandates
+
+---
+
+### 2026-04-24 (Friday) — Lease Viewer + API Deployment
+**Phase:** Active — Lease Viewer & Backend Live
+**Duration:** ~2 hours
+**Collaborators:** Ethan Kunz + Claude Code
+
+#### Work Completed
+
+**1. index.html — 4th-Term Lease Viewer (GitHub Pages)**
+   - Built full "Notarial Modernism" lease viewer: Cormorant Garamond + EB Garamond + DM Sans, navy/ivory/teal/amber palette
+   - 33 lease sections with visual NEW (teal, §21–§33) and UPDATED (amber, §4/§10/§13/§16/§17) treatments
+   - "What Changed" banner (expanded by default): rent comparison table, 5 updated + 13 new clause lists
+   - Key terms bar: $1,920 total, $1,880 base, $40 pet, $1,500 deposit, May 1 2026 start, $175 late fee
+   - Scroll progress bar, sticky TOC with IntersectionObserver scroll-spy, print CSS for clean legal output
+   - Acknowledgment form: POST to /lease-api/acknowledge with success state
+   - Dynamic API fetch with 5s timeout + hardcoded fallback if API unreachable
+   - Deployed to GitHub Pages: https://ee-edk.github.io/308-JamieCt-Longview/
+
+**2. lease_api.py — FastAPI Backend (Port 8084)**
+   - GET /lease-api/data — serves tenant-facing data from config.yaml (no financial/mortgage data exposed)
+   - POST /lease-api/acknowledge — records acknowledgment to data/acknowledgments.json (gitignored)
+   - GET /lease-api/status — acknowledgment log (owner-facing)
+   - GET /lease-api/health — uptime check
+   - CORS configured for ee-edk.github.io + Chrome Private Network Access preflight middleware
+   - Deployed as `lease-308-api` systemd service, enabled + running
+
+**3. Caddy Route Added (Self-Host)**
+   - `/lease-api/*` → reverse_proxy 127.0.0.1:8084 added to Caddyfile
+   - Validated, deployed, reloaded — public access via Tailscale Funnel confirmed
+
+**4. Tenant Data Updates**
+   - Kayla Geers new phone 903-746-9903 added to config.yaml (phone_jared/phone_kayla split)
+   - Jared's acknowledgment recorded Apr 24 at 9:07 PM CT (text confirmation from landlord)
+   - CLAUDE.md, dashboard.html updated: Kayla phone, ack status, lease viewer link
+
+#### Key Technical Decisions
+
+1. **API security boundary:** Only tenant-facing data (names, rent, dates) served publicly — PITI, mortgage balance, NOI, escrow stay config-only
+2. **Acknowledgments gitignored:** data/ is excluded from repo per PII rules; JSON lives server-side only
+3. **Fallback data hardcoded in JS:** API fetch uses AbortSignal.timeout(5000); Geers info pre-populated so page works even if API is down
+
+#### Files Modified
+- `index.html` (created) — GitHub Pages lease viewer
+- `lease_api.py` (created) — FastAPI backend
+- `config/config.yaml` — phone_kayla added, last_updated bumped to 2026-04-24, version 1.2.0
+- `CLAUDE.md` — Kayla phone added to quick-facts + operating rule #6
+- `dashboard.html` — Kayla phone, last updated date, alert banners, lease history badge
+- `docs/active/TECHNICAL_JOURNAL.md` — this entry
+- `docs/active/STATUS.md` — milestones updated
+- Self-Host: `caddy/Caddyfile` — /lease-api/* route added
+
+#### Commits Pushed
+- `0bb6feb` feat: add 4th-term lease viewer (index.html) for GitHub Pages
+- `3f71a52` feat: add lease-308-api FastAPI backend (port 8084)
+- `f2e8d3e` feat(data): reconcile lease terms, maintenance history, and landlord info from source docs
+- `2e1273f` chore: add Kayla Geers new phone (903-746-9903), split phone_jared/phone_kayla fields
+- `1ee4709` docs: add Kayla phone 903-746-9903, update dashboard with Jared ack + lease viewer link
+- Self-Host `11d3d6f` feat: add /lease-api/* route to Caddyfile → port 8084
+
+#### Next Steps
+1. Get formal Avail signature from Jared + Kayla before May 1, 2026
+2. File 2024 Form 1040-X (~$1,711 owed, overdue)
+3. HVAC labor warranty expiry — monitor (Jul 8, 2026)
