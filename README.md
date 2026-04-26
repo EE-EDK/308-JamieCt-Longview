@@ -1,4 +1,5 @@
 # 308-JamieCt-Longview
+https://ee-edk.github.io/308-JamieCt-Longview/
 A repo for all information regarding the Kunz rental at 308 Jamie Ct, Longview TX 75605.
 
 ## Status
