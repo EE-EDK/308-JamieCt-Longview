@@ -5,7 +5,7 @@
 project:
   name: "308 Jamie Ct — Longview TX Rental Property"
   version: "1.2.0"
-  last_updated: "2026-04-24"
+  last_updated: "2026-04-30"
   owner: "Ethan D. Kunz"
   co_owner: "Kenia J. Kunz"
   owner_email: "ethan.douglas.kunz@gmail.com"
@@ -212,9 +212,12 @@ lease:
 financials:
   gross_monthly_rent: 1865
   operating_reserve_monthly: 200
-  net_operating_income_monthly: 536   # [VERIFIED] 1865 - 1328.67 PITI = ~$536 (before reserve)
-  net_to_owner_monthly: 336           # ~$536 gross operating - $200 reserve
-  note: "PITI updated Apr 2026 from 1098+bank statement. Net is ~$88 lower than prior estimate."
+  recurring_service_monthly: 12.50    # Alco Air VIP Membership (HVAC + plumbing) — added 2026-04-29
+  recurring_service_annual: 150.00
+  net_operating_income_monthly: 523.83  # [VERIFIED] 1865 - 1328.67 PITI - 12.50 Alco = ~$524 (before reserve)
+  net_to_owner_monthly: 323.83          # ~$524 gross operating - $200 reserve
+  net_to_owner_annual: 3886             # 323.83 * 12
+  note: "PITI updated Apr 2026 from 1098+bank statement. Alco VIP Membership ($12.50/mo) added 2026-04-29 — reduces monthly net by $12.50, annual net by $150."
 
   rental_income_reported:
     - tax_year: 2024
@@ -296,6 +299,28 @@ financials:
         macrs_class: "10yr 200DB (per Meridian 2025 filing)"
         year1_depreciation: 1850      # 2025 Schedule E (per Meridian filing)
 
+  service_contracts:
+    # Recurring service / membership agreements — billed outside of escrow
+    - vendor: "Alco Air Cooling, Heating and Plumbing"
+      plan: "VIP Membership"
+      start_date: "2026-04-29"
+      monthly_cost: 12.50
+      annual_cost: 150.00
+      initial_charge: 51.50           # $39 tune-up + $12.50 first month, paid 2026-04-29
+      invoice_number: "92223405"
+      technician: "Trenton Gross"
+      benefits:
+        - "15% off Standard Pricing for Plumbing and Air"
+        - "Courtesy Plumbing Inspection"
+        - "Courtesy A/C Tune Up"
+        - "Courtesy Heat Tune Up"
+        - "One Hour Appointment Time Frame"
+        - "Same Day Service / Install"
+        - "24-hour priority service"
+      tax_treatment: "Repair/maintenance expense — Schedule E (recurring service)"
+      note: "HVAC labor warranty (through 2026-07-08) is held by A/C Contractors, NOT Alco. Warranty work must still go through A/C Contractors until that date."
+      doc: "docs/Archive/Reference/General/2026-04-29-Alco_VIP_Membership_Invoice_92223405.pdf"
+
   insurance:
     carrier: "Unknown"               # update from policy doc
     annual_premium: 2739.23          # [VERIFIED — 1098 2025 escrow disbursement]
@@ -313,6 +338,22 @@ maintenance:
   # Complete history from Avail.co maintenance records (Apr 2026 export) — 21 items
   # Items with cost: null or 0 were no-charge; status OPEN = unresolved as of Apr 2026
   history:
+    - avail_ticket: null              # not tracked in Avail — direct invoice
+      date: "2026-04-29"
+      category: "HVAC / Plumbing — Service Membership"
+      avail_title: "Alco Air VIP Membership — initial tune-up + signup"
+      description: "A/C tune-up performed by Trenton Gross + signup for ongoing VIP membership ($12.50/mo · $150/yr). Membership covers courtesy plumbing inspection, A/C + heat tune-ups, 15% off standard pricing, same-day priority service."
+      contractor: "Alco Air Cooling, Heating and Plumbing"
+      contractor_address: "4412 US HWY 259 North, Longview TX 75605"
+      technician: "Trenton Gross"
+      invoice_number: "92223405"
+      cost_initial_paid: 51.50         # $39 tune-up + $12.50 first month (paid 2026-04-29)
+      cost_recurring_monthly: 12.50
+      cost_recurring_annual: 150.00
+      tax_treatment: "Repair/maintenance expense — Schedule E (recurring service)"
+      status: "Active (recurring)"
+      note: "HVAC labor warranty held by A/C Contractors expires 2026-07-08. Until then, route any warranty-related HVAC work through A/C Contractors, not Alco."
+      doc: "docs/Archive/Reference/General/2026-04-29-Alco_VIP_Membership_Invoice_92223405.pdf"
     - avail_ticket: 20
       date: "2020-06-30"
       category: "Landscaping"
@@ -534,6 +575,17 @@ contacts:
     email: "support@accontractors.com"
     address: "3830 Gilmer Rd, Longview TX 75604"
     website: "www.accontractors.com"
+    role: "Original HVAC installer (Jul 2024) — holds 10yr parts warranty (2034) & 2yr labor warranty (through 2026-07-08)"
+
+  hvac_plumbing_service:
+    name: "Alco Air Cooling, Heating and Plumbing"
+    plan: "VIP Membership"
+    address: "4412 US HWY 259 North, Longview TX 75605"
+    technician: "Trenton Gross"
+    monthly_cost: 12.50
+    annual_cost: 150.00
+    start_date: "2026-04-29"
+    role: "Ongoing HVAC + plumbing service / tune-ups / 15% discount membership. Does NOT supersede A/C Contractors warranty until 2026-07-08."
 
   appraiser_2023:
     name: "Joseph Ryan Ellis"
@@ -600,6 +652,9 @@ documents:
       description: "Plumbing clearance — Summer 2023"
     - path: "docs/Archive/Reference/General/308_Garage_Door_Spring_Track_Summer_2023.png"
       description: "Garage door spring/track — Summer 2023"
+    - path: "docs/Archive/Reference/General/2026-04-29-Alco_VIP_Membership_Invoice_92223405.pdf"
+      description: "Alco Air VIP Membership invoice — Apr 29, 2026 (HVAC + plumbing recurring service $12.50/mo)"
+      key_values: "Invoice #92223405 · Initial $51.50 paid · $12.50/mo recurring · $150/yr"
 
   general:
     - path: "docs/Archive/Reference/General/2026-04-23-received-payments-report.csv"

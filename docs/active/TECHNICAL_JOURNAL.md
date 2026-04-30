@@ -2,10 +2,10 @@
 
 **Owner:** Ethan Kunz
 **Created:** 2026-04-23
-**Last Updated:** 2026-04-24
-**Total Sessions:** 4
-**Total Development Time:** ~4.5 hours
-**Current Phase:** Active — Lease Viewer Live, API Deployed, Jared Acknowledged
+**Last Updated:** 2026-04-30
+**Total Sessions:** 5
+**Total Development Time:** ~5 hours
+**Current Phase:** Active — Lease Viewer Live, API Deployed, Alco Service Membership Added
 
 ---
 
@@ -303,3 +303,52 @@
 1. Get formal Avail signature from Jared + Kayla before May 1, 2026
 2. File 2024 Form 1040-X (~$1,711 owed, overdue)
 3. HVAC labor warranty expiry — monitor (Jul 8, 2026)
+
+---
+
+### 2026-04-30 (Thursday) — Alco Air VIP Membership Added
+**Phase:** Active — Recurring Expense Tracking
+**Duration:** ~20 minutes
+**Collaborators:** Ethan Kunz + Claude Code
+
+#### Work Completed
+
+**1. Source Document Archived**
+   - `docs/Archive/Reference/General/2026-04-29-Alco_VIP_Membership_Invoice_92223405.pdf` — Alco Air invoice (108 KB), dated Apr 29, 2026
+   - Vendor: Alco Air Cooling, Heating and Plumbing — 4412 US HWY 259 North, Longview TX 75605
+   - Technician: Trenton Gross
+   - Initial charge: $51.50 ($39 tune-up + $12.50 first month, paid 2026-04-29)
+   - Recurring: $12.50/mo · $150/yr
+   - Includes: 15% off plumbing/air, courtesy plumbing inspection, A/C tune-up, heat tune-up, 1-hr appointment window, same-day service, 24-hr priority
+
+**2. config.yaml Updated**
+   - New `financials.service_contracts` section (vendor, plan, costs, benefits, doc link)
+   - New `contacts.hvac_plumbing_service` entry (Alco Air)
+   - Existing `contacts.hvac_contractor` (A/C Contractors) annotated with `role` to clarify warranty ownership
+   - New maintenance history entry (date 2026-04-29, recurring service)
+   - `financials.recurring_service_monthly` / `_annual` added; net_to_owner_monthly recalculated 336.33 → 323.83 (net_to_owner_annual ~$3,886)
+   - Document index updated with new PDF
+   - `last_updated` bumped to 2026-04-30
+
+**3. dashboard.html Updated**
+   - Overview tab: new success alert ("Alco Air VIP Membership active"); Net/Month stat $336 → $324; new "Apr 2026" timeline row
+   - Financials tab: Annual Net stat $4,032 → $3,886; Monthly Cash Flow table — new $12.50/$150 expense row; GOI $536.33 → $523.83; footnote updated
+   - Maintenance tab: new success alert; new "Recurring Service Contracts" card (full vendor/plan/benefits table); maintenance log gained Alco Apr 2026 row
+   - Documents tab: Apr 2026 invoice added to financial/maintenance timeline
+
+**4. Reasoning / Edge Case**
+   - HVAC labor warranty (through 2026-07-08) is held by A/C Contractors, NOT Alco. Per CLAUDE.md rule #5, warranty work must still be routed through A/C Contractors until that date. Both config.yaml and dashboard.html footnotes call this out explicitly to prevent accidental misrouting.
+
+#### Files Modified
+- `config/config.yaml` — service_contracts, maintenance.history entry, contacts.hvac_plumbing_service, recurring_service totals, last_updated
+- `dashboard.html` — Overview, Financials, Maintenance, Documents tabs
+- `docs/Archive/Reference/General/2026-04-29-Alco_VIP_Membership_Invoice_92223405.pdf` (new)
+- `docs/active/STATUS.md` — Apr 30 entry
+- `docs/active/TECHNICAL_JOURNAL.md` — this entry
+- `CLAUDE.md` — financial summary updated for $12.50/mo Alco line
+
+#### Next Steps
+1. Get formal Avail signature from Jared + Kayla before May 1, 2026
+2. File 2024 Form 1040-X (~$1,711 owed, overdue)
+3. HVAC labor warranty expiry — monitor (Jul 8, 2026)
+4. Verify Alco recurring charge appears on next bank statement; reconcile with config.yaml monthly figure
