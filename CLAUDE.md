@@ -153,6 +153,7 @@ real-estate/
 - Install: `pip install -r requirements-dev.txt`
 - Run: `python -m pytest test -q` from repo root, or `.\scripts\run_tests.ps1`
 - Tests patch `CONFIG_FILE` / `ACK_FILE`; no production network calls
+- **Optional pre-commit (local):** `git config core.hooksPath scripts/git-hooks` — runs `scripts/git-hooks/pre-commit` → pytest `test/`.
 
 ## Session Workflow
 
