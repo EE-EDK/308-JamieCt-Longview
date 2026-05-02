@@ -1,7 +1,7 @@
 """
-308 Jamie Court — Lease API
+308 Jamie Court -- Lease API
 Serves tenant-facing lease data from config.yaml and records acknowledgments.
-Port 8084 — reverse-proxied via Caddy at /lease-api/*
+Port 8084 -- reverse-proxied via Caddy at /lease-api/*
 """
 
 import json
@@ -26,7 +26,7 @@ ALLOWED_ORIGINS = [
     "http://127.0.0.1:5500",
 ]
 
-app = FastAPI(title="308 Jamie Ct — Lease API", root_path="/lease-api")
+app = FastAPI(title="308 Jamie Ct ΓÇö Lease API", root_path="/lease-api")
 
 
 class PrivateNetworkMiddleware(BaseHTTPMiddleware):
@@ -81,7 +81,7 @@ def _save_ack(entry: dict) -> None:
         json.dump(acks, f, indent=2)
 
 
-# ── Models ────────────────────────────────────────────────────────────────────
+# ΓöÇΓöÇ Models ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 
 class AcknowledgeRequest(BaseModel):
     tenant1_name: str
@@ -89,7 +89,7 @@ class AcknowledgeRequest(BaseModel):
     confirmed: bool
 
 
-# ── Endpoints ─────────────────────────────────────────────────────────────────
+# ΓöÇΓöÇ Endpoints ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 
 @app.get("/data")
 def get_lease_data():
@@ -116,7 +116,7 @@ def get_lease_data():
         "total_monthly": f"${lease_2026.get('rent_total_monthly', 1920):,.0f}",
         "security_deposit": "$1,500",
         "late_fee": "$175 per two weeks",
-        "lease_term": "Year 4 — 4th Term",
+        "lease_term": "Year 4 ΓÇö 4th Term",
         "platform": cfg["project"]["lease_platform"],
     }
 
@@ -132,7 +132,7 @@ def post_acknowledge(body: AcknowledgeRequest):
         "tenant1_name": body.tenant1_name.strip(),
         "tenant2_name": body.tenant2_name.strip(),
         "confirmed": True,
-        "lease_term": "4th Term — May 1, 2026",
+        "lease_term": "4th Term ΓÇö May 1, 2026",
     }
     _save_ack(entry)
     return {"status": "recorded", "timestamp": entry["timestamp"]}
@@ -140,7 +140,7 @@ def post_acknowledge(body: AcknowledgeRequest):
 
 @app.get("/status")
 def get_status():
-    """Return all recorded acknowledgments. Owner-facing — Tailscale-only access."""
+    """Return all recorded acknowledgments. Owner-facing ΓÇö Tailscale-only access."""
     acks = _load_acks()
     return {
         "total_acknowledgments": len(acks),
@@ -151,3 +151,4 @@ def get_status():
 @app.get("/health")
 def health():
     return {"status": "ok"}
+
