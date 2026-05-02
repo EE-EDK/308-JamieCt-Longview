@@ -106,30 +106,27 @@ PITI breakdown: P&I $634.15 + Escrow $694.52 (includes shortage repayment; will 
 ## Repository Structure
 
 ```
-308-jamie-ct/
-├── .github/workflows/ci.yml
+real-estate/
 ├── .gitignore
-├── CLAUDE.md                        ← this file
-├── GEMINI.md
-├── LICENSE, README.md, SECURITY.md
+├── README.md, CLAUDE.md, GEMINI.md, SUMMARY.md, LICENSE
 ├── config/
-│   ├── config.yaml                  ← SINGLE SOURCE OF TRUTH
-│   └── config.example.yaml
-├── dashboard.html                   ← property management dashboard
-├── data/
-│   └── .gitignore                   ← financial/sensitive data (gitignored)
-├── docs/
-│   ├── active/
-│   │   ├── STATUS.md
-│   │   └── TECHNICAL_JOURNAL.md
-│   └── Archive/Reference/
-│       ├── General/                 ← appraisals, HVAC, plumbing, photos
-│       └── Leases/                  ← leases by year (2020–2025)
-├── package.json
+│   └── config.yaml                  ← SINGLE SOURCE OF TRUTH
+├── dashboard.html                   ← property management dashboard (6-tab)
+├── index.html                       ← interactive lease viewer (GitHub Pages)
+├── lease_api.py                     ← FastAPI backend (port 8084)
+├── output/                          ← generated lease documents (DOCX, PDF)
 ├── scripts/
-│   ├── setup_env.ps1
+│   ├── generate_lease_docs.py       ← markdown → DOCX/PDF generator
 │   └── verify_project_state.py
-└── tests/README.md
+├── data/
+│   └── .gitignore                   ← runtime data (gitignored)
+└── docs/
+    ├── STATUS.md                    ← current blockers + milestones
+    ├── TECHNICAL_JOURNAL.md         ← session log
+    ├── general/                     ← appraisals, HVAC, plumbing, photos, research
+    ├── leases/                      ← leases by year (2020–2026)
+    │   └── 2026/                    ← 4th-term v2 source markdown
+    └── taxes/                       ← tax returns by year (gitignored)
 ```
 
 ---
@@ -142,21 +139,27 @@ PITI breakdown: P&I $634.15 + Escrow $694.52 (includes shortage repayment; will 
 4. **Lease renewal:** Current lease expires May 1, 2026. Flag this date when discussing forward planning.
 5. **HVAC labor warranty expires July 8, 2026.** If any HVAC issue arises before then, flag warranty coverage.
 6. **Tenant contacts:** Jared 573-424-7776 / jgeers08@gmail.com. Kayla: 903-746-9903 / geerskayla0413@gmail.com.
-7. **Document references:** Cite path under `docs/Archive/Reference/` when referencing source docs.
+7. **Document references:** Cite path under `docs/` when referencing source docs (e.g., `docs/leases/`, `docs/general/`, `docs/taxes/`).
 8. **Config updates:** Update `last_updated` in config.yaml after any value change. Do not store non-numeric metadata in numeric sections.
 9. **Net operating income:** Gross ($1,865) − PITI ($1,328.67) = ~$536 gross operating income before reserve. Less $200 reserve = ~$336/mo net to owner.
 10. **Depreciation:** Annual ~$4,739 for Schedule E. Estimated basis — verify against actual tax returns.
-11. **Lease history:** Brittin Stevens was tenant from Jul 2020 through ~May 2023 across two lease terms — $1,300/mo initially, raised to $1,365/mo in Jun 2022. Confirmed via Avail payment history CSV (`docs/Archive/Reference/General/2026-04-23-received-payments-report.csv`). Geers started May 2023.
+11. **Lease history:** Brittin Stevens was tenant from Jul 2020 through ~May 2023 across two lease terms — $1,300/mo initially, raised to $1,365/mo in Jun 2022. Confirmed via Avail payment history CSV (`docs/general/2026-04-23-received-payments-report.csv`). Geers started May 2023.
 12. **Git security:** Do NOT commit financial statements, tax documents, or tenant PII to any public repo. `data/` is gitignored. Verify with `git ls-files` before any push.
 
 ---
+
+## Testing (lease API)
+
+- Install: `pip install -r requirements-dev.txt`
+- Run: `python -m pytest test -q` from repo root, or `.\scripts\run_tests.ps1`
+- Tests patch `CONFIG_FILE` / `ACK_FILE`; no production network calls
 
 ## Session Workflow
 
 ### At Session Start
 1. Read this file
-2. Read `docs/active/TECHNICAL_JOURNAL.md` (last ~100 lines)
-3. Check `docs/active/STATUS.md` for current blockers
+2. Read `docs/TECHNICAL_JOURNAL.md` (last ~100 lines)
+3. Check `docs/STATUS.md` for current blockers
 4. Read `config/config.yaml` for any values needed
 
 ### During the Session
@@ -166,8 +169,8 @@ PITI breakdown: P&I $634.15 + Escrow $694.52 (includes shortage repayment; will 
 
 ### END SESSION
 1. Run `python scripts/verify_project_state.py`
-2. Append entry to `docs/active/TECHNICAL_JOURNAL.md`
-3. Update `docs/active/STATUS.md`
+2. Append entry to `docs/TECHNICAL_JOURNAL.md`
+3. Update `docs/STATUS.md`
 4. Update `config/config.yaml` `last_updated` if values changed
 5. Single descriptive commit
 

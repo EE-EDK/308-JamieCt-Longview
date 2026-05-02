@@ -173,10 +173,12 @@ Brittin Stevens payment history confirmed via Avail CSV export (Apr 2026).
 
 All canonical values live in `config/config.yaml`. Full document index is in that file.
 
-- Current lease: `docs/Archive/Reference/Leases/2025/Lease_308_Jamie_CT_Lease_and_Amendments_2025_signed.pdf`
-- 2025 1098: `docs/Archive/Reference/taxes/2025/1098-308-Rental-Mortgage-2025.pdf`
-- Tax action plan: `docs/Archive/Reference/taxes/2024/Deductions/Corrections-Deductions-2024-2025.pdf`
-- DMSH election: `docs/Archive/Reference/taxes/2024/Deductions/DMSHE-Statement-2025-Water-Heater-Deduction.pdf`
+- Current lease: `docs/leases/2025/Lease_308_Jamie_CT_Lease_and_Amendments_2025_signed.pdf`
+- 4th-term draft: `docs/leases/2026/lease_308_jamie_ct_4th_term_2026_v2.md`
+- Generated outputs: `output/Lease_308_Jamie_CT_4th_Term_2026.docx`, `.pdf`
+- 2025 1098: `docs/taxes/2025/1098-308-Rental-Mortgage-2025.pdf`
+- Tax action plan: `docs/taxes/2024/Deductions/Corrections-Deductions-2024-2025.pdf`
+- DMSH election: `docs/taxes/2024/Deductions/DMSHE-Statement-2025-Water-Heater-Deduction.pdf`
 - Dashboard: `dashboard.html`
 
 ---

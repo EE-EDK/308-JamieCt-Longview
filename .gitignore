@@ -59,7 +59,7 @@ desktop.ini
 
 # === Project-specific ===
 # Tax documents, returns, and SSNs — sensitive PII / financial data, never commit
-docs/Archive/Reference/taxes/
+docs/taxes/
 # Financial data directory
 data/
 # Media — videos, photos, images (large binaries; store locally or in cloud, not in git)

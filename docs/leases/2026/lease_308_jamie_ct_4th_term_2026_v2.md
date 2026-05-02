@@ -60,7 +60,7 @@ Rent shall be paid in full at **$1,880.00** (base) within the first week of each
 
 In the interest of full transparency, the Landlords provide the following accounting of how the rent adjustment from the 3rd term ($1,825.00) to the 4th term ($1,880.00) was determined.
 
-The Landlords' primary carrying cost on this property is the monthly mortgage payment, which as of April 2026 is structured as follows: $323.99 in principal, $310.16 in interest, and **$512.93 in escrow** covering property taxes and homeowner's insurance. It is this escrow component — the portion most directly subject to market forces — that governs annual rent adjustments under the terms of this Lease.
+The Landlords' primary carrying cost on this property is the monthly mortgage payment, which includes principal, interest, and an **escrow** component covering property taxes and homeowner's insurance. Both of these escrow items have increased year over year. It is this escrow component — the portion most directly subject to market forces — that governs annual rent adjustments under the terms of this Lease.
 
 To quantify the appropriate adjustment, the Landlords referenced two inflation benchmarks published by the U.S. Bureau of Labor Statistics (BLS):
 
